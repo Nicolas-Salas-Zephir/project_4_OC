@@ -1,4 +1,4 @@
-<?php $title = 'INDEX'; ?>
+<?php $title = 'PAGE PRINCIPALE'; ?>
 
 <?php ob_start(); ?>
 
@@ -9,13 +9,13 @@ while ($data = $posts->fetch())
 ?>
     <div class="news">
         <h3>
-            <a href="index.php?action=post&id=<?php echo $data['id']; ?>"><?= htmlspecialchars($data['title']) ?></a>
+            <a href="index.php?action=post&id=<?php echo $data['id']; ?>"><?= $data['title'] ?></a>
             <br>
             <em>le <?= $data['create_date_fr'] ?></em>
         </h3>
         
         <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
+            <?= $data['content'] ?>
             <br />
             <!-- <em><a href="index.php?action=post&id=<?php echo $data['id']; ?>">Commentaires</a></em> -->
         </p>
