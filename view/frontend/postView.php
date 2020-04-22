@@ -14,7 +14,7 @@ ob_start();
             </h3>
             
             <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
+                <?= $post['content'] ?>
             </p>
         </div>
 

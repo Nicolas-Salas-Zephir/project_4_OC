@@ -8,18 +8,21 @@ ob_start();
     <h1>ADMIN</h1>
     <p><a href="index.php">Retour à la liste des billets</a></p>
     <form action="index.php?action=addPost" method="post">
-        <div>
+
+    <form action="index.php?action=addPost" method="post">
+        <div class="form-group">
             <label for="title">Titre :</label><br />
-            <input type="text" id="title" name="title" />
+            <input type="text" class="form-control"  id="title" name="title" aria-describedby="emailHelp"/>
+            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
         </div>
-        <div>
+        <div class="form-group">
             <label for="author">Auteur :</label><br />
-            <input type="text" id="author" name="author" />
-        </div>
-        <label for="mytextarea">Contenu :</label>
-        <textarea name="content" id="mytextarea"></textarea>
+            <input type="text" class="form-control" id="author" name="author" />
+        </div class="form-group">
+            <label for="mytextarea">Contenu :</label>
+            <textarea name="content" id="mytextarea"></textarea>
         <div>
-            <input type="submit" value="Envoyer" />
+            <button type="submit" class="btn btn-primary">Envoyer</button>
         </div>
     </form>
 
