@@ -17,7 +17,7 @@ while ($data = $posts->fetch())
                 <div class="post-content">
                     <p><i class="fas fa-user"></i><?= $data['author']; ?></p>
                     <h2><a href="index.php?action=post&id=<?= $data['id']; ?>"><?= $data['title']; ?></a></h2>
-                    <?= $data['content']; ?>
+                    <p><?= $data['content']; ?></p>
                 </div>
             </div>
             <div class="post-footer">
@@ -37,4 +37,4 @@ $posts->closeCursor();
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('templateHome.php'); ?>

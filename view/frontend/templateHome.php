@@ -43,7 +43,7 @@
           </div>
         </div>
         <header>
-          <div class="header-img">
+          <div class='header-img' >
             HEADER
           </div>
         </header>
