@@ -12,15 +12,15 @@ ob_start();
         <form action="index.php?action=addPost" method="post">
             <div class="form-group">
                 <label for="title">Titre :</label><br />
-                <input type="text" class="form-control"  id="title" name="title" aria-describedby="emailHelp" required/>
+                <input type="text" class="form-control"  id="title" name="title" aria-describedby="emailHelp"/>
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
             <div class="form-group">
                 <label for="author">Auteur :</label><br />
-                <input type="text" class="form-control" id="author" name="author" required/>
+                <input type="text" class="form-control" id="author" name="author"/>
             </div class="form-group">
                 <label for="mytextarea">Contenu :</label>
-                <textarea name="content" id="mytextarea" required></textarea>
+                <textarea name="content" id="mytextarea"></textarea>
             <div>
                 <button type="submit" class="btn btn-primary">Envoyer</button>
             </div>
