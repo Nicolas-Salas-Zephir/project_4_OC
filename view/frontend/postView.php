@@ -6,48 +6,50 @@ ob_start();
 
         <h1>Mon super blog !</h1>
         <p><a href="index.php">Retour à la liste des billets</a></p>
+        <div class="col-sm-12">
+            <div class="news">
+                <h3>
+                    <?= htmlspecialchars($post['title']) ?>
+                    <em>le <?= $post['create_date_fr'] ?></em>
+                </h3>
+                
+                <p>
+                    <?= $post['content'] ?>
+                </p>
+            </div>
 
-        <div class="news">
-            <h3>
-                <?= htmlspecialchars($post['title']) ?>
-                <em>le <?= $post['create_date_fr'] ?></em>
-            </h3>
-            
-            <p>
-                <?= $post['content'] ?>
-            </p>
+            <h2>Commentaires</h2>
+
+            <?php
+            while ($comment = $comments->fetch())
+            {
+            ?>
+                <p><strong><?= htmlspecialchars($comment['author']) ?></strong> 
+                    le <?= $comment['comment_date_fr'] ?> 
+                    <a href="index.php?action=viewComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">modifier</a>
+                    <a href="index.php?action=deleteComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">effacer</a>
+                </p>
+                <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+            <?php
+            }
+            ?>
+
+            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+                <div class="form-group">
+                    <label for="author">Auteur</label><br />
+                    <input type="text" class="form-control" id="author" name="author" aria-describedby="emailHelp" />
+                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                </div>
+                <div class="form-group">
+                    <label for="comment">Commentaire</label><br />
+                    <textarea  class="form-control" id="comment" name="comment"></textarea>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+            </form>
         </div>
-
-        <h2>Commentaires</h2>
-
-        <?php
-        while ($comment = $comments->fetch())
-        {
-        ?>
-            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> 
-                le <?= $comment['comment_date_fr'] ?> 
-                <a href="index.php?action=viewComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">modifier</a>
-                <a href="index.php?action=deleteComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">effacer</a>
-            </p>
-            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-        <?php
-        }
-        ?>
-
-        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-            <div>
-                <label for="author">Auteur</label><br />
-                <input type="text" id="author" name="author" />
-            </div>
-            <div>
-                <label for="comment">Commentaire</label><br />
-                <textarea id="comment" name="comment"></textarea>
-            </div>
-            <div>
-                <input type="submit" />
-            </div>
-        </form>
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+<?php require('templateHome.php'); ?>
