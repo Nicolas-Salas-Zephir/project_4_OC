@@ -16,10 +16,17 @@ body {
 p {
   font-size: 1.5rem;
   color: var(--color-para);
+  text-transform: initial;
 }
 
 a {
+  display: block;
+  text-decoration: none;
   font-size: 1.1rem;
+}
+
+.form-control {
+  font-size: 1.6rem !important;
 }
 
 .center {
@@ -108,15 +115,11 @@ a {
 
 .sidebar__container li a {
   color: #fff;
-  font-size: 12px;
-  display: block;
-  text-decoration: none;
   line-height: normal;
 }
 
 .blog-posts-content {
   font-size: 2.4rem;
-  text-transform: uppercase;
   padding: 6rem 5rem;
 }
 
@@ -140,7 +143,7 @@ header {
   width: 10%;
 }
 
-.container {
+.background-container {
   background: url(../images/Groupe1.svg);
 }
 
@@ -190,7 +193,6 @@ header {
 
 .post-content p i {
   font-size: 1.3rem;
-  /* margin-right: 5px; */
 }
 
 .post-content h2 {
@@ -229,10 +231,6 @@ header {
   color: var(--color-para);
 }
 
-.news p{
-  text-transform: initial;
-}
-
 .blog-post__info > i {
   font-size: 1rem;
 }
@@ -241,8 +239,36 @@ header {
   border-bottom: 1px solid var(--bg);
 }
 
+.comment p:nth-child(1) {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-black);
+  text-transform: capitalize;
+}
+
+.comment p:nth-child(2) {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.comment p:nth-child(3) {
+  font-size: 1.2rem;
+}
+
 .blog-post__info > span {
   font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+button {
+  padding: 1rem 2rem !important;
+}
+
+footer {
+  padding: 30px;
+  background: var(--color-black);
+  color: #ffffff !important;
+  height: auto !important;
   text-transform: uppercase;
 }
 

@@ -47,14 +47,20 @@
             HEADER
           </div>
         </header>
-        <div class="container">
+        <div class="container-fluid background-container">
           <div class="row blog-posts-content">
-            <!-- <h1><?= $title ?></h1> -->
-
             <?= $content ?>
           </div>
         </div>
-
+        <footer>
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <p>Ce site est un projet étudiant OpenClassRoom</p>
+              </div>
+            </div>
+          </div>
+        </footer>
 
 
 
