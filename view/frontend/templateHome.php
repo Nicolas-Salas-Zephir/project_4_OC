@@ -25,7 +25,7 @@
             </div>
             <nav id="navigation">
               <ul>
-                <li><a href="index.php" class="active">Acceuil</a></li>
+                <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
                 <li><a class="link">qui je suis</a></li>
                 <li><a class="link">du text</a></li>
@@ -47,7 +47,7 @@
             HEADER
           </div>
         </header>
-        <div class="container-fluid">
+        <div class="container">
           <div class="row blog-posts-content">
             <!-- <h1><?= $title ?></h1> -->
 

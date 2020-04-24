@@ -28,8 +28,6 @@ function post()
     else {
         require('view/frontend/postView.php');
     }
-    
-    
 }
 
 function addComment($postId, $author, $comment)

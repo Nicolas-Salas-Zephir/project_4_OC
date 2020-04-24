@@ -15,7 +15,7 @@ while ($data = $posts->fetch())
             </div>
             <div class="post-main">
                 <div class="post-content">
-                    <p><i class="fas fa-user"></i><?= $data['author']; ?></p>
+                    <p><i class="fas fa-user mr-3"></i><?= $data['author']; ?></p>
                     <h2><a href="index.php?action=post&id=<?= $data['id']; ?>"><?= $data['title']; ?></a></h2>
                     <p><?= $data['content']; ?></p>
                 </div>
