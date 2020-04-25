@@ -18,11 +18,10 @@ ob_start();
             <div class="col-lg-4 ">
                 <form action="index.php?action=addPost" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control"  id="title" name="title" aria-describedby="emailHelp" placeholder="Votre nom"/>
-                        <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                        <input type="text" class="form-control form-control-lg"  id="username" name="username" placeholder="Votre nom"required/>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="author" name="author" placeholder="Mot de passe"/>
+                        <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Mot de passe"required/>
                     </div>
                     <div class="d-flex justify-content-center mt-5">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Envoyer</button>
