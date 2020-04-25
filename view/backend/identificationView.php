@@ -24,7 +24,7 @@ ob_start();
                         <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Mot de passe"required/>
                     </div>
                     <div class="d-flex justify-content-center mt-5">
-                        <button type="submit" class="btn btn-primary btn-sm btn-block">Valider</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Valider</button>
                     </div>
                 </form>
             </div>
