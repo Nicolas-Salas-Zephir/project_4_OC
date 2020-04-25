@@ -52,6 +52,8 @@ try {
             } 
         } elseif ($_GET['action'] == "blog") {
             postBlog();
+        } elseif ($_GET['action'] == "identification") {
+            identifyView();
         }
     } else {
         listPosts();

@@ -22,3 +22,7 @@ function addPost($title, $content, $author) {
         header('Location: index.php?action=admin');
     }
 }
+
+function identifyView() {
+    require('view/backend/identificationView.php');
+}

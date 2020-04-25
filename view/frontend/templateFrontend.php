@@ -29,7 +29,7 @@
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
                 <li><a class="link">qui je suis</a></li>
                 <li><a class="link">du text</a></li>
-                <li><a href='index.php?action=admin' class="link">Administration</a></li>
+                <li><a href='index.php?action=identification' class="link">Administration</a></li>
               </ul>
             </nav>
           </div>
