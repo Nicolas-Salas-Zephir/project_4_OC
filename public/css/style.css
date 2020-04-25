@@ -14,7 +14,7 @@ body {
 }
 
 p {
-  font-size: 1.5rem;
+  font-size: 15px;
   color: var(--color-para);
   text-transform: initial;
 }
@@ -22,11 +22,11 @@ p {
 a {
   display: block;
   text-decoration: none;
-  font-size: 1.1rem;
+  font-size: 11px;
 }
 
 .form-control {
-  font-size: 1.6rem !important;
+  font-size: 16px !important;
 }
 
 .center {
@@ -38,10 +38,10 @@ a {
 /* Début du boutton de retour en haut de la page */
 #backToTheTop {
   position: fixed;
-  bottom: 5rem;
-  right: 5rem;
-  width: 5rem;
-  height: 5rem;
+  bottom: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
   background-color: transparent;
   border-radius: 3px;
   z-index: 1000;
@@ -65,13 +65,13 @@ a {
   top: 4px;
 }
 .arrow-up::after {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 15px;
+  height: 15px;
   border-top: 2px solid var(--link-active);
   border-left: 2px solid var(--link-active);
   transform: rotate(45deg);
-  left: calc(50% - 0.7rem);
-  top: calc(50% - 0.5rem);
+  left: calc(50% - 7px);
+  top: calc(50% - 5px);
 }
 /* .arrow-up::before {
   width: .2rem;
@@ -92,13 +92,13 @@ a {
   justify-content: center;
   align-items: center;
   color: #fff;
-  padding: 3rem 0;
-  height: 20rem;
+  padding: 30px 0;
+  height: 200px;
   border-bottom: #fff;
 }
 
 .sidebar__logo h1 {
-  font-size: 5rem;
+  font-size: 50px;
 }
 
 .sidebar__container li {
@@ -119,8 +119,8 @@ a {
 }
 
 .blog-posts-content {
-  font-size: 2.4rem;
-  padding: 6rem 5rem;
+  font-size: 24px;
+  padding: 60px 50px;
 }
 
 header {
@@ -152,7 +152,7 @@ header {
   background-color: #fff;
   flex-direction: column;
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 30px;
   /* box-shadow: 8px 10px 10px 0px #e0dede; */
 }
 
@@ -160,17 +160,17 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
+  font-size: 60px;
   color: #fff;
   background-color: var(--bg);
-  height: 40rem;
+  height: 400px;
   width: 100%;
 }
 
 .post-main {
   width: 95%;
-  padding: 1rem;
-  margin: 0.5rem auto;
+  padding: 10px;
+  margin: 5px auto;
   border-bottom: 1px solid var(--bg);
 }
 
@@ -185,39 +185,39 @@ header {
 .post-content p {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
-  line-height: 3rem;
+  font-size: 15px;
+  line-height: 30px;
   text-transform: initial;
   font-weight: 400;
 }
 
 .post-content p i {
-  font-size: 1.3rem;
+  font-size: 13px;
 }
 
 .post-content h2 {
   
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
 }
 
 .post-content h2 a {
   text-decoration: none;
-  font-size: 1.8rem;
+  font-size: 18px;
   color: var(--color-black);
 }
 
 .post-content h3 span {
-  font-size: 2rem !important;
+  font-size: 20px !important;
 }
 
 .post-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 50px;
   width: 95%;
-  padding: 1rem;
-  margin: 0.5rem auto;
+  padding: 10px;
+  margin: 0.5px auto;
 }
 
 .post-link {
@@ -232,7 +232,7 @@ header {
 }
 
 .blog-post__info > i {
-  font-size: 1rem;
+  font-size: 10px;
 }
 
 .comment {
@@ -240,28 +240,28 @@ header {
 }
 
 .comment p:nth-child(1) {
-  font-size: 2rem;
+  font-size: 20px;
   font-weight: 500;
   color: var(--color-black);
   text-transform: capitalize;
 }
 
 .comment p:nth-child(2) {
-  font-size: 1.5rem;
+  font-size: 15px;
   font-weight: 400;
 }
 
 .comment p:nth-child(3) {
-  font-size: 1.2rem;
+  font-size: 12px;
 }
 
 .blog-post__info > span {
-  font-size: 1.2rem;
+  font-size: 12px;
   text-transform: uppercase;
 }
 
 button {
-  padding: 1rem 2rem !important;
+  padding: 10px 20px !important;
 }
 
 footer {
@@ -279,15 +279,19 @@ footer {
   height: 100vh;
 }
 
-@media (min-width: 76.8rem) {
+.identification button {
+  font-size: 15px !important;
+}
+
+@media (min-width: 768px) {
   #wrapper {
-    padding-left: 26rem;
+    padding-left: 260px;
   }
 
   #sidebar {
     position: fixed;
     height: 100%;
-    left: 26rem;
+    left: 260px;
     background-color: var(--color-black);
     z-index: 1;
     margin-left: -260px;
@@ -296,7 +300,7 @@ footer {
   }
 
   .sidebar__container nav {
-    min-width: 26rem;
+    min-width: 260px;
   }
 
   .active .link:hover {
@@ -312,7 +316,7 @@ footer {
   justify-content: center;
   background-color: var(--bg);
   color: #fff;
-  font-size: 6rem;
+  font-size: 60px;
   width: 100%;
   height: 40vh;
 }
@@ -320,7 +324,7 @@ footer {
 /* DEBUT DE LA NAVIGATION */
 
 .menu-hamburger img {
-  width: 5rem;
+  width: 50px;
 }
 
 /* .menu-hamburger {
