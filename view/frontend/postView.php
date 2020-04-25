@@ -40,11 +40,11 @@ ob_start();
                 <div class="col-md-6 col-sm-12 ">
                     <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                         <div class="form-group mb-4">
-                            <input type="text" class="form-control" id="author" name="author" aria-describedby="emailHelp" placeholder="Votre pseudo" />
+                            <input type="text" class="form-control" id="author" name="author" aria-describedby="emailHelp" placeholder="Votre pseudo" required/>
                             <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                         </div>
                         <div class="form-group">
-                            <textarea  class="form-control" id="comment" name="comment" placeholder="Votre commentaire"></textarea>
+                            <textarea  class="form-control" id="comment" name="comment" placeholder="Votre commentaire" required></textarea>
                         </div>
                         <div>
                             <button type="submit" class="btn btn-lg btn-dark">Envoyer</button>
@@ -56,4 +56,4 @@ ob_start();
 
 <?php $content = ob_get_clean(); ?>
 
-<?php require('templateHome.php'); ?>
+<?php require('templateFrontend.php'); ?>
