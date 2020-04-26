@@ -26,3 +26,10 @@ function addPost($title, $content, $author) {
 function identifyView() {
     require('view/backend/identificationView.php');
 }
+
+function listPostsAdmin() {
+    $postManager = new PostManager();
+    $posts = $postManager->getPostsBlog();
+
+    require('view/backend/listPostsAdminView.php');
+}

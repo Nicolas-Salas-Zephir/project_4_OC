@@ -54,6 +54,8 @@ try {
             postBlog();
         } elseif ($_GET['action'] == "identification") {
             identifyView();
+        } elseif ($_GET['action'] == "postsAdmin") {
+            listPostsAdmin();
         }
     } else {
         listPosts();

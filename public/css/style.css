@@ -214,6 +214,18 @@ footer {
   height: 100vh;
 }
 
+.navbar__title {
+  font-size: 3rem !important;
+}
+
+.navbar {
+  color: white;
+}
+
+.navbar ul li a {
+  font-size: 2rem;
+}
+
 @media (min-width: 76.8rem) {
   #wrapper {
     padding-left: 26rem;

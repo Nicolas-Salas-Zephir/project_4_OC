@@ -1,5 +1,5 @@
 <?php 
-
+$navigation = "navBackend.php";
 $title = 'ADMIN'; 
 ob_start(); 
 ?>
