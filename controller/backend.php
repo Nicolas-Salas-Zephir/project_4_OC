@@ -36,7 +36,6 @@ function listPostsAdmin() {
 
 function password() {
     if (isset($_POST['username']) && $_POST['username'] == "nicolas" && isset($_POST['password']) && $_POST['password'] == '0000') {
-        var_dump($_POST);
         listPostsAdmin();
     } else {
         throw new Exception('Ce mot de passe n\'existe pas');

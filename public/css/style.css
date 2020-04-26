@@ -222,6 +222,12 @@ footer {
   font-size: 2rem;
 }
 
+/* Page Administrateur des articles  */
+
+.post-link a i {
+  font-size: 1.5rem;
+}
+
 @media (min-width: 76.8rem) {
   #wrapper {
     padding-left: 26rem;

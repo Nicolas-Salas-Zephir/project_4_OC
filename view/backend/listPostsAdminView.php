@@ -21,7 +21,8 @@ while ($data = $posts->fetch())
             </div>
             <div class="post-footer">
                 <div class="post-link">
-                    <a>le <?= $data['create_date_fr']; ?></a>
+                    <a><i class="far fa-trash-alt text-danger"></i></a>
+                    <a href=""><i class="far fa-edit text-primary"></i></a>
                 </div>
                 <div class="post-link">
                     <a>Commentaire du poste</a>
