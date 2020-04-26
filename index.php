@@ -55,7 +55,11 @@ try {
         } elseif ($_GET['action'] == "identification") {
             identifyView();
         } elseif ($_GET['action'] == "postsAdmin") {
-            listPostsAdmin();
+            if (!empty($_POST['username']) && !empty($_POST['password'])) {
+                password();
+            } else {
+                throw new Exception("vous n'avez pas rempli tous les champs obligatoires ");
+            }
         }
     } else {
         listPosts();
