@@ -37,10 +37,10 @@
           </div>
         </div>
           <?php
-          if (isset($_GET['action']) == 'blog') {
+          if (isset($_GET['action'])) {
             require('headerBlog.php');
           } else {
-              require('headerHome.php');
+            require('headerHome.php');
           }
           ?>
         <div class="container-fluid background-container">
