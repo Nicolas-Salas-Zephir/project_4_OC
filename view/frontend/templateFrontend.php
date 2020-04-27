@@ -34,19 +34,15 @@
             </nav>
           </div>
           <div>
-            <a
-              href="#hamburger-toggle"
-              class="menu-hamburger"
-              id="hamburger-toggle">
-              <img src="./public/images/Menu_icon_2_icon-icons.com.svg" />
-            </a>
           </div>
         </div>
-        <header>
-          <div class='header-img' >
-            HEADER
-          </div>
-        </header>
+          <?php
+          if (isset($_GET['action']) == 'blog') {
+            require('headerBlog.php');
+          } else {
+              require('headerHome.php');
+          }
+          ?>
         <div class="container-fluid background-container">
           <div class="row blog-posts-content">
             <?= $content ?>
