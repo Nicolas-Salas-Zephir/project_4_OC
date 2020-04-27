@@ -44,7 +44,7 @@
           }
           ?>
         <div class="container-fluid background-container">
-          <div class="row blog-posts-content">
+          <div class="row blog-posts-content d-flex justify-content-center">
             <?= $content ?>
           </div>
         </div>
