@@ -51,7 +51,7 @@
           </div>
           <?php if (isset($_GET['action'])): ?>
             <div class='header-img-blog' >
-              HEADER
+              <!-- <img src="./public/images/mountains-alaska.jpg" class="img-fluid" alt=""> -->
           </div>
           <?php else: ?>
             <div class='header-img' >
