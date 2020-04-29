@@ -240,6 +240,12 @@ header {
   color: var(--link-active);
 }
 
+/* Identification page */
+
+.identification {
+  height: 100vh;
+}
+
 @media screen and (max-width: 768px) {
   .margin-container {
     margin-left: unset !important;
