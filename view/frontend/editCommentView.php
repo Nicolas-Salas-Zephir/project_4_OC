@@ -19,7 +19,6 @@ ob_start();
                 <input type="submit" />
             </div>
         </form>
-        <a href="index.php?action=editComment&amp;id=<?= $comment['id'] ?>&amp;postId=<?= $comment['post_id'] ?>">eeeee</a>
         
 
 <?php $content = ob_get_clean(); ?>

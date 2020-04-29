@@ -49,13 +49,15 @@
               </ul>
             </nav>
           </div>
-          <?php
-          if (isset($_GET['action'])) {
-            require('headerBlog.php');
-          } else {
-            require('headerHome.php');
-          }
-          ?>
+          <?php if (isset($_GET['action'])): ?>
+            <div class='header-img-blog' >
+              HEADER
+          </div>
+          <?php else: ?>
+            <div class='header-img' >
+                HEADER
+            </div>
+          <?php endif; ?>
         <div class="container-fluid background-container">
           <div class="row blog-posts-content d-flex justify-content-center">
             <?= $content ?>
