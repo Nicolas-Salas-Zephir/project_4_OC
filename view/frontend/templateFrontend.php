@@ -23,7 +23,7 @@
             <div class="sidebar__logo">
               <h1>LOGO</h1>
             </div>
-            <nav id="navigation">
+            <nav>
               <ul>
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
@@ -33,9 +33,22 @@
               </ul>
             </nav>
           </div>
-          <div>
-          </div>
         </div>
+        <header>
+          <div class="menu-hamburger">
+            <a href="#hamburger-toggle" id="hamburger-toggle">
+              <img src="./images/Menu_icon_2_icon-icons.com.svg" />
+            </a>
+            <nav id="menu-hamburger_nav">
+              <ul>
+                <li class="active"><a>Acceuil</a></li>
+                <li><a href="blog.html">blog</a></li>
+                <li><a>qui je suis</a></li>
+                <li><a>du text</a></li>
+                <li><a href="admin.html">Administration</a></li>
+              </ul>
+            </nav>
+          </div>
           <?php
           if (isset($_GET['action'])) {
             require('headerBlog.php');
