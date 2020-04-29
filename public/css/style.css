@@ -138,9 +138,8 @@ a {
   padding: 60px 50px;
 }
 
-header {
+.header-frontend {
   position: relative;
-  /* display: flex; */
   width: 100%;
   height: 100vh;
   margin-left: 260px;
@@ -240,10 +239,16 @@ header {
   color: var(--link-active);
 }
 
+
+/* Backend */
 /* Identification page */
 
 .identification {
   height: 100vh;
+}
+
+.post-backend {
+  border: 1px solid var(--bg);
 }
 
 @media screen and (max-width: 768px) {

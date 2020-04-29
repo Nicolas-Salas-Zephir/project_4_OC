@@ -34,7 +34,7 @@
             </nav>
           </div>
         </div>
-        <header>
+        <header class="header-frontend">
           <div class="menu-hamburger">
             <a href="#hamburger-toggle" id="hamburger-toggle">
               <img src="./images/Menu_icon_2_icon-icons.com.svg" />

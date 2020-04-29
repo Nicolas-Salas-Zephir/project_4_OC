@@ -41,3 +41,4 @@ function password() {
         throw new Exception('Ce mot de passe n\'existe pas');
     }
 }
+
