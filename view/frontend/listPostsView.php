@@ -21,7 +21,12 @@ while ($data = $posts->fetch())
                 <div class="post-content">
                     <p><i class="fas fa-user mr-3"></i><?= $data['author']; ?></p>
                     <h2><a href="index.php?action=post&id=<?= $data['id']; ?>"><?= $data['title']; ?></a></h2>
-                    <p><?= $data['content']; ?></p>
+                    <p><?php
+                        $rest = substr($data['content'], 0, 300); 
+                        echo $rest;
+                     ?>
+                     <a href="index.php?action=post&id=<?= $data['id']; ?>">Lire la suite</a>
+                     </p>
                 </div>
             </div>
             <div class="post-footer">
