@@ -55,7 +55,8 @@
           </div>
           <?php else: ?>
             <div class='header-img' >
-                HEADER
+                
+                <!-- <img src="./public/images/mountains.jpg" class="img-fluid" alt=""> -->
             </div>
           <?php endif; ?>
         <div class="container-fluid background-container">
