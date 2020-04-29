@@ -2,8 +2,9 @@
 
 <?php ob_start(); ?>
 
-        
+<div class="row blog-posts-content d-flex justify-content-center"> 
 <?php
+
 while ($data = $posts->fetch())
 {
 ?>
@@ -41,6 +42,9 @@ while ($data = $posts->fetch())
     </div>
 <?php
 }
+?>
+</div>
+<?php
 $posts->closeCursor();
 ?>
 
