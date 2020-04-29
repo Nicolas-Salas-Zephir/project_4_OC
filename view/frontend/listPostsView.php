@@ -30,7 +30,8 @@ while ($data = $posts->fetch())
                      </p>
                 </div>
             </div>
-            <div class="post-footer">
+            <?php if (isset($_GET['action'])): ?>   
+            <div class="post-footer border-top">
                 <div class="post-link">
                     <a>le <?= $data['create_date_fr']; ?></a>
                 </div>
@@ -38,6 +39,8 @@ while ($data = $posts->fetch())
                     <a>Commentaire du poste</a>
                 </div>
             </div>
+            <?php endif; ?>
+
         </div>
     </div>
 <?php
