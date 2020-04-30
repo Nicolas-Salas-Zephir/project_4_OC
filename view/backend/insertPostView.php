@@ -33,7 +33,7 @@ ob_start();
                     <label for="mytextarea">Contenu :</label>
                     <textarea name="content" id="mytextarea" placeholder="Contenu de l'article"></textarea>
                 <div class="mt-4 mb-5">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">Envoyer</button>
+                    <button type="submit" class="btn btn-primary btn-block">Envoyer</button>
                 </div>
             </form>
         </div>
