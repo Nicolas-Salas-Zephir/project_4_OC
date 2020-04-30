@@ -26,9 +26,7 @@
   <body>
     <?php include $navigation; ?>
     <div class="container">
-      <div class="row d-flex justify-content-center">
         <?= $content ?>
-      </div>
     </div>
 
     <script src="https://kit.fontawesome.com/d441c3b81b.js"
