@@ -60,6 +60,12 @@ try {
             } else {
                 throw new Exception("vous n'avez pas rempli tous les champs obligatoires ");
             }
+        } elseif ($_GET['action'] == "postAdmin" ) {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                postBackend();
+            } else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
         }
     } else {
         listPosts();

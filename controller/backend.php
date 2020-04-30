@@ -42,3 +42,18 @@ function password() {
     }
 }
 
+function postBackend() {
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+    
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+
+    if (!$post) {
+        throw new Exception(' le commentaire n\'existe pas  !');
+    }
+    else {
+        require('view/backend/postAdminView.php');
+    }
+}
+
