@@ -47,24 +47,6 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function printComment($postId, $commentId) {
-    $commentManager = new CommentManager();
-    $comment = $commentManager->getComment($commentId);
-    require('view/frontend/editCommentView.php');
-}
-
-function updateComment($postId, $id, $comment, $author) {
-    $commentManager = new CommentManager();
-    
-    $affectedLines = $commentManager->editComment($postId, $id, $comment, $author);
-
-    if($affectedLines === false) {
-        throw new Exception('Impossible de modifier le commentaire !');
-    } else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
-
 function removeComment($id, $postId) {
     $commentManager = new CommentManager();
     $affectedLines = $commentManager->deleteComment($id);
@@ -82,6 +64,18 @@ function  postBlog() {
 
     require('view/frontend/listPostsView.php');
 }
+
+// function updateComment($postId, $id, $comment, $author) {
+//     $commentManager = new CommentManager();
+    
+//     $affectedLines = $commentManager->editComment($postId, $id, $comment, $author);
+
+//     if($affectedLines === false) {
+//         throw new Exception('Impossible de modifier le commentaire !');
+//     } else {
+//         header('Location: index.php?action=post&id=' . $postId);
+//     }
+// }
 
 
 

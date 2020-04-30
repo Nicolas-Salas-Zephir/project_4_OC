@@ -34,7 +34,7 @@ function listPostsAdmin() {
     require('view/backend/listPostsAdminView.php');
 }
 
-function password() {
+function goodPassword() {
     if (isset($_POST['username']) && $_POST['username'] == "nicolas" && isset($_POST['password']) && $_POST['password'] == '0000') {
         listPostsAdmin();
     } else {
@@ -56,4 +56,26 @@ function postBackend() {
         require('view/backend/postAdminView.php');
     }
 }
+
+function printPost($postId) {
+    $postManager = new PostManager();
+    $post = $postManager->getPost($postId);
+
+    require('view/backend/editpostView.php');
+}
+
+function updatePost($content, $author, $title, $id) {
+    $postManager = new PostManager();
+    
+    $affectedLines = $postManager->editPost($content, $author, $title, $id);
+
+    if($affectedLines === false) {
+        throw new Exception('Impossible de modifier l\'article !');
+    } else {
+        // header('Location: index.php?action=post&id=' . $postId);
+        header('Location: index.php?action=postsAdmin');
+    }
+}
+
+
 
