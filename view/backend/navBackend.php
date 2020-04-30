@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex align-items-baseline">
         <a class="navbar-brand navbar__title"
-            href="index.php?action=postsAdmin">administrateur</a>
+            href="index.php?action=postsAdmin">Tableau de bord</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">

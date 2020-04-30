@@ -25,6 +25,9 @@
   </head>
   <body>
     <?php include $navigation; ?>
+    <div class='header-img-blog' >
+        <!-- <img src="./public/images/mountains-alaska.jpg" class="img-fluid" alt=""> -->
+    </div>
     <div class="container">
         <?= $content ?>
     </div>

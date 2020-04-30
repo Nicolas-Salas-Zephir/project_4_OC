@@ -23,8 +23,8 @@ while ($data = $posts->fetch())
                                         echo $rest;
                                     ?></p>
                             </div>
-                            <div class="col-sm-2 d-flex align-items-center justify-content-center border-left">
-                                <a><i class="far fa-trash-alt text-danger mr-5"></i></a>
+                            <div class="col-sm-2 d-flex align-items-center justify-content-center">
+                                <a><i class="far fa-trash-alt text-danger mr-2"></i></a>
                                 <a href=""><i class="far fa-edit text-primary"></i></a>
                             </div>
                         </div>
