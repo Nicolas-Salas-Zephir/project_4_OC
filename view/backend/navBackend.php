@@ -10,8 +10,10 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php?action=admin">Ajouter un
-                        aticle</a>
+                    <a class="nav-link" href="index.php?action=admin">Ajouter un article</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">Retourner à la page principale</a>
                 </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>

@@ -15,7 +15,7 @@ ob_start();
     </div>
     <div class="row">
         <div class="col-12">            
-            <form action="index.php?action=addPost" method="post">
+            <form enctype="multipart/form-data" action="index.php?action=addPost" method="post">
                 <div class="form-group">
                     <label for="flic">Envoi d'une image :</label><br/>
                     <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
