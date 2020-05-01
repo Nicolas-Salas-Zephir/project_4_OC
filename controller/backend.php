@@ -19,7 +19,7 @@ function addPost($title, $content, $author) {
     if($post === false) {
         throw new Exception('Impossible d\'ajouter un poste');
     } else {
-        header('Location: index.php?action=admin');
+        header('Location: index.php?action=postsAdmin');
     }
 }
 
@@ -74,7 +74,7 @@ function updatePost($content, $author, $title, $id) {
         throw new Exception('Impossible de modifier l\'article !');
     } else {
         // header('Location: index.php?action=post&id=' . $postId);
-        header('Location: index.php?action=postsAdmin&id=' . $id);
+        header('Location: index.php?action=postAdmin&id=' . $id);
     }
 }
 
@@ -85,7 +85,7 @@ function removePost($id) {
     if($affectedLines === false) {
         throw new Exception("Impossible d'effacer le commentaire !");
     } else {
-        header('Location: index.php?action=postAdmin&id=' . $id);
+        header('Location: index.php?action=postsAdmin');
     }
 }
 

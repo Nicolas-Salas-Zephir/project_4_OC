@@ -90,8 +90,8 @@ try {
                 throw new Exception('Aucun identifiant de article envoyé');
             }
         } elseif ($_GET['action'] == 'deletePost') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                removePost($_GET['id']);
+            if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+                removePost($_GET['postId']);
             } else {
                 throw new Exception("Aucun article n'a été effacé");
             }
