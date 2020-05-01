@@ -34,13 +34,13 @@ function listPostsAdmin() {
     require('view/backend/listPostsAdminView.php');
 }
 
-function goodPassword() {
-    if (isset($_POST['username']) && $_POST['username'] == "nicolas" && isset($_POST['password']) && $_POST['password'] == '0000') {
-        listPostsAdmin();
-    } else {
-        throw new Exception('Ce mot de passe n\'existe pas');
-    }
-}
+// function goodPassword() {
+//     if (isset($_POST['username']) && $_POST['username'] == "nicolas" && isset($_POST['password']) && $_POST['password'] == '0000') {
+//         header('Location: index.php?action=postsAdmin');
+//     } else {
+//         throw new Exception('Ce mot de passe n\'existe pas');
+//     }
+// }
 
 function postBackend() {
     $postManager = new PostManager();
@@ -73,7 +73,7 @@ function updatePost($content, $author, $title, $id) {
         throw new Exception('Impossible de modifier l\'article !');
     } else {
         // header('Location: index.php?action=post&id=' . $postId);
-        header('Location: index.php?action=postsAdmin');
+        header('Location: index.php?action=postsAdmin&id=' . $id);
     }
 }
 

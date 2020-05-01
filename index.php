@@ -55,12 +55,16 @@ try {
         } elseif ($_GET['action'] == "identification") {
             identifyView();
         } elseif ($_GET['action'] == "postsAdmin") {
-            if (!empty($_POST['username']) && !empty($_POST['password'])) {
-                goodPassword();
-            } else {
-                throw new Exception("vous n'avez pas rempli tous les champs obligatoires ");
-            }
-        } elseif ($_GET['action'] == "postAdmin" ) {
+            listPostsAdmin();
+        }
+        // elseif ($_GET['action'] == "postsAdmin") {
+        //     if (!empty($_POST['username']) && !empty($_POST['password'])) {
+        //         goodPassword();
+        //     } else {
+        //         throw new Exception("vous n'avez pas rempli tous les champs obligatoires ");
+        //     }
+        // } 
+        elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend();
             } else {

@@ -19,8 +19,8 @@ ob_start();
                 <input type="text" class="form-control" id="title" name="title" value="<?= $post['title'] ?>" />
             </div>
             <div class="form-group">
-                <label for="comment">Article :</label><br />
-                <textarea class="form-control" rows="10" id="comment" name="comment"><?= $post['content'] ?></textarea>
+                <label for="content">Article :</label><br />
+                <textarea class="form-control" rows="10" id="content" name="content"><?= $post['content'] ?></textarea>
             </div>
             <div class="mb-5">
                 <button type="submit" class="btn bnt-lg btn-primary">Valider</button>

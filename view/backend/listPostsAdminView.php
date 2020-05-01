@@ -17,7 +17,7 @@ while ($data = $posts->fetch())
                         <div class="row">
                             <div class="col-sm-10">
                                 <p><i class="fas fa-user mr-3"></i><?= $data['author']; ?></p>
-                                <h2><a href="index.php?action=post&id=<?= $data['id']; ?>"><?= $data['title']; ?></a></h2>
+                                <h2><?= $data['title']; ?></h2>
                                 <p><?php
                                         $rest = substr($data['content'], 0, 300); 
                                         echo $rest;
