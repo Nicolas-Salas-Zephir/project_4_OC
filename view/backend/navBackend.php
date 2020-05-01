@@ -1,5 +1,5 @@
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex align-items-baseline">
+<header class="header-admin">
+    <nav class="navbar navbar-expand-lg navbar-dark d-flex align-items-baseline">
         <a class="navbar-brand navbar__title"
             href="index.php?action=postsAdmin">Tableau de bord</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse"
