@@ -42,18 +42,19 @@ function listPostsAdmin() {
 //     }
 // }
 
-function postBackend() {
+function postBackend($id) {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postManager->getPost($id);
+    // $comments = $commentManager->getComments($_GET['id']);
 
     if (!$post) {
-        throw new Exception(' le commentaire n\'existe pas  !');
+        throw new Exception(' l\'article n\'existe pas  !');
     }
     else {
         require('view/backend/postAdminView.php');
+        // header('Location: index.php?action=postsAdmin&id=' . $_GET['id']);
     }
 }
 
@@ -74,6 +75,17 @@ function updatePost($content, $author, $title, $id) {
     } else {
         // header('Location: index.php?action=post&id=' . $postId);
         header('Location: index.php?action=postsAdmin&id=' . $id);
+    }
+}
+
+function removePost($id) {
+    $postManager = new PostManager();
+    $affectedLines = $postManager->deletePost($id);
+
+    if($affectedLines === false) {
+        throw new Exception("Impossible d'effacer le commentaire !");
+    } else {
+        header('Location: index.php?action=postAdmin&id=' . $id);
     }
 }
 

@@ -47,16 +47,16 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function removeComment($id, $postId) {
-    $commentManager = new CommentManager();
-    $affectedLines = $commentManager->deleteComment($id);
+// function removeComment($id, $postId) {
+//     $commentManager = new CommentManager();
+//     $affectedLines = $commentManager->deleteComment($id);
 
-    if($affectedLines === false) {
-        throw new Exception("Impossible d'effacer le commentaire !");
-    } else {
-        header('Location: index.php?action=post&id=' . $postId);
-    }
-}
+//     if($affectedLines === false) {
+//         throw new Exception("Impossible d'effacer le commentaire !");
+//     } else {
+//         header('Location: index.php?action=post&id=' . $postId);
+//     }
+// }
 
 function  postBlog() {
     $postManager = new PostManager();

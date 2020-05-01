@@ -24,7 +24,7 @@ while ($data = $posts->fetch())
                                     ?></p>
                             </div>
                             <div class="col-sm-2 d-flex align-items-center justify-content-center">
-                                <a><i class="far fa-trash-alt text-danger mr-2"></i></a>
+                                <a href="index.php?action=deletePost&id=<?= $data['id']; ?>"><i class="far fa-trash-alt text-danger mr-2"></i></a>
                                 <a href="index.php?action=postAdmin&id=<?= $data['id']; ?>"><i class="far fa-edit text-primary"></i></a>
                             </div>
                         </div>
