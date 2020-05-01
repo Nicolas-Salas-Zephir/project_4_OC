@@ -275,8 +275,12 @@ a {
   border: 1px solid var(--bg);
 }
 
-.fa-trash-alt, .fa-edit {
+/* .fa-trash-alt, .fa-edit {
   font-size: 25px;
+} */
+
+.fa-eye {
+  font-size: 40px;
 }
 
 .blog-posts-content__backend a {

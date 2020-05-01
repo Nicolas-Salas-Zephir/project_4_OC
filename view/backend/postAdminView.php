@@ -17,7 +17,7 @@ ob_start();
             <div class="col-sm-12 col-md-7">
                 <div class="news mb-5">
                     <p><?= $post['content']; ?></p>
-                    <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>">Modifier</a>
+                    <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>" class="mr-5">Modifier</a>
                     <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>">Effacer</a>
                 </div>
                 
