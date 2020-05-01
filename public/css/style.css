@@ -295,6 +295,10 @@ a {
   margin-bottom: 0 !important;
 }
 
+.post-main__content {
+  width: 70%;
+}
+
 /* PAGE BLOG */
 
 .header-img-blog {
