@@ -18,44 +18,12 @@ ob_start();
                 <div class="news mb-5">
                     <p><?= $post['content']; ?></p>
                     <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>">Modifier</a>
+                    <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>">Effacer</a>
                 </div>
                 
                 
 
-                <?php
-                while ($comment = $comments->fetch())
-                {
-                ?>
-                
-                    <div class="comment mb-5 pb-5 border-bottom">
-                        <p class="author"><?= htmlspecialchars($comment['author']) ?>
-                            
-                            <a href="index.php?action=viewComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">modifier</a>
-                            <a href="index.php?action=deleteComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">effacer</a>
-                        </p>
-                        <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                        <p>Le <?= $comment['comment_date_fr'] ?> </p>
-                    </div>
-                <?php
-                }
-                ?>
-                <h3 class="mb-5">Donnez votre avis</h3>
-                <div class="row">
-                    <div class="col-md-9 col-sm-12 ">
-                        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-                            <div class="form-group mb-4">
-                                <input type="text" class="form-control" id="author" name="author" aria-describedby="emailHelp" placeholder="Votre pseudo" required/>
-                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                            </div>
-                            <div class="form-group">
-                                <textarea  class="form-control" id="comment" name="comment" placeholder="Votre commentaire" rows="10" required></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-dark">Envoyer</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+               
             </div>
         </div>
 
