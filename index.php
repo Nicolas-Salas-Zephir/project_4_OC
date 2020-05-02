@@ -54,8 +54,6 @@ try {
             } 
         } elseif ($_GET['action'] == "blog") {
             postBlog();
-        } elseif ($_GET['action'] == "identification") {
-            identifyView();
         } elseif ($_GET['action'] == "postsAdmin") {
             listPostsAdmin();
         }
@@ -97,6 +95,33 @@ try {
             }
         } elseif ($_GET['action'] == "userRegistration") {
             userRegistration();
+        } elseif ($_GET['action'] == 'registration') {
+            if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
+                if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
+                    if (preg_match( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $_POST['email'])) {
+                        if ($_POST['password'] === $_POST['password1']) {
+                            addUser($_POST['username'], $_POST['email'], $_POST['password']);
+                        } else {
+                            throw new Exception('Les mots de passe de sont pas identique !');
+                        }
+                    } else {
+                        throw new Exception('Ce n\'est pas une adresse mail valide !');
+                    }
+                }  else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            } else {
+                throw new Exception("Aucun article n'a été effacé");
+            }
+        } elseif ($_GET['action'] == "identification") {
+            if (isset($_POST['pseudo'])) {
+                verifyUser($_POST['pseudo']);
+            } else {
+                throw new Exception('ddddddddddddddddddddd');
+            }
+        } 
+        elseif($_GET['action'] == 'identification') {
+            identifyView();
         }
     } else {
         listPosts();

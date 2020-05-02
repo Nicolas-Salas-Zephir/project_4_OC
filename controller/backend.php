@@ -1,11 +1,13 @@
 <?php
 use \nicolassalaszephir\Blog\Model\PostManager;
 use \nicolassalaszephir\Blog\Model\CommentManager;
+use \nicolassalaszephir\Blog\Model\RegistrationManager;
 
 
 
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
+require_once('model/RegistrationManager.php');
 
 function adminView() {
     require('view/backend/insertPostView.php');
@@ -21,10 +23,6 @@ function addPost($title, $content, $author) {
     } else {
         header('Location: index.php?action=postsAdmin');
     }
-}
-
-function identifyView() {
-    require('view/backend/identificationView.php');
 }
 
 function listPostsAdmin() {
@@ -93,5 +91,39 @@ function userRegistration() {
     require('view/backend/registrationView.php');
 }
 
+function addUser($pseudo, $email, $pass_hache) {
+    $registerManager = new RegistrationManager();
+    $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $affectedLines = $registerManager->insertUser($pseudo, $email, $pass_hache);
+    
 
+    if($affectedLines === false) {
+        throw new Exception("Impossible d'ajouter un utilisateur !");
+    } else {
+        header('Location: index.php?action=identification');
+    }
+}
 
+function verifyUser($user) {
+    $registerManager = new RegistrationManager();
+    $user = $registerManager->getUser($pseudo);
+    $isPasswordCorrect = password_verify($_POST['password'], $result['password']);
+    var_dump($isPasswordCorrect);
+    identifyView();
+    // if (!$result) {
+    //     echo 'Mauvais identifiant ou mot de passe !';
+    // } else {
+    //     if ($isPasswordCorrect) {
+    //         session_start();
+    //         $_SESSION['id'] = $result['id'];
+    //         $_SESSION['pseudo'] = $pseudo;
+    //         echo 'Vous êtes connecté !';
+    //     } else {
+    //     echo 'Mauvais identifiant ou mot de passe !';
+    //     }
+    // }
+}
+
+function identifyView() {
+    require('view/backend/identificationView.php');
+}

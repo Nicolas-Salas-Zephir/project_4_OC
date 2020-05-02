@@ -29,7 +29,8 @@
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
                 <li><a class="link">qui je suis</a></li>
                 <li><a class="link">du text</a></li>
-                <li><a href='index.php?action=identification' class="link">Administration</a></li>
+                <li><a href='index.php?action=identification' class="link">Se connecter</a></li>
+                <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
               </ul>
             </nav>
           </div>
@@ -41,11 +42,12 @@
             </a>
             <nav id="menu-hamburger_nav">
               <ul>
-                <li class="active"><a>Acceuil</a></li>
-                <li><a href="blog.html">blog</a></li>
-                <li><a>qui je suis</a></li>
-                <li><a>du text</a></li>
-                <li><a href="admin.html">Administration</a></li>
+                <li><a href="index.php" class="active">Accueil</a></li>
+                <li><a href="index.php?action=blog" class="link">blog</a></li>
+                <li><a class="link">qui je suis</a></li>
+                <li><a class="link">du text</a></li>
+                <li><a href='index.php?action=identification' class="link">Se connecter</a></li>
+                <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
               </ul>
             </nav>
           </div>

@@ -34,7 +34,7 @@ $title = 'IDENTIFICATION';
 
             <div class="row d-flex justify-content-center">
               <div class="col-md-4">
-                <form action="index.php?action=postsAdmin" method="post">
+                <form action="index.php?action=registration" method="post">
                   <div class="form-group">
                     <label for="username">Votre pseudo :</label>
                     <input type="text" class="form-control form-control-lg"
@@ -46,11 +46,14 @@ $title = 'IDENTIFICATION';
                     <input type="password" class="form-control form-control-lg"
                       id="password" name="password" placeholder="Mot de passe"
                       required/>
+                    <small id="passwordHelpBlock" class="form-text text-muted">
+                   Votre mot de passe doit contenir 4 caractères.
+                    </small>
                   </div>
                   <div class="form-group">
-                    <label for="password">Retapez votre mot de passe :</label>
+                    <label for="password1">Retapez votre mot de passe :</label>
                     <input type="password" class="form-control form-control-lg"
-                      id="password" name="password" placeholder="Mot de passe"
+                      id="password1" name="password1" placeholder="Mot de passe"
                       required/>
                   </div>
                   <div class="form-group">

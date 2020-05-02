@@ -20,13 +20,21 @@ $title = 'IDENTIFICATION';
                 <form action="index.php?action=postsAdmin" method="post">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-lg"
-                      id="username" name="username" placeholder="Votre nom"
+                      id="pseudo" name="pseudo" placeholder="Votre nom"
                       required/>
                   </div>
                   <div class="form-group">
                     <input type="password" class="form-control form-control-lg"
                       id="password" name="password" placeholder="Mot de passe"
                       required/>
+                  </div>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" id="auto-connection" name="auto-connection">
+                      <label class="form-check-label" for="auto-connection">
+                        Connexion automatique
+                      </label>
+                    </div>
                   </div>
                   <div class="d-flex justify-content-center mt-5">
                     <button type="submit" class="btn btn-primary btn-lg
