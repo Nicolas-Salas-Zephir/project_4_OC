@@ -13,7 +13,7 @@ while ($data = $posts->fetch())
         <?php else: ?>
             <div class="col-sm-12 col-lg-6">
         <?php endif; ?>
-        <div id="post-id" class="post mb-5 mt-5">
+        <div class="post mb-5 mt-5">
             <div class="post-img">
                 <!-- <img> -->
                 IMAGE

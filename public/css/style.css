@@ -1,6 +1,5 @@
 :root {
   --bg: rgb(214, 212, 212);
-  --color-white: #fff;
   --color-para: rgb(131, 130, 130);
   --link-active: #cea525;
 }
@@ -51,6 +50,7 @@ a {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .arrow-up::after {
   content: "";
   left: 50%;
@@ -59,6 +59,7 @@ a {
   position: absolute;
   top: 4px;
 }
+
 .arrow-up::after {
   width: 15px;
   height: 15px;
@@ -68,18 +69,6 @@ a {
   left: calc(50% - 7px);
   top: calc(50% - 5px);
 }
-/* .arrow-up::before {
-  width: .2rem;
-  height: 1rem;
-  left: 8px;
-  background: var(--link-active)
-} */
-
-/* Fin du boutton de retour en haut de la page */
-
-/* .active {
-  color: var(--link-active);
-} */
 
 /* début de la sidebar */
 #wrapper {
@@ -95,7 +84,6 @@ a {
   left: 0;
   background-color: #000;
   z-index: 1;
-  /* margin-left: -260px; */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -143,11 +131,15 @@ a {
   display: none;
 }
 
+#hamburger-toggle {
+  display: block;
+}
+
 .blog-posts-content {
   padding: 60px 50px;
 }
 
-.header-frontend {
+header {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -184,8 +176,16 @@ a {
   width: 10%;
 }
 
+.nav-hamburge {
+  display: none;
+}
+
 .container-fluid {
   background: url(../images/Groupe1.svg);
+}
+
+.main {
+  margin-left: 260px !important;
 }
 
 .margin-container {
@@ -197,7 +197,6 @@ a {
   background-color: #fff;
   flex-direction: column;
   position: relative;
-  /* margin-bottom: 30px; */
 }
 
 .post-img {
@@ -212,11 +211,9 @@ a {
 }
 
 .post-main {
-  /* height: 100px; */
   width: 95%;
   padding: 10px;
   margin: 5px auto;
-  /* border-bottom: 1px solid var(--bg); */
 }
 
 .post-content {
@@ -236,7 +233,6 @@ a {
   color: #fff;
   font-size: 60px;
   width: 100%;
-  /* height: 40vh; */
   overflow: hidden;
   background-image: url(../images/image-post.jpg);
   background-repeat: no-repeat;
@@ -286,7 +282,6 @@ a {
 
 /* Backend */
 /* Identification page */
-
 .identification {
   height: 100vh;
 }
@@ -294,10 +289,6 @@ a {
 .post-backend {
   border: 1px solid var(--bg);
 }
-
-/* .fa-trash-alt, .fa-edit {
-  font-size: 25px;
-} */
 
 .fa-eye {
   font-size: 40px;
@@ -320,7 +311,6 @@ a {
 }
 
 /* PAGE BLOG */
-
 .header-img-blog {
   position: relative;
   display: flex;
@@ -379,14 +369,24 @@ a {
   font-size: 18px;
   color: #333;
   text-transform: capitalize;
-  /* margin-bottom: 5px; */
 }
 
-@media screen and (max-width: 768px) {
-  .margin-container {
-    margin-left: unset !important;
-  }
+footer {
+  background-color: #000;
+  height: 75px;
+}
 
+footer p {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .nav-hamburger {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
   header {
     margin-left: 0;
   }
@@ -395,47 +395,57 @@ a {
     display: none;
   }
 
+  /* Toogle menu */
   nav {
-    min-width: 260px;
+    min-width: 260px !important;
+  }
+
+  .cross {
+    display: flex;
+    justify-content: flex-end;
+    color: #fff;
+    font-size: 30px;
   }
 
   .menu-hamburger {
     position: absolute;
     display: block;
-    z-index: 100;
+    left: 50px;
+    top: 50px;
+    z-index: 1000;
     width: 50px;
   }
 
-  #menu-hamburger_nav {
-    display: none;
+  .show {
+    display: none !important;
+    transition: 1s;
+  }
+
+  .nav-hamburger {
+    position: absolute;
+    background-color: #000;
+    z-index: 99;
+    width: 100%;
+    height: 70vh;
+    transition: 1s;
+  }
+
+  .nav-hamburger ul {
+    height: 100%;
+  }
+
+  .nav-hamburger ul li {
+    margin-bottom: 20px;
+  }
+
+  nav ul li a {
+    color: #fff;
+    font-size: 40px;
+    font-weight: 200;
+    text-decoration: none;
+  }
+
+  .main {
+    margin-left: 0 !important;
   }
 }
-
-
-
-/* DEBUT DE LA NAVIGATION */
-
-/* .menu-hamburger {
-  display: block;
-  transform: scale(var(--ggs,1))
-}
-.menu-hamburger,
-.menu-hamburger::after,
-.menu-hamburger::before {
-  position: relative;
-  display: block;
-  width: 2rem;
-  height: 2px;
-  border-radius: 3px;
-  background: currentColor
-}
-.menu-hamburger::after,
-.menu-hamburger::before {
-  content: "";
-  position: absolute;
-  top: -6px
-}
-.menu-hamburger::after {
-  top: 6px
-} */
-/* End */
