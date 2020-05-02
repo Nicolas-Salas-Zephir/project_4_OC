@@ -95,7 +95,9 @@ try {
             } else {
                 throw new Exception("Aucun article n'a été effacé");
             }
-        } 
+        } elseif ($_GET['action'] == "userRegistration") {
+            userRegistration();
+        }
     } else {
         listPosts();
     }

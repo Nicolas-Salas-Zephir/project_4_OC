@@ -89,5 +89,9 @@ function removePost($id) {
     }
 }
 
+function userRegistration() {
+    require('view/backend/registrationView.php');
+}
+
 
 
