@@ -12,20 +12,22 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
       />
+      <?php if(isset($_GET['action']) && $_GET['action'] == "admin"): ?>
+        <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
-      referrerpolicy="origin"></script>
-
-    <script>
-      tinymce.init({
-        selector: '#mytextarea',
-        height: 500
-      });
-    </script>
+        <script>
+        tinymce.init({
+          selector: '#mytextarea',
+          height: 500
+        });
+      </script>
+    <?php endif ?>
   </head>
   <body>
-    <?php include $navigation; ?>
     
+    <?php if(isset($_GET['action']) && $_GET['action'] !== "identification" && isset($_GET['action']) && $_GET['action'] !== "userRegistration"): ?>
+      <?php include $navigation; ?>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1 class="display-4">Tableau de bord de </h1>
@@ -33,6 +35,7 @@
       </div>
     </div>
     <div class='header-img-blog mb-5'></div>
+    <?php endif ?>
     <div class="container">
         <?= $content ?>
     </div>
