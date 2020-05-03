@@ -117,7 +117,7 @@ try {
             if (isset($_POST['pseudo'])) {
                 verifyUser($_POST['pseudo']);
             } else {
-                throw new Exception('ddddddddddddddddddddd');
+                throw new Exception('<span>ddddddddd</span>');
             }
         } 
         elseif($_GET['action'] == 'identification') {

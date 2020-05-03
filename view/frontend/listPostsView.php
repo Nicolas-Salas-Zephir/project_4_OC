@@ -9,14 +9,12 @@ while ($data = $posts->fetch())
 {
 ?>
         <?php if (isset($_GET['action']) == 'blog'): ?>
-            <div class="col-sm-8">
+            <div class="col-sm-12 col-md-8">
         <?php else: ?>
             <div class="col-sm-12 col-lg-6">
         <?php endif; ?>
         <div class="post mb-5 mt-5">
             <div class="post-img">
-                <!-- <img> -->
-                IMAGE
             </div>
             <div class="post-main">
                 <div class="post-content">
