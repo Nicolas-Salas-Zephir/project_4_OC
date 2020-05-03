@@ -37,14 +37,18 @@
             </nav>
           </div>
         </div>
-        <header>
+        <?php if (isset($_GET['action'])) : ?>
+          <header class="header-xs" >
+        <?php else: ?>
+            <header class="header-xl" >
+        <?php endif ?>
           <div class="menu-hamburger">
             <a href="#hamburger-toggle" id="hamburger-toggle">
               <img src="./public/images/Menu_icon_2_icon-icons.com.svg" />
             </a>
           </div>
           <nav class="show nav-hamburger pb-5">
-            <div class="cross d-flex justify-content-end show mr-4 mt-4">X</div>
+            <div class="cross d-flex justify-content-end show mr-5 mt-4">X</div>
             <ul class="d-flex flex-column justify-content-center
               align-items-center">
               <li><a href="index.php" class="active">Accueil</a></li>
@@ -58,28 +62,17 @@
           </nav>
 
           <?php if (isset($_GET['action'])): ?>
-            <div class='header-img-blog'>
-            </div>
-            <?php else: ?>
-              <div class='header-img'></div>
-              <?php endif; ?>
-              </header>
-              <div class="container-fluid main">
-                <?= $content ?>
-                </div>
-              </div>
-              <footer class="d-flex align-items-center">
-                <div class="container">
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <p>Ce site est un projet étudiant OpenClassRoom</p>
-                    </div>
-                  </div>
-                </div>
-              </footer>
-
-
-
+          <div class='header-img-blog'></div>
+          <?php else: ?>
+          <div class='header-img'></div>
+          <?php endif; ?>
+        </header>
+          <div class="container-fluid main">
+            <?= $content ?>
+          </div>
+          <footer class="d-flex align-items-center">
+              <a href="https://openclassrooms.com/" target="_blank"><p class="ml-5">Ce site est un projet étudiant OpenClassRoom</p></a>
+          </footer>
               <script src="./public/js/script.js"></script>
               <script src="https://kit.fontawesome.com/d441c3b81b.js"
                 crossorigin="anonymous"></script>

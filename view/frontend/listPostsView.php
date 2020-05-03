@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<div class="row blog-posts-content d-flex justify-content-center"> 
+    <div class="row blog-posts-content d-flex justify-content-center"> 
 <?php
 
 while ($data = $posts->fetch())
@@ -21,22 +21,22 @@ while ($data = $posts->fetch())
             <div class="post-main">
                 <div class="post-content">
                     <p class="d-flex align-items-baseline"><i class="fas fa-user mr-3"></i><?= $data['author']; ?></p>
-                    <h2><a href="index.php?action=post&id=<?= $data['id']; ?>"><?= $data['title']; ?></a></h2>
+                    <h2><a href="index.php?action=post&id=<?= $data['id']; ?>#content-article"><?= $data['title']; ?></a></h2>
                     <p><?php
                         $rest = substr($data['content'], 0, 300); 
                         echo $rest;
                      ?>
-                     <a href="index.php?action=post&id=<?= $data['id']; ?>">Lire la suite</a>
+                     <a href="index.php?action=post&id=<?= $data['id']; ?>#content-article">Lire la suite</a>
                      </p>
                 </div>
             </div>
             <?php if (isset($_GET['action'])): ?>   
-            <div class="post-footer border-top">
+            <div class="d-flex align-items-baseline post-footer border-top">
                 <div class="post-link">
-                    <a>le <?= $data['create_date_fr']; ?></a>
+                    <p>le <?= $data['create_date_fr']; ?></p>
                 </div>
                 <div class="post-link">
-                    <a>Commentaire du poste</a>
+                    <a href="index.php?action=post&id=<?= $data['id']; ?>#comments">Commentaire du poste</a>
                 </div>
             </div>
             <?php endif; ?>

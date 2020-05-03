@@ -3,7 +3,7 @@
 $title = 'Mon blog'; 
 ob_start(); 
 ?>  
-        <div class="row blog-posts-content d-flex justify-content-center"> 
+        <div id="content-article" class="row blog-posts-content d-flex justify-content-center"> 
             <div class="col-sm-7 d-flex align-items-baseline mb-5 blog-post__info">
                 <i class="fas fa-user mr-2"></i><span><?= $post['author']; ?></span>
                 <i class="far fa-clock ml-5 mr-2"></i><span><?= $post['create_date_fr']; ?></span>
@@ -19,13 +19,15 @@ ob_start();
                 </div>
                 
                 
-
+                <div id="comments" class="title-comments mb-4">
+                    <h2>Commentaires</h2>
+                </div>
                 <?php
                 while ($comment = $comments->fetch())
                 {
                 ?>
-                
-                    <div class="comment mb-5 pb-5 border-bottom">
+
+                    <div class="comment ml-3 mb-5 pb-5 border-bottom">
                         <p class="author"><?= htmlspecialchars($comment['author']) ?>
                             
                             <a href="index.php?action=viewComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">modifier</a>
