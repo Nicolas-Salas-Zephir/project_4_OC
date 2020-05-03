@@ -98,7 +98,7 @@ try {
         } elseif ($_GET['action'] == 'registration') {
             if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
                 if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
-                    if (preg_match( " /^[^\W][a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\@[a-zA-Z0-9_]+(\.[a-zA-Z0-9_]+)*\.[a-zA-Z]{2,4}$/ " , $_POST['email'])) {
+                    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                         if ($_POST['password'] === $_POST['password1']) {
                             addUser($_POST['username'], $_POST['email'], $_POST['password']);
                         } else {
@@ -113,15 +113,15 @@ try {
             } else {
                 throw new Exception("Aucun article n'a été effacé");
             }
-        } elseif ($_GET['action'] == "identification") {
-            if (isset($_POST['pseudo'])) {
-                verifyUser($_POST['pseudo']);
-            } else {
-                throw new Exception('<span>ddddddddd</span>');
-            }
-        } 
-        elseif($_GET['action'] == 'identification') {
+        } elseif($_GET['action'] == 'identification') {
             identifyView();
+            if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+                    verifyUser($_POST['pseudo']);
+                }
+            } else {
+                throw new Exception('Mauvais identifiant ou mot de passe !');
+            }
         }
     } else {
         listPosts();

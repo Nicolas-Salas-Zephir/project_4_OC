@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -33,9 +37,8 @@
             <?php include $navigation; ?>
               <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4">Tableau de bord de </h1>
-                  <p class="lead">This is a modified jumbotron that occupies the
-                    entire horizontal space of its parent.</p>
+                  <h1 class="display-4">Tableau de bord de <?= $_SESSION['pseudo'] ?></h1>
+                  <p class="lead"></p>
                 </div>
               </div>
               <div class='header-img-blog mb-5'></div>

@@ -104,24 +104,18 @@ function addUser($pseudo, $email, $pass_hache) {
     }
 }
 
-function verifyUser($user) {
+function verifyUser($pseudo) {
     $registerManager = new RegistrationManager();
     $user = $registerManager->getUser($pseudo);
-    $isPasswordCorrect = password_verify($_POST['password'], $result['password']);
-    var_dump($isPasswordCorrect);
-    identifyView();
-    // if (!$result) {
-    //     echo 'Mauvais identifiant ou mot de passe !';
-    // } else {
-    //     if ($isPasswordCorrect) {
-    //         session_start();
-    //         $_SESSION['id'] = $result['id'];
-    //         $_SESSION['pseudo'] = $pseudo;
-    //         echo 'Vous êtes connecté !';
-    //     } else {
-    //     echo 'Mauvais identifiant ou mot de passe !';
-    //     }
-    // }
+    $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
+    var_dump($_SESSION['pseudo']);
+
+    if ($isPasswordCorrect) {
+        session_start();
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['pseudo'] = $pseudo;
+        header('Location: index.php?action=postsAdmin');
+    } 
 }
 
 function identifyView() {
