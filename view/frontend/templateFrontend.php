@@ -22,7 +22,7 @@
         <div id="sidebar">
           <div class="sidebar__container">
             <div class="sidebar__logo">
-              <h1>LOGO</h1>
+              <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
             </div>
             <nav>
               <ul>
@@ -32,7 +32,7 @@
                 <li><a class="link">du text</a></li>
                 <li><a href='index.php?action=identification' class="link">Se
                     connecter</a></li>
-                <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
+                <li><a href='index.php?action=userRegistration' class="link">Inscription</a></li>
               </ul>
             </nav>
           </div>
@@ -57,12 +57,13 @@
               <li><a class="link">du text</a></li>
               <li><a href='index.php?action=identification' class="link">Se
                   connecter</a></li>
-              <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
+              <li><a href='index.php?action=userRegistration' class="link">Inscription</a></li>
             </ul>
           </nav>
 
           <?php if (isset($_GET['action'])): ?>
-          <div class='header-img-blog'></div>
+          <div class='header-img-blog'>
+          </div>
           <?php else: ?>
           <div class='header-img'></div>
           <?php endif; ?>

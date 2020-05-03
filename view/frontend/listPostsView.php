@@ -2,7 +2,11 @@
 
 <?php ob_start(); ?>
 
-    <div class="row blog-posts-content d-flex justify-content-center"> 
+    <?php if (isset($_GET['action'])): ?>
+        <div class="row blog-posts-content d-flex justify-content-center"> 
+    <?php else: ?>
+    <div class="row blog-posts-content"> 
+    <?php endif ?>
 <?php
 
 while ($data = $posts->fetch())
@@ -30,11 +34,11 @@ while ($data = $posts->fetch())
             </div>
             <?php if (isset($_GET['action'])): ?>   
             <div class="d-flex align-items-baseline post-footer border-top">
-                <div class="post-link">
+                <div>
                     <p>le <?= $data['create_date_fr']; ?></p>
                 </div>
                 <div class="post-link">
-                    <a href="index.php?action=post&id=<?= $data['id']; ?>#comments">Commentaire du poste</a>
+                    <a href="index.php?action=post&id=<?= $data['id']; ?>#comments">Voir les commentaires</a>
                 </div>
             </div>
             <?php endif; ?>
