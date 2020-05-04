@@ -47,7 +47,7 @@ try {
         //     }
         // } 
         elseif ($_GET["action"] == "admin") {
-            adminView();            
+                adminView();
         } elseif ($_GET["action"] == "addPost") {
             if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
                 addPost($_POST['title'], $_POST['content'], $_POST['author']); 
@@ -56,15 +56,7 @@ try {
             postBlog();
         } elseif ($_GET['action'] == "postsAdmin") {
             listPostsAdmin();
-        }
-        // elseif ($_GET['action'] == "postsAdmin") {
-        //     if (!empty($_POST['username']) && !empty($_POST['password'])) {
-        //         goodPassword();
-        //     } else {
-        //         throw new Exception("vous n'avez pas rempli tous les champs obligatoires ");
-        //     }
-        // } 
-        elseif ($_GET['action'] == "postAdmin" ) {
+        } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);
             } else {
@@ -79,11 +71,6 @@ try {
         } elseif ($_GET["action"] == "editPost") {
             if (isset($_GET['postId']) && $_GET['postId'] > 0) {  
                 updatePost($_POST['content'], $_POST['author'], $_POST['title'], $_GET['postId']);
-                // if (!empty($_POST['author']) && !empty($_POST['content']) && !empty($_POST['title'])) {
-                    
-                // } else {
-                //     throw new Exception('Tous les champs ne sont pas remplis !');
-                // }
             } else {
                 throw new Exception('Aucun identifiant de article envoyé');
             }
@@ -122,6 +109,10 @@ try {
             } else {
                 throw new Exception('Mauvais identifiant ou mot de passe !');
             }
+        } elseif($_GET['action'] == 'logout') {
+                sessionDestroy();
+        } else {
+            throw new Exception('Vous n\'avez pas êtes déconnectés');
         }
     } else {
         listPosts();

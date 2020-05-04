@@ -37,7 +37,7 @@
             <?php include $navigation; ?>
               <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4">Tableau de bord de <?= $_SESSION['pseudo'] ?></h1>
+                  <h1 class="display-4">Tableau de bord de <?= $_SESSION['pseudo'], $_SESSION['id'] ;?></h1>
                   <p class="lead"></p>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 <?php 
-
+session_start();
+$_POST['author'] = $_SESSION['pseudo'];
 $title = 'Mon blog'; 
 ob_start(); 
 ?>  
@@ -30,7 +31,6 @@ ob_start();
                     <div class="comment ml-3 mb-5 pb-5 border-bottom">
                         <p class="author"><?= htmlspecialchars($comment['author']) ?>
                             
-                            <a href="index.php?action=viewComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">modifier</a>
                             <a href="index.php?action=deleteComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">effacer</a>
                         </p>
                         <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
@@ -39,23 +39,28 @@ ob_start();
                 <?php
                 }
                 ?>
+                <?php if (isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
                 <h3 class="mb-5">Donnez votre avis</h3>
-                <div class="row">
-                    <div class="col-md-9 col-sm-12 ">
-                        <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-                            <div class="form-group mb-4">
-                                <input type="text" class="form-control" id="author" name="author" aria-describedby="emailHelp" placeholder="Votre pseudo" required/>
-                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                            </div>
-                            <div class="form-group">
-                                <textarea  class="form-control" id="comment" name="comment" placeholder="Votre commentaire" rows="10" required></textarea>
-                            </div>
-                            <div>
-                                <button type="submit" class="btn btn-dark">Envoyer</button>
-                            </div>
-                        </form>
+                    <div class="row">
+                        <div class="col-md-9 col-sm-12 ">
+                            <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>#comments" method="post">
+                                <div class="form-group mb-4">
+                                    <p class="author"><?= $_SESSION['pseudo'] ?></p>
+                                    <input type="hidden" name="author" id="author" value="<?= $_POST['author'] ?>">
+
+                                    
+                                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                </div>
+                                <div class="form-group">
+                                    <textarea  class="form-control" id="comment" name="comment" placeholder="Votre commentaire" rows="10" required></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-dark">Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                <?php endif ?>
             </div>
         </div>
 

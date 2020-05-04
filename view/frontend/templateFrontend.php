@@ -1,3 +1,10 @@
+<?php 
+session_start();
+?>
+<pre>
+  <?php var_dump($_SESSION) ; ?>
+</pre>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -30,9 +37,13 @@
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
                 <li><a class="link">qui je suis</a></li>
                 <li><a class="link">du text</a></li>
-                <li><a href='index.php?action=identification' class="link">Se
-                    connecter</a></li>
-                <li><a href='index.php?action=userRegistration' class="link">Inscription</a></li>
+                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
+                  <li><a href='index.php?action=postsAdmin' class="link">Espace administrateur</a></li>
+                  <li><a href="index.php?action=logout" class="nav-link">Déconnexion</a></li>
+                <?php else: ?>
+                  <li><a href='index.php?action=identification' class="link">Se connecter</a></li>
+                  <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
+                <?php endif ?>
               </ul>
             </nav>
           </div>

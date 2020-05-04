@@ -108,16 +108,25 @@ function verifyUser($pseudo) {
     $registerManager = new RegistrationManager();
     $user = $registerManager->getUser($pseudo);
     $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
-    var_dump($_SESSION['pseudo']);
+    var_dump($_SESSION['id']);
 
     if ($isPasswordCorrect) {
         session_start();
         $_SESSION['id'] = $user['id'];
         $_SESSION['pseudo'] = $pseudo;
         header('Location: index.php?action=postsAdmin');
-    } 
+    } elseif ($_SESSION['pseudo'] && $_SESSION['id']) {
+        header('Location: index.php?action=postsAdmin');
+    }
 }
 
 function identifyView() {
     require('view/backend/identificationView.php');
+}
+
+function sessionDestroy() {
+    session_start();
+    session_destroy();
+    // echo 'Vous avez bien déconnecté';
+    header('Location: index.php');
 }

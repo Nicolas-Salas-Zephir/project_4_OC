@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 $title = 'Mon blog'; 
 $navigation = "navBackend.php";
 ob_start(); 
