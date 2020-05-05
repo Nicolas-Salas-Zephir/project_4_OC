@@ -127,6 +127,11 @@ a {
   color: var(--link-active);
 }
 
+
+.sidebar__container .dropdown-item {
+  color: #000;
+}
+
 .menu-hamburger {
   display: none;
 }

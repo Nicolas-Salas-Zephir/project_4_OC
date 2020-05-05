@@ -89,7 +89,7 @@ try {
                         if ($_POST['password'] === $_POST['password1']) {
                             addUser($_POST['username'], $_POST['email'], $_POST['password']);
                         } else {
-                            throw new Exception('Les mots de passe de sont pas identique !');
+                            throw new Exception('Les mots de passe de sont pas identiques !');
                         }
                     } else {
                         throw new Exception('Ce n\'est pas une adresse mail valide !');
@@ -102,6 +102,7 @@ try {
             }
         } elseif($_GET['action'] == 'identification') {
             identifyView();
+            echo $_SERVER['REQUEST_METHOD'];
             if (isset($_POST['pseudo']) && isset($_POST['password'])) {
                 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                     verifyUser($_POST['pseudo']);
@@ -112,7 +113,7 @@ try {
         } elseif($_GET['action'] == 'logout') {
                 sessionDestroy();
         } else {
-            throw new Exception('Vous n\'avez pas êtes déconnectés');
+            throw new Exception('Vous n\'avez pas été déconnectés');
         }
     } else {
         listPosts();

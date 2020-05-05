@@ -13,7 +13,7 @@ function listPosts()
     
     $posts = $postManager->getPosts();
     
-
+    session_start();
     require('view/frontend/listPostsView.php');
 }
 
@@ -29,6 +29,7 @@ function post()
         throw new Exception(' le commentaire n\'existe pas  !');
     }
     else {
+        
         require('view/frontend/postView.php');
     }
 }
@@ -43,6 +44,7 @@ function addComment($postId, $author, $comment)
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
     else {
+        session_start();
         header('Location: index.php?action=post&id=' . $postId);
     }
 }

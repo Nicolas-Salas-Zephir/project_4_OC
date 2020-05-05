@@ -1,10 +1,3 @@
-<?php 
-session_start();
-?>
-<pre>
-  <?php var_dump($_SESSION) ; ?>
-</pre>
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -32,18 +25,26 @@ session_start();
               <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
             </div>
             <nav>
-              <ul>
+            
+              <ul class="nav flex-column">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
                 <li><a class="link">qui je suis</a></li>
                 <li><a class="link">du text</a></li>
+                <li class="nav-item dropdown">
                 <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
-                  <li><a href='index.php?action=postsAdmin' class="link">Espace administrateur</a></li>
-                  <li><a href="index.php?action=logout" class="nav-link">Déconnexion</a></li>
+                  <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace administrateur</a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item"  href='index.php?action=postsAdmin' class="link">Espace administrateur</a>
+                      <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
                 <?php else: ?>
-                  <li><a href='index.php?action=identification' class="link">Se connecter</a></li>
-                  <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
+                  <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item" href="index.php?action=identification">Se connecter</a>
+                      <a class="dropdown-item" href="index.php?action=userRegistration">S'inscrire</a>
                 <?php endif ?>
+                  </div>
+                </li>
               </ul>
             </nav>
           </div>
@@ -66,9 +67,13 @@ session_start();
               <li><a href="index.php?action=blog" class="link">blog</a></li>
               <li><a class="link">qui je suis</a></li>
               <li><a class="link">du text</a></li>
-              <li><a href='index.php?action=identification' class="link">Se
-                  connecter</a></li>
-              <li><a href='index.php?action=userRegistration' class="link">Inscription</a></li>
+              <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
+                <li><a href='index.php?action=postsAdmin' class="link">Espace administrateur</a></li>
+                <li><a href="index.php?action=logout" class="link">Déconnexion</a></li>
+              <?php else: ?>
+                <li><a href='index.php?action=identification' class="link">Se connecter</a></li>
+                <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
+              <?php endif ?>
             </ul>
           </nav>
 

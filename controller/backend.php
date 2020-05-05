@@ -10,6 +10,8 @@ require_once('model/CommentManager.php');
 require_once('model/RegistrationManager.php');
 
 function adminView() {
+    $navigation = "navBackend.php";
+    $title = 'ADMIN'; 
     require('view/backend/insertPostView.php');
 }
 
@@ -60,6 +62,8 @@ function printPost($postId) {
     $postManager = new PostManager();
     $post = $postManager->getPost($postId);
 
+    $title = 'Mon blog'; 
+    $navigation = "navBackend.php";
     require('view/backend/editpostView.php');
 }
 
@@ -71,6 +75,7 @@ function updatePost($content, $author, $title, $id) {
     if($affectedLines === false) {
         throw new Exception('Impossible de modifier l\'article !');
     } else {
+        
         // header('Location: index.php?action=post&id=' . $postId);
         header('Location: index.php?action=postAdmin&id=' . $id);
     }
@@ -95,7 +100,6 @@ function addUser($pseudo, $email, $pass_hache) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $affectedLines = $registerManager->insertUser($pseudo, $email, $pass_hache);
-    
 
     if($affectedLines === false) {
         throw new Exception("Impossible d'ajouter un utilisateur !");
@@ -108,15 +112,16 @@ function verifyUser($pseudo) {
     $registerManager = new RegistrationManager();
     $user = $registerManager->getUser($pseudo);
     $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
-    var_dump($_SESSION['id']);
 
     if ($isPasswordCorrect) {
+        // setcookie('pseudo', $pseudo, time() + 365*24*3600);
+        // setcookie('password', $_POST['password'], time() + 365*24*3600);
         session_start();
         $_SESSION['id'] = $user['id'];
         $_SESSION['pseudo'] = $pseudo;
         header('Location: index.php?action=postsAdmin');
-    } elseif ($_SESSION['pseudo'] && $_SESSION['id']) {
-        header('Location: index.php?action=postsAdmin');
+    } else {
+        echo 'Mauvais identifiant ou mot de passe !';
     }
 }
 
@@ -127,6 +132,5 @@ function identifyView() {
 function sessionDestroy() {
     session_start();
     session_destroy();
-    // echo 'Vous avez bien déconnecté';
     header('Location: index.php');
 }

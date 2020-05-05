@@ -16,7 +16,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous"
         />
-      <?php if(isset($_GET['action']) && $_GET['action'] =="admin" ): ?>
+      <?php if(isset($_GET['action']) && $_GET['action'] == "admin" || isset($_GET['action']) && $_GET['action'] == 'viewAdminPost'): ?>
         <script
           src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
           referrerpolicy="origin"></script>
@@ -30,18 +30,19 @@
         <?php endif ?>
         </head>
         <body>
-
           <?php if(isset($_GET['action']) && $_GET['action'] !=="identification"
             && isset($_GET['action']) && $_GET['action'] !=="userRegistration"
             ): ?>
-            <?php include $navigation; ?>
+              <?php include $navigation; ?>
               <div class="jumbotron jumbotron-fluid">
                 <div class="container">
                   <h1 class="display-4">Tableau de bord de <?= $_SESSION['pseudo'], $_SESSION['id'] ;?></h1>
                   <p class="lead"></p>
                 </div>
               </div>
-              <div class='header-img-blog mb-5'></div>
+              <div class='header-img-blog mb-5 d-flex align-items-end justify-content-end'>
+                <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
+              </div>
               <?php endif ?>
                 <div class="container">
                   <?= $content ?>

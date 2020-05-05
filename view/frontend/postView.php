@@ -1,6 +1,5 @@
 <?php 
 session_start();
-$_POST['author'] = $_SESSION['pseudo'];
 $title = 'Mon blog'; 
 ob_start(); 
 ?>  
@@ -11,10 +10,10 @@ ob_start();
             </div>
 
         <!-- <div class="row blog-posts-content d-flex justify-content-center">  -->
-            <div class="col-sm-12 col-md-7 d-flex justify-content-start mb-3">
+            <div class="col-sm-8 col-md-7 d-flex justify-content-start mb-3">
                 <h1><?= $post['title'] ?></h1>
             </div>
-            <div class="col-sm-12 col-md-7">
+            <div class="col-sm-8 col-md-7">
                 <div class="news mb-5">
                     <p><?= $post['content']; ?></p>
                 </div>
@@ -30,8 +29,6 @@ ob_start();
 
                     <div class="comment ml-3 mb-5 pb-5 border-bottom">
                         <p class="author"><?= htmlspecialchars($comment['author']) ?>
-                            
-                            <a href="index.php?action=deleteComment&amp;id=<?= $comment['id']?>&amp;postId=<?= $post['id'] ?>">effacer</a>
                         </p>
                         <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                         <p>Le <?= $comment['comment_date_fr'] ?> </p>
@@ -46,8 +43,8 @@ ob_start();
                             <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>#comments" method="post">
                                 <div class="form-group mb-4">
                                     <p class="author"><?= $_SESSION['pseudo'] ?></p>
-                                    <input type="hidden" name="author" id="author" value="<?= $_POST['author'] ?>">
-
+                                    <input type="hidden" name="author" id="author" value="<?= $_SESSION['pseudo'] ?>">
+                                    
                                     
                                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                                 </div>
@@ -58,6 +55,7 @@ ob_start();
                                     <button type="submit" class="btn btn-dark">Envoyer</button>
                                 </div>
                             </form>
+                            <?php var_dump($_SESSION) ?>
                         </div>
                     </div>
                 <?php endif ?>

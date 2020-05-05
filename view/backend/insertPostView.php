@@ -1,11 +1,9 @@
 <?php 
-$navigation = "navBackend.php";
-$title = 'ADMIN'; 
 ob_start(); 
 ?>
     <div class="row">
         <div class="col-12">
-            <h1>ADMIN</h1>
+            <h1>Ajouter un article</h1>
         </div>
     </div>
     <div class="row">
