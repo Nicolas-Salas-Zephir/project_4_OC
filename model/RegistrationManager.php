@@ -21,4 +21,13 @@ class RegistrationManager extends Manager {
 
         return $result;
     }
+
+    function getUsers() {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT * FROM members');
+
+        return $req;
+    }
+
+    
 }

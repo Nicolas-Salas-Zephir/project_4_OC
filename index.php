@@ -112,10 +112,10 @@ try {
                 throw new Exception('Mauvais identifiant ou mot de passe !');
             }
         } elseif($_GET['action'] == 'logout') {
-                sessionDestroy();
-        } else {
-            throw new Exception('Vous n\'avez pas été déconnectés');
-        }
+            sessionDestroy();
+        } elseif($_GET['action'] == 'addSuperUsers') {
+            addSuperUsers();
+        } 
     } else {
         listPosts();
     }

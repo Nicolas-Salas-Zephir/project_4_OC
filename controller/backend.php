@@ -138,6 +138,18 @@ function identifyView() {
     require('view/backend/identificationView.php');
 }
 
+function addSuperUsers() {
+    $registerManager = new RegistrationManager();
+    $users = $registerManager->getUsers();
+
+    $title = 'Nouveau utilisateur'; 
+    $navigation = "navBackend.php";
+
+    session_start();
+    
+    require('view/backend/insertUsersView.php');
+}
+
 function sessionDestroy() {
     session_start();
     session_destroy();

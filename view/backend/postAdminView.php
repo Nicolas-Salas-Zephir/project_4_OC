@@ -13,7 +13,7 @@ ob_start();
             <div class="col-sm-12 col-md-7 d-flex justify-content-start mb-3">
                 <h1 id="postBakend"><?= $post['title'] ?></h1>
             </div>
-            <div class="col-sm-12 col-md-7">
+            <div class="col-sm-12 col-md-7 mb-5">
                 <div class="news mb-5">
                     <p><?= $post['content']; ?></p>
                 </div>
