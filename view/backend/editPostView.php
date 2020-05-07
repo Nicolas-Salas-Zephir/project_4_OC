@@ -3,7 +3,7 @@ ob_start();
 ?>
 
         <div class="mt-5 mb-5">
-            <h1>Modifier l'article</h1>
+            <h1 id="editPost">Modifier l'article</h1>
         </div>
 
         <form action="index.php?action=editPost&amp;postId=<?= $post['id'] ?>" method="post">

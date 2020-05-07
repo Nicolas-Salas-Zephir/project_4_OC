@@ -36,6 +36,11 @@
                   <div class="dropdown-menu">
                       <a class="dropdown-item"  href='index.php?action=postsAdmin' class="link">Espace administrateur</a>
                       <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
+                <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'editor'): ?>
+                  <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace éditeur</a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item"  href='index.php?action=postsAdmin' class="link">Espace éditeur</a>
+                      <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
                 <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'modo'): ?>
                   <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace modérateur</a>
                   <div class="dropdown-menu">

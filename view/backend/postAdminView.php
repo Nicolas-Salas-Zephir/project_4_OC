@@ -11,7 +11,7 @@ ob_start();
 
         <!-- <div class="row blog-posts-content d-flex justify-content-center">  -->
             <div class="col-sm-12 col-md-7 d-flex justify-content-start mb-3">
-                <h1><?= $post['title'] ?></h1>
+                <h1 id="postBakend"><?= $post['title'] ?></h1>
             </div>
             <div class="col-sm-12 col-md-7">
                 <div class="news mb-5">
@@ -20,9 +20,9 @@ ob_start();
                 
                 
                     <!-- <?= var_dump($_SESSION) ?> -->
-                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin' || isset($_SESSION['role']) && $_SESSION['role'] == 'editor'): ?>
 
-                    <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>" class="mr-5">Modifier</a>
+                    <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>#editPost" class="mr-5">Modifier</a>
                     <a href="index.php?action=deletePost&amp;postId=<?= $post['id'] ?>">Effacer</a>
                 <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'modo'): ?>
                     <div id="comments" class="title-comments mb-4">

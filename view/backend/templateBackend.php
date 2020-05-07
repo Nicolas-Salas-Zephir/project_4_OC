@@ -35,7 +35,13 @@
               <?php include $navigation; ?>
               <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4">Tableau de bord de <?= $_SESSION['pseudo'], $_SESSION['id'] ;?></h1>
+                  <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "admin"): ?>
+                    <h1 class="display-4">Espace administrateur de <?= $_SESSION['pseudo'], $_SESSION['id'] ;?></h1>
+                  <?php elseif(isset($_SESSION['role']) && $_SESSION['role'] == "editor"): ?>
+                    <h1 class="display-4">Espace éditeur de <?= $_SESSION['pseudo'], $_SESSION['id'] ;?></h1>
+                  <?php elseif(isset($_SESSION['role']) && $_SESSION['role'] == "modo"): ?>
+                    <h1 class="display-4">Espace modérateur de <?= $_SESSION['pseudo'], $_SESSION['id'] ;?></h1>
+                  <?php endif ?>
                   <p class="lead"></p>
                 </div>
               </div>
