@@ -12,9 +12,14 @@
                         Tableau de bord
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=admin">Ajouter un article</a>
-                </li>
+                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?action=admin">Ajouter un article</a>
+                    </li>
+                <?php endif; ?>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="index.php?action=moderation">Modération</a>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="index.php">Accédez au site</a>
                 </li>

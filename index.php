@@ -102,7 +102,8 @@ try {
             }
         } elseif($_GET['action'] == 'identification') {
             identifyView();
-            echo $_SERVER['REQUEST_METHOD'];
+            // echo $_SERVER['REQUEST_METHOD'];
+        } elseif($_GET['action'] == "identificationValidation") {
             if (isset($_POST['pseudo']) && isset($_POST['password'])) {
                 if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
                     verifyUser($_POST['pseudo']);

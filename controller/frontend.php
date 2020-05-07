@@ -63,7 +63,8 @@ function addComment($postId, $author, $comment)
 function  postBlog() {
     $postManager = new PostManager();
     $posts = $postManager->getPostsBlog();
-
+    session_start();
+    
     require('view/frontend/listPostsView.php');
 }
 

@@ -11,14 +11,15 @@ require_once('model/RegistrationManager.php');
 
 function adminView() {
     $navigation = "navBackend.php";
-    $title = 'ADMIN'; 
+    $title = 'ADMIN';
+    session_start();
+
     require('view/backend/insertPostView.php');
 }
 
 function addPost($title, $content, $author) {
     $postManager = new PostManager();
     $post = $postManager->insertPost($title, $content, $author);
-    var_dump($post);
 
     if($post === false) {
         throw new Exception('Impossible d\'ajouter un poste');
@@ -30,6 +31,8 @@ function addPost($title, $content, $author) {
 function listPostsAdmin() {
     $postManager = new PostManager();
     $posts = $postManager->getPostsBlog();
+
+    session_start();
 
     require('view/backend/listPostsAdminView.php');
 }
@@ -47,12 +50,13 @@ function postBackend($id) {
     $commentManager = new CommentManager();
     
     $post = $postManager->getPost($id);
-    // $comments = $commentManager->getComments($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
 
     if (!$post) {
         throw new Exception(' l\'article n\'existe pas  !');
     }
     else {
+        session_start();
         require('view/backend/postAdminView.php');
         // header('Location: index.php?action=postsAdmin&id=' . $_GET['id']);
     }
@@ -64,15 +68,19 @@ function printPost($postId) {
 
     $title = 'Mon blog'; 
     $navigation = "navBackend.php";
+    
+    session_start();
     require('view/backend/editpostView.php');
 }
 
 function updatePost($content, $author, $title, $id) {
     $postManager = new PostManager();
-    
+    // $commentManager = new CommentManager();
+
+    // $comments = $commentManager->getComments($_GET['id']);
     $affectedLines = $postManager->editPost($content, $author, $title, $id);
 
-    if($affectedLines === false) {
+    if(!$affectedLines) {
         throw new Exception('Impossible de modifier l\'article !');
     } else {
         
@@ -99,8 +107,8 @@ function userRegistration() {
 function addUser($pseudo, $email, $pass_hache) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $affectedLines = $registerManager->insertUser($pseudo, $email, $pass_hache);
-
+    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache));
+    
     if($affectedLines === false) {
         throw new Exception("Impossible d'ajouter un utilisateur !");
     } else {
@@ -114,18 +122,19 @@ function verifyUser($pseudo) {
     $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
 
     if ($isPasswordCorrect) {
-        // setcookie('pseudo', $pseudo, time() + 365*24*3600);
-        // setcookie('password', $_POST['password'], time() + 365*24*3600);
         session_start();
         $_SESSION['id'] = $user['id'];
-        $_SESSION['pseudo'] = $pseudo;
-        header('Location: index.php?action=postsAdmin');
+        $_SESSION['pseudo'] = htmlspecialchars($pseudo);
+        $_SESSION['role'] = $user['role'];
+        // $_SESSION['role'] = $user['role'];
+        header('Location: index.php');
     } else {
         echo 'Mauvais identifiant ou mot de passe !';
     }
 }
 
 function identifyView() {
+    session_start();
     require('view/backend/identificationView.php');
 }
 

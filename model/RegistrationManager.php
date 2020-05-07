@@ -15,7 +15,7 @@ class RegistrationManager extends Manager {
 
     function getUser($pseudo) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id, password FROM members WHERE pseudo = ?');
+        $req = $db->prepare('SELECT id, role, password FROM members WHERE pseudo = ?');
         $req->execute(array($pseudo));
         $result = $req->fetch();
 

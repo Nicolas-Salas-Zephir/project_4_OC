@@ -16,9 +16,32 @@ ob_start();
             <div class="col-sm-12 col-md-7">
                 <div class="news mb-5">
                     <p><?= $post['content']; ?></p>
+                </div>
+                
+                
+                    <!-- <?= var_dump($_SESSION) ?> -->
+                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+
                     <a href="index.php?action=viewAdminPost&amp;postId=<?= $post['id'] ?>" class="mr-5">Modifier</a>
                     <a href="index.php?action=deletePost&amp;postId=<?= $post['id'] ?>">Effacer</a>
-                </div>
+                <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'modo'): ?>
+                    <div id="comments" class="title-comments mb-4">
+                        <h2>Commentaires</h2>
+                    </div>
+                    <?php while ($comment = $comments->fetch()): ?>
+                    <div class="comment ml-3 mb-5 pb-5 border-bottom">
+                        <p class="author"><?= htmlspecialchars($comment['author']) ?>
+                        </p>
+                        <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                        <p>Le <?= $comment['comment_date_fr'] ?> </p>
+                        <a href="#">Effacer le commentaire</a>
+                    </div>
+                    <?php endwhile; ?>
+                <?php endif; ?>
+            </div>
+
+
+                
                 
 
                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

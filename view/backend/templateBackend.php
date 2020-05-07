@@ -1,7 +1,3 @@
-<?php
-  session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -30,6 +26,9 @@
         <?php endif ?>
         </head>
         <body>
+        <pre>
+          <?php var_dump($_SESSION) ?>
+        </pre>
           <?php if(isset($_GET['action']) && $_GET['action'] !=="identification"
             && isset($_GET['action']) && $_GET['action'] !=="userRegistration"
             ): ?>

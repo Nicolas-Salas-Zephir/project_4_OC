@@ -25,18 +25,23 @@
               <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
             </div>
             <nav>
-            
               <ul class="nav flex-column">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
                 <li><a class="link">qui je suis</a></li>
                 <li><a class="link">du text</a></li>
                 <li class="nav-item dropdown">
-                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
+                <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                   <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace administrateur</a>
                   <div class="dropdown-menu">
                       <a class="dropdown-item"  href='index.php?action=postsAdmin' class="link">Espace administrateur</a>
                       <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
+                <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'modo'): ?>
+                  <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace modérateur</a>
+                  <div class="dropdown-menu">
+                      <a class="dropdown-item"  href='index.php?action=postsAdmin' class="link">Espace modérateur</a>
+                      <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
+
                 <?php else: ?>
                   <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
                   <div class="dropdown-menu">
@@ -76,7 +81,9 @@
               <?php endif ?>
             </ul>
           </nav>
-
+          <pre>
+            <?php var_dump($_SESSION) ?>
+          </pre>
           <?php if (isset($_GET['action'])): ?>
           <div class='header-img-blog'>
           </div>

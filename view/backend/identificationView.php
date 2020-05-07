@@ -17,7 +17,7 @@ $title = 'IDENTIFICATION';
 
             <div class="row d-flex justify-content-center">
               <div class="col-md-4">
-                <form action="index.php?action=identification" method="post">
+                <form action="index.php?action=identificationValidation" method="post">
                   <div class="form-group">
                     <input type="text" class="form-control form-control-lg"
                       id="pseudo" name="pseudo" placeholder="Votre nom"
