@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link href="./public/css/style.css" rel="stylesheet" />
       <link href="./public/css/min-reset.css" rel="stylesheet" />
+      <link rel="icon" href="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" />
       <link
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"

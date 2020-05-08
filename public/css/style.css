@@ -490,3 +490,9 @@ footer p:hover {
   }
   
 }
+
+@media (max-width: 375px) {
+  .jumbotron h1{
+    font-size: 3rem!important;
+  }
+}
