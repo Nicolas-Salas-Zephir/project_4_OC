@@ -38,15 +38,7 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de article envoyé');
             }
-        } 
-        // elseif ($_GET['action'] == 'deleteComment') {
-        //     if (isset($_GET['id']) && $_GET['id'] > 0) {
-        //         removeComment($_GET['id'], $_GET['postId']);
-        //     } else {
-        //         throw new Exception("Aucun commentaire n'a été effacé");
-        //     }
-        // } 
-        elseif ($_GET["action"] == "admin") {
+        } elseif ($_GET["action"] == "admin") {
                 adminView();
         } elseif ($_GET["action"] == "addPost") {
             if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
@@ -132,6 +124,12 @@ try {
                 }
             } else {
                 throw new Exception("Aucun utisateur n'a été ajouté");
+            }
+        } elseif ($_GET['action'] == 'deleteComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                removeComment($_GET['id'], $_GET['postId']);
+            } else {
+                throw new Exception("Aucun commentaire n'a été effacé");
             }
         } 
     } else {

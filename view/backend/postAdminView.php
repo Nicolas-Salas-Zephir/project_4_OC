@@ -34,7 +34,7 @@ ob_start();
                         </p>
                         <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                         <p>Le <?= $comment['comment_date_fr'] ?> </p>
-                        <a href="#">Effacer le commentaire</a>
+                        <a href="index.php?action=deleteComment&amp;postId=<?= $post['id'] ?>&amp;id=<?= $comment['id'] ?>">Effacer le commentaire</a>
                     </div>
                     <?php endwhile; ?>
                 <?php endif; ?>

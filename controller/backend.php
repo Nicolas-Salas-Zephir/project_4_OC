@@ -167,3 +167,14 @@ function addRoleToTheUser($pseudo, $email, $pass_hache, $role) {
         header('Location: index.php?action=addSuperUsers#superUser');
     }
 }
+
+function removeComment($id, $postId) {
+    $commentManager = new CommentManager();
+    $affectedLines = $commentManager->deleteComment($id);
+
+    if($affectedLines === false) {
+        throw new Exception("Impossible d'effacer le commentaire !");
+    } else {
+        header('Location: index.php?action=postAdmin&id=' . $postId . '#comments');
+    }
+}
