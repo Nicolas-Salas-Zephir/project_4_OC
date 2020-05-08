@@ -7,19 +7,14 @@
     <?php else: ?>
     <div class="row blog-posts-content"> 
     <?php endif ?>
-<?php
-
-while ($data = $posts->fetch())
-{
-?>
+    <?php while ($data = $posts->fetch()): ?>
         <?php if (isset($_GET['action']) == 'blog'): ?>
             <div class="col-sm-12 col-md-8">
         <?php else: ?>
             <div class="col-sm-12 col-lg-6">
         <?php endif; ?>
         <div class="post mb-5 mt-5">
-            <div class="post-img">
-            </div>
+            <div class="post-img"></div>
             <div class="post-main">
                 <div class="post-content">
                     <p class="d-flex align-items-baseline"><i class="fas fa-user mr-3"></i><?= $data['author']; ?></p>
@@ -44,9 +39,7 @@ while ($data = $posts->fetch())
             <?php endif; ?>
         </div>
     </div>
-<?php
-}
-?>
+    <?php endwhile; ?>
 </div>
 <?php
 $posts->closeCursor();

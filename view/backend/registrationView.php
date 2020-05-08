@@ -1,6 +1,5 @@
 <?php 
 session_start();
-$title = 'IDENTIFICATION';
 ?>
 
 <!DOCTYPE html>

@@ -8,7 +8,7 @@ class PostManager extends Manager
     public function getPosts()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY create_date DESC LIMIT 0, 3');
+        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY id DESC LIMIT 0, 3');
         
         return $req;
     }
@@ -34,7 +34,7 @@ class PostManager extends Manager
     public function getPostsBlog()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY create_date DESC LIMIT 0, 20');
+        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY id DESC LIMIT 0, 20');
 
         return $req;
     }

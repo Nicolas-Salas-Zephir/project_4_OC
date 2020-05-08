@@ -5,6 +5,7 @@ $navigation = "navBackend.php";
 
 <?php ob_start(); ?>
 
+<h1 id="list-posts-admin" class="text-center">Liste des articles publiés</h1>
 <?php
 while ($data = $posts->fetch())
 {
@@ -23,8 +24,6 @@ while ($data = $posts->fetch())
                                 ?></p>
                         </div>
                         <div class="post-main__view ">
-                            <!-- <a href="index.php?action=deletePost&id=<?= $data['id']; ?>"><i class="far fa-trash-alt text-danger mr-2"></i></a>
-                            <a href="index.php?action=postAdmin&id=<?= $data['id']; ?>"><i class="far fa-edit text-primary"></i></a> -->
                             <a href="index.php?action=postAdmin&id=<?= $data['id']; ?>#postBakend"><i class="far fa-eye text-info"></i></a>
                         </div>
                     </div>
