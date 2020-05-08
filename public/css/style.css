@@ -127,7 +127,6 @@ a {
   color: var(--link-active);
 }
 
-
 .sidebar__container .dropdown-item {
   color: #000;
 }
@@ -248,7 +247,6 @@ a {
   filter: opacity(100%);
   background-position: 10% 60%;
   filter: opacity(100%);
-
 }
 
 .post-content h2 {
@@ -336,7 +334,6 @@ a {
   filter: opacity(100%);
   background-position: 10% 30%;
   filter: opacity(100%);
-
 }
 
 .header-img-blog::after {
@@ -385,7 +382,6 @@ a {
 
 footer {
   background-color: #000;
-  height: 75px;
   width: 100%;
   margin-left: 260px;
 }
@@ -488,11 +484,14 @@ footer p:hover {
   footer {
     margin-left: 0;
   }
-  
 }
 
 @media (max-width: 375px) {
   .jumbotron h1{
     font-size: 3rem!important;
+  }
+
+  h1 {
+    font-size: 2rem !important;
   }
 }

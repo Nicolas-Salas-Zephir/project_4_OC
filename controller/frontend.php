@@ -27,7 +27,6 @@ function post() {
         throw new Exception(' le commentaire n\'existe pas  !');
     }
     else {
-        
         require('view/frontend/postView.php');
     }
 }
@@ -53,7 +52,3 @@ function  postBlog() {
 
     require('view/frontend/listPostsView.php');
 }
-
-
-
-

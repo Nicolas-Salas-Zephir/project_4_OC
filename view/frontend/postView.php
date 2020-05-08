@@ -3,35 +3,48 @@ session_start();
 $title = 'Mon blog'; 
 ob_start(); 
 ?>  
-        <div id="content-article" class="row blog-posts-content d-flex justify-content-center mt-5 mb-5"> 
-            <div class="col-sm-7 d-flex align-items-baseline mb-5 blog-post__info">
-                <i class="fas fa-user mr-2"></i><span><?= $post['author']; ?></span>
-                <i class="far fa-clock ml-5 mr-2"></i><span><?= $post['create_date_fr']; ?></span>
-            </div>
-            <div class="col-sm-8 col-md-7 d-flex justify-content-start mb-3">
-                <h1><?= $post['title'] ?></h1>
-            </div>
-            <div class="col-sm-8 col-md-7">
-                <div class="news mb-5">
-                    <p><?= $post['content']; ?></p>
+        <div id="content-article" class="blog-posts-content d-flex flex-column justify-content-center mt-5 mb-5"> 
+            <div class="row d-flex align-items-baseline justify-content-center mb-5">
+                <div class="col-10 col-md-4 col-lg-3 col-xl-3">
+                    <i class="fas fa-user mr-2"></i><span><?= $post['author']; ?></span>
                 </div>
-                
-                
-                <div id="comments" class="title-comments mb-4">
-                    <h2>Commentaires</h2>
+                <div class="col-10 col-md-4 col-lg-3 col-xl-3">
+                    <i class="far fa-clock mr-2"></i><span><?= $post['create_date_fr']; ?></span>
                 </div>
-                <?php while ($comment = $comments->fetch()): ?>
-                    <div class="comment ml-3 mb-5 pb-5 border-bottom">
-                        <p class="author"><?= htmlspecialchars($comment['author']) ?>
-                        </p>
-                        <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                        <p>Le <?= $comment['comment_date_fr'] ?> </p>
+            </div>
+            <div class="row d-flex justify-content-center mb-3">
+                <div class="col-10 col-md-8 col-lg-6 col-xl-6">
+                    <h1><?= $post['title'] ?></h1>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-10 col-md-8 col-lg-6 col-xl-6">
+                    <div class="news mb-5">
+                        <p><?= $post['content']; ?></p>
                     </div>
-                <?php endwhile; ?>
+                </div>  
+            </div> 
+                
+                <div class="row d-flex justify-content-center">
+                    <div class="col-10 col-md-8 col-lg-6 col-xl-6">
+                        <div id="comments" class="title-comments mb-4">
+                            <h2>Commentaires</h2>
+                        </div>
+                        <?php while ($comment = $comments->fetch()): ?>
+                            <div class="comment ml-3 ml-3 mb-5 pb-5 border-bottom">
+                                <p class="author"><?= htmlspecialchars($comment['author']) ?>
+                                </p>
+                                <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                                <p>Le <?= $comment['comment_date_fr'] ?> </p>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
                 <?php if (isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
-                <h3 class="mb-5">Donnez votre avis</h3>
-                <div class="row">
-                    <div class="col-md-9 col-sm-12 ">
+                
+                <div class="row d-flex justify-content-center">
+                    <div class="col-10 col-md-8 col-lg-6 col-xl-6">
+                        <h3 class="mb-5">Donnez votre avis</h3>
                         <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>#comments" method="post">
                             <div class="form-group mb-4">
                                 <p class="author"><?= $_SESSION['pseudo'] ?></p>
@@ -48,7 +61,7 @@ ob_start();
                     </div>
                 </div>
                 <?php endif ?>
-            </div>
+            
         </div>
 
 <?php $content = ob_get_clean(); ?>
