@@ -5,10 +5,10 @@ require_once("model/Manager.php");
 
 class RegistrationManager extends Manager {
 
-    function insertUser($pseudo, $email, $pass_hache) {
+    function insertUser($pseudo, $email, $role, $pass_hache) {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO members (pseudo, email,  password, inscription_date) VALUES(?, ?, ?, CURDATE())');
-        $affectedLines = $req->execute(array($pseudo, $email, $pass_hache));
+        $req = $db->prepare('INSERT INTO members (pseudo, email,  password, role, inscription_date) VALUES(?, ?, ?, ?, CURDATE())');
+        $affectedLines = $req->execute(array($pseudo, $email, $role, $pass_hache));
         
         return $affectedLines;
     }

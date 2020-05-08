@@ -52,7 +52,7 @@ $title = 'IDENTIFICATION';
                     </small>
                   </div>
                   <div class="form-group">
-                    <label for="password1">Retapez votre mot de passe :</label>
+                    <label for="password1">Retaper votre mot de passe :</label>
                     <input type="password" class="form-control form-control-lg"
                       id="password1" name="password1" placeholder="Mot de passe"
                       required/>

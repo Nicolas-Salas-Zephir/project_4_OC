@@ -48,12 +48,12 @@ $count = 0;
         <h3 class="mt-5">Créer un nouvel utilisateur et l’ajouter à ce site.</h3>                    
         <div class="row mb-5 mt-5">
             <div class="col-md-12">
-                <form action="index.php/action=validRole" method="post">
+                <form action="index.php?action=validRole" method="post">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputRole">Rôle</label>
-                            <select class="form-control" id="inputRole">
-                                <option value=""></option>
+                            <select class="form-control" id="inputRole" name="role">
+                                <option value="" selected></option>
                                 <option value="admin">Administrateur</option>
                                 <option value="modo">Modérateur</option>
                                 <option value="editor">Éditeur</option>
@@ -63,24 +63,30 @@ $count = 0;
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputpseudo">Pseudonyme</label>
-                            <input class="form-control" type="text" id="inputpseudo">
+                            <input class="form-control" type="text" id="inputpseudo" name="pseudo">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputEmail4">Email</label>
-                            <input type="email" class="form-control" id="inputEmail4">
+                            <input type="email" class="form-control" id="inputEmail4" name="email">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">Password</label>
-                            <input type="password" class="form-control" id="inputPassword4">
+                            <label for="inputPassword4">Mot de passe</label>
+                            <input type="password" class="form-control" id="inputPassword4" name="password">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <button class="btn btn-primary btn-block">Ajouter</button>
+                            <label for="inputPassword4">Retaper votre mot de passe</label>
+                            <input type="password" class="form-control" id="inputPassword4" name="password1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
                         </div>
                     </div>
                 </form>

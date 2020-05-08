@@ -10,7 +10,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 post();
             } else {
-                throw new Exception('Aucun identifiant de article envoyé');
+                throw new Exception('Aucun identifiant d\'article envoyé');
             }
         } elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -20,7 +20,7 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             } else {
-                throw new Exception('Aucun identifiant de article envoyé');
+                throw new Exception('Aucun identifiant d\'article envoyé');
             }
         } elseif ($_GET["action"] == "viewComment") {
             if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postId']) && $_GET['postId'] > 0) {   
@@ -60,7 +60,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);
             } else {
-                throw new Exception('Aucun identifiant de article envoyé');
+                throw new Exception('Aucun identifiant d\'article envoyé');
             }
         } elseif ($_GET["action"] == "viewAdminPost") {
             if (isset($_GET['postId']) && $_GET['postId'] > 0) {   
@@ -83,11 +83,11 @@ try {
         } elseif ($_GET['action'] == "userRegistration") {
             userRegistration();
         } elseif ($_GET['action'] == 'registration') {
-            if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])) {
+            if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && !isset($_POST['role'])) {
                 if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
                     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                         if ($_POST['password'] === $_POST['password1']) {
-                            addUser($_POST['username'], $_POST['email'], $_POST['password']);
+                            addUser($_POST['username'], $_POST['email'], $_POST['password'], "");
                         } else {
                             throw new Exception('Les mots de passe de sont pas identiques !');
                         }
@@ -98,7 +98,7 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             } else {
-                throw new Exception("Aucun article n'a été effacé");
+                throw new Exception("Aucun utisateur n'a été ajouté");
             }
         } elseif($_GET['action'] == 'identification') {
             identifyView();
@@ -115,6 +115,24 @@ try {
             sessionDestroy();
         } elseif($_GET['action'] == 'addSuperUsers') {
             addSuperUsers();
+        } elseif ($_GET['action'] == 'validRole') {
+            if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['role'])) {
+                if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['email']) && !empty($_POST['role'])) {
+                    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                        if ($_POST['password'] === $_POST['password1']) {
+                            addRoleToTheUser($_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
+                        } else {
+                            throw new Exception('Les mots de passe de sont pas identiques !');
+                        }
+                    } else {
+                        throw new Exception('Ce n\'est pas une adresse mail valide !');
+                    }
+                }  else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            } else {
+                throw new Exception("Aucun utisateur n'a été ajouté");
+            }
         } 
     } else {
         listPosts();

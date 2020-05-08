@@ -104,10 +104,10 @@ function userRegistration() {
     require('view/backend/registrationView.php');
 }
 
-function addUser($pseudo, $email, $pass_hache) {
+function addUser($pseudo, $email, $pass_hache, $role) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache));
+    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), $role);
     
     if($affectedLines === false) {
         throw new Exception("Impossible d'ajouter un utilisateur !");
@@ -154,4 +154,16 @@ function sessionDestroy() {
     session_start();
     session_destroy();
     header('Location: index.php');
+}
+
+function addRoleToTheUser($pseudo, $email, $pass_hache, $role) {
+    $registerManager = new RegistrationManager();
+    $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), $role);
+    
+    if($affectedLines === false) {
+        throw new Exception("Impossible d'ajouter un rôle à l'utilisateur !");
+    } else {
+        header('Location: index.php?action=addSuperUsers#superUser');
+    }
 }
