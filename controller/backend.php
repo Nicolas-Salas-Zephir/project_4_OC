@@ -149,6 +149,7 @@ function verifyUser($pseudo) {
 
 function identifyView() {
     session_start();
+    $title = 'Identification';
     require('view/backend/identificationView.php');
 }
 
@@ -186,6 +187,17 @@ function removeComment($id, $postId) {
         throw new Exception("Impossible d'effacer le commentaire !");
     } else {
         header('Location: index.php?action=postAdmin&id=' . $postId . '#comments');
+    }
+}
+
+function removeMember($id) {
+    $postManager = new PostManager();
+    $affectedLines = $postManager->deleteUser($id);
+
+    if(!$affectedLines) {
+        throw new Exception("Impossible d'effacer l'utilisateur !");
+    } else {
+        header('Location: index.php?action=addSuperUsers#superUser');
     }
 }
 

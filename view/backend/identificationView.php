@@ -1,7 +1,3 @@
-<?php
-$title = 'IDENTIFICATION';
-?>
-
 <?php ob_start(); ?>
 
         <div class="container">
@@ -11,7 +7,10 @@ $title = 'IDENTIFICATION';
                 <h1>Se connecter</h1>
               </div>
               <div class="col-lg-12 d-flex justify-content-center">
-                <p><a href="index.php">Retour à la page d'accueil</a></p>
+                <p><a href="index.php" class="text-center">Retour à la page d'accueil</a></p>
+              </div>
+              <div class="col-lg-12 d-flex justify-content-center">
+                <p class="mt-1 text-center"><strong><a href="index.php?action=userRegistration">Première inscription</a></strong></p>
               </div>
             </div>
 
@@ -41,7 +40,6 @@ $title = 'IDENTIFICATION';
                       btn-block">Valider</button>
                   </div>
                 </form>
-                <p class="mt-3 text-center"><a href="index.php?action=userRegistration">Première inscription</a></p>
               </div>
             </div>
           </div>

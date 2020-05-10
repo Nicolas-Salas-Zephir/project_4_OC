@@ -133,6 +133,12 @@ try {
             }
         } elseif ($_GET['action'] == 'authorDescript') {
             authorDescript();
+        } elseif ($_GET['action'] == 'deleteUser') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                removeMember($_GET['id'], $_GET['postId']);
+            } else {
+                throw new Exception("Aucun utilisateur n'a été supprimé");
+            }
         } 
         // elseif ($_GET['action'] == 'stopComment') {
         //     if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {

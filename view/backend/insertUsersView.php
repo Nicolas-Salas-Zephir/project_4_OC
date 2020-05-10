@@ -11,13 +11,14 @@ $count = 0;
             <div class="col-sm-12">
                 <div class="table-responsive-sm">
                     <table class="table table-striped table-dark">
-                        <caption>Liste des utitlisateurs</caption>
+                        <caption>Liste des utilisateurs</caption>
                         <thead>
                             <tr>
                             <th scope="col"></th>
                             <th scope="col">Pseudo</th>
                             <th scope="col">Email</th>
                             <th scope="col">Rôle</th>
+                            <th scope="col">Effacer</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,15 +28,16 @@ $count = 0;
                                     <th scope="row"><?= $count += 1 ?></th>
                                     <td><?= $user['pseudo']; ?></td>
                                     <td><?= $user['email']; ?></td>
-                                    <td>
+                                    <td class="">
                                     <?php if($user['role'] == "modo" ): ?>
                                         <?= "Modérateur" ?>
                                     <?php elseif($user['role'] == "admin"): ?>
-                                        <?= "Administrateur" ?>
+                                        <?= "Admin" ?>
                                     <?php elseif($user['role'] == "editor"): ?>
                                         <?= "Éditeur" ?>
                                     <?php endif; ?>
                                     </td>
+                                    <td><a href="index.php?action=deleteUser&amp;id=<?= $user['id'] ?>"><img src="./public/images/cross.svg" class="cross-role text-right" alt="icône-effacer"></a></td>
                                 </tr>
                                 <?php endif; ?>
                             <?php endwhile; ?>
