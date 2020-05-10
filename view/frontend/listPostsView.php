@@ -28,15 +28,14 @@
                     </div>
                 </div>
                 <?php if (isset($_GET['action'])): ?>   
-                    <div class="d-flex align-items-baseline post-footer border-top">
-                        <div>
-                            <p>le <?= $data['create_date_fr']; ?></p>
-                        </div>
-                        <div class="post-link">
-                            <a href="index.php?action=post&id=<?= $data['id']; ?>#comments">Voir les commentaires</a>
-                            
-                        </div>
+                <div class="d-flex align-items-baseline post-footer border-top">
+                    <div>
+                        <p>le <?= $data['create_date_fr']; ?></p>
                     </div>
+                    <div class="post-link">
+                        <a href="index.php?action=post&id=<?= $data['id']; ?>#comments">Voir les commentaires</a>
+                    </div>
+                </div>
                 <?php endif; ?>
             </div>
         </div>

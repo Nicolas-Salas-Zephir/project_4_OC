@@ -4,6 +4,8 @@
   --link-active: #cea525;
 }
 
+
+
 body {
   font-family: sans-serif;
   height: 100vh;
@@ -21,6 +23,15 @@ p {
 
 a {
   text-decoration: none !important;
+}
+
+.title-main {
+  font-style: italic;
+  font-size: 3.5rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .center {
@@ -187,7 +198,7 @@ a {
   display: none;
 }
 
-.container-fluid {
+.bg {
   background: url(../images/Groupe1.svg);
 }
 
@@ -380,6 +391,24 @@ a {
   font-weight: 400;
 }
 
+.comment button {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+}
+
+.comment button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-image: url(../images/stop.svg);
+}
+
 footer {
   background-color: #000;
   width: 100%;
@@ -401,6 +430,34 @@ footer p:hover {
   height: 100vh;
 }
 
+/* Author description page */
+.author-description h1 {
+  font-weight: 400 !important;
+  text-transform: capitalize;
+}
+
+.author-description p {
+  line-height: 40px;
+  text-align: justify;
+  font-size: 20px;
+}
+
+.author-description a {
+  color: var(--color-para);
+}
+
+.author-description a:hover {
+  color: var(--link-active);
+}
+
+/* Administrator menu */
+.jumbotron .modo {
+  display: inline-block;
+  width: 50px; 
+  height: 50px;
+  border: 1px solid white;
+}
+
 @media (min-width: 769px) {
   .nav-hamburger {
     display: none;
@@ -408,6 +465,10 @@ footer p:hover {
 }
 
 @media (max-width: 768px) {
+  .hidden {
+    display: block;
+  }
+
   .header-xl, .header-xs {
     margin-left: 0;
   }
@@ -437,7 +498,7 @@ footer p:hover {
     width: 50px;
   }
 
-  .show {
+  .showw {
     display: none !important;
     transition: 1s;
   }
@@ -486,9 +547,19 @@ footer p:hover {
   }
 }
 
+@media (max-width: 472px) {
+  .title-main {
+    font-size: 2.5rem !important;
+  }
+}
+
 @media (max-width: 375px) {
   .jumbotron h1{
     font-size: 3rem!important;
+  }
+
+  .title-main {
+    font-size: 2rem !important;
   }
 
   h1 {

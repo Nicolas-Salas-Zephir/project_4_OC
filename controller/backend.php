@@ -94,7 +94,7 @@ function userRegistration() {
     require('view/backend/registrationView.php');
 }
 
-function addUser($pseudo, $email, $pass_hache, $role) {
+function addUser($pseudo, $email, $pass_hache, $role = 0) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
     $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), $role);
@@ -104,6 +104,29 @@ function addUser($pseudo, $email, $pass_hache, $role) {
     } else {
         header('Location: index.php?action=identification');
     }
+}
+
+function checkUser($pseudo, $email, $pass_hache, $role = 0) {
+    $registerManager = new RegistrationManager();
+    $checkPseudo = $registerManager->checkPseudo($pseudo);
+    $checkEmail = $registerManager->checkEmail($email);
+    foreach($checkPseudo as $totalPseudo);
+    foreach($checkEmail as $totalEmail);
+
+    if ($totalPseudo < 1 || $totalEmail < 1) {
+        addUser($pseudo, $email, $pass_hache, $role);
+    } elseif ($totalPseudo > 1 || $totalEmail > 1) {
+        echo "<pre>";
+            var_dump("Total pseudo : " . $totalPseudo);
+            var_dump("Total email : " . $totalEmail );
+            var_dump($pseudo);
+            var_dump($email );
+        echo "</pre>";
+
+        
+        
+        throw new Exception("Ce pseudo ou adresse email sont déja utilisés");
+    } 
 }
 
 function verifyUser($pseudo) {
@@ -121,6 +144,8 @@ function verifyUser($pseudo) {
         echo 'Mauvais identifiant ou mot de passe !';
     }
 }
+
+
 
 function identifyView() {
     session_start();
@@ -144,7 +169,7 @@ function addSuperUsers() {
 function addRoleToTheUser($pseudo, $email, $pass_hache, $role) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), $role);
+    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), htmlspecialchars($role));
     
     if(!$affectedLines) {
         throw new Exception("Impossible d'ajouter un rôle à l'utilisateur !");

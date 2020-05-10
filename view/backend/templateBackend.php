@@ -26,9 +26,6 @@
       <?php endif ?>
   </head>
   <body>
-      <pre>
-        <?php var_dump($_SESSION) ?>
-      </pre>
       <?php if(isset($_GET['action']) && $_GET['action'] !=="identification"
         && isset($_GET['action']) && $_GET['action'] !=="userRegistration"
         ): ?>
@@ -40,7 +37,7 @@
             <?php elseif(isset($_SESSION['role']) && $_SESSION['role'] == "editor"): ?>
               <h1 class="display-4">Espace éditeur de <?= $_SESSION['pseudo'];?></h1>
             <?php elseif(isset($_SESSION['role']) && $_SESSION['role'] == "modo"): ?>
-              <h1 class="display-4">Espace modérateur de <?= $_SESSION['pseudo'];?></h1>
+              <h1 class="display-4 d-flex align-items-center">Espace modérateur de <?= $_SESSION['pseudo'];?></h1>
             <?php endif ?>
             <p class="lead"></p>
           </div>

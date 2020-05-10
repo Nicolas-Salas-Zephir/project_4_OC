@@ -79,7 +79,7 @@ try {
                 if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
                     if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                         if ($_POST['password'] === $_POST['password1']) {
-                            addUser($_POST['username'], $_POST['email'], $_POST['password'], "");
+                            checkUser($_POST['username'], $_POST['email'], $_POST['password']);
                         } else {
                             throw new Exception('Les mots de passe de sont pas identiques !');
                         }
@@ -131,7 +131,16 @@ try {
             } else {
                 throw new Exception("Aucun commentaire n'a été effacé");
             }
+        } elseif ($_GET['action'] == 'authorDescript') {
+            authorDescript();
         } 
+        // elseif ($_GET['action'] == 'stopComment') {
+        //     if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
+        //         addStatement($_POST['stopComment'], $_GET['idComment'], $_GET['postId']);
+        //     } else {
+        //         throw new Exception("Aucun commentaire n'a été signalé");
+        //     }
+        // } 
     } else {
         listPosts();
     }

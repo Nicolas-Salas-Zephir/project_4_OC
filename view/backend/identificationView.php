@@ -41,7 +41,7 @@ $title = 'IDENTIFICATION';
                       btn-block">Valider</button>
                   </div>
                 </form>
-                <p><a href="index.php?action=userRegistration">Première inscription</a></p>
+                <p class="mt-3 text-center"><a href="index.php?action=userRegistration">Première inscription</a></p>
               </div>
             </div>
           </div>

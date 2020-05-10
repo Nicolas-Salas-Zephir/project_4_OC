@@ -32,10 +32,16 @@ ob_start();
                         </div>
                         <?php while ($comment = $comments->fetch()): ?>
                             <div class="comment ml-3 ml-3 mb-5 pb-5 border-bottom">
-                                <p class="author"><?= htmlspecialchars($comment['author']) ?>
-                                </p>
-                                <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                                <p>Le <?= $comment['comment_date_fr'] ?> </p>
+                                <p class="author"><?= htmlspecialchars($comment['author']) ?></p>
+                                <div class="d-flex justify-content-between">
+                                    <p class="mb-3"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                                    <!-- <form action="index.php?action=stopComment&amp;postId=<?= $post['id'] ?>&amp;idComment=<?= $comment['id'] ?>" method="post">
+                                        <input id="push-stp-comment" type="hidden" name="stopComment" value="0">
+                                        <button id="stop-comment" type="submit" class="text-right" data-toggle="tooltip" data-placement="bottom" title="dénoncer le commentaire"></button>
+                                    </form> -->
+                                </div>
+                                <!-- <p class="text-right text-danger"><?= $comment['comment_statement'] >= 1 ? "Ce commentaire a été dénoncé" : "" ?></p> -->
+                                <p class="text-right">Le <?= $comment['comment_date_fr'] ?> </p>
                             </div>
                         <?php endwhile; ?>
                     </div>

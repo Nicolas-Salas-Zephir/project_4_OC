@@ -29,8 +29,7 @@
               <ul class="nav flex-column">
                 <li><a href="index.php" class="active">Accueil</a></li>
                 <li><a href="index.php?action=blog" class="link">blog</a></li>
-                <li><a class="link">qui je suis</a></li>
-                <li><a class="link">du text</a></li>
+                <li><a href="index.php?action=authorDescript" class="link">qui suis-je ?</a></li>
                 <li class="nav-item dropdown">
                   <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                     <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace administrateur</a>
@@ -51,7 +50,7 @@
                         <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
                     </div>
                   <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == ''): ?>
-                    <a href="index.php?action=logout" class="link">Déconnexion</a>
+                    <a href="index.php?action=logout" class="link text-warning">Déconnexion</a>
                   <?php else: ?>
                     <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
                     <div class="dropdown-menu">
@@ -59,7 +58,6 @@
                         <a class="dropdown-item" href="index.php?action=userRegistration">S'inscrire</a>
                     </div>
                   <?php endif ?>
-                  <!-- </div> -->
                 </li>
               </ul>
             </nav>
@@ -75,33 +73,44 @@
                   <img src="./public/images/Menu_icon_2_icon-icons.com.svg" />
                 </a>
             </div>
-            <nav class="show nav-hamburger pb-5">
-                <div class="cross d-flex justify-content-end show mr-5 mt-4">X</div>
+            <nav class="showw nav-hamburger pb-5">
+                <div class="cross d-flex justify-content-end showw mr-5 mt-4">X</div>
                 <ul class="d-flex flex-column justify-content-center align-items-center">
-                      <li><a href="index.php" class="active">Accueil</a></li>
-                      <li><a href="index.php?action=blog" class="link">blog</a></li>
-                      <li><a class="link">qui je suis</a></li>
-                      <li><a class="link">du text</a></li>
+                      <li><a href="index.php" class="active text-center">Accueil</a></li>
+                      <li><a href="index.php?action=blog" class="link text-center">blog</a></li>
+                      <li><a href="index.php?action=authorDescript" class="link text-center">qui je suis ?</a></li>
                     <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id'])): ?>
-                      <li><a href='index.php?action=postsAdmin' class="link">Espace administrateur</a></li>
-                      <li><a href="index.php?action=logout" class="link">Déconnexion</a></li>
+                      <li><a href='index.php?action=postsAdmin' class="link text-center">Espace administrateur</a></li>
+                      <li><a href="index.php?action=logout" class="link text-center">Déconnexion</a></li>
                     <?php else: ?>
-                      <li><a href='index.php?action=identification' class="link">Se connecter</a></li>
-                      <li><a href='index.php?action=userRegistration' class="link">S'inscrire</a></li>
+                      <li><a href='index.php?action=identification' class="link text-center">Se connecter</a></li>
+                      <li><a href='index.php?action=userRegistration' class="link text-center">S'inscrire</a></li>
                     <?php endif ?>
                 </ul>
             </nav>
             <?php if (isset($_GET['action'])): ?>
-              <div class='header-img-blog'></div>
+              <div class='header-img-blog d-flex align-items-end justify-content-end'>
+                <h1 class="hidden"><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
+              </div>
             <?php else: ?>
-                <div class='header-img'></div>
+                <div class='header-img'>
+                  <div class="container">
+                    <div class="row d-flex flex-column justify-content-center align-items-center">
+                      <h1 class="title-main text-white">Voyages en Alaska</h1>
+                      <h2 class="title-main text-white"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></h2>
+                    </div>
+                    <!-- <div class="row d-flex justify-content-center">
+                      <h2 class="hidden"><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h2>
+                    </div> -->
+                  </div>
+                </div>
             <?php endif; ?>
         </header>
-        <div class="container-fluid main">
+        <div class="container-fluid bg main">
           <?= $content ?>
         </div>
         <footer class="d-flex align-items-center">
-            <div class="container">
+            <div class="container-fluid">
               <div class="row mt-2 mb-4">
                 <div class="col-12">
                   <a href="https://openclassrooms.com/" target="_blank"><p class="ml-5">Ce site est un projet étudiant OpenClassRoom</p></a>
