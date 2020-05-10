@@ -113,7 +113,7 @@ function checkUser($pseudo, $email, $pass_hache, $role = 0) {
     foreach($checkPseudo as $totalPseudo);
     foreach($checkEmail as $totalEmail);
 
-    if ($totalPseudo < 1 || $totalEmail < 1) {
+    if ($totalPseudo < 1 && $totalEmail < 1) {
         addUser($pseudo, $email, $pass_hache, $role);
     } elseif ($totalPseudo > 1 || $totalEmail > 1) {
         echo "<pre>";
@@ -144,8 +144,6 @@ function verifyUser($pseudo) {
         echo 'Mauvais identifiant ou mot de passe !';
     }
 }
-
-
 
 function identifyView() {
     session_start();
