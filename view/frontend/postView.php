@@ -35,11 +35,32 @@ ob_start();
                                 <p class="author"><?= htmlspecialchars($comment['author']) ?></p>
                                 <div class="d-flex justify-content-between">
                                     <p class="mb-3"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                                    <!-- <form action="index.php?action=stopComment&amp;postId=<?= $post['id'] ?>&amp;idComment=<?= $comment['id'] ?>" method="post">
+                                    <?php if ($comment['flag'] == 0): ?>
+                                    <a href="index.php?action=reporting&id=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>&flag=<?= $comment['flag'] ?>" id="stop-comment" class="text-right img-report-opacityMin" data-toggle="tooltip" title="Signalé le commentaire">
+                                        <img src="./public/images/stop.svg" alt="icone-signaler-le-commentaire">
+                                    </a>
+                                    <?php elseif ($comment['flag'] == 1): ?>
+                                    <a id="stop-comment" class="text-right img-report-opacityMax" data-toggle="tooltip" title="Commentaire Signalé">
+                                        <img src="./public/images/stop.svg" alt="icone-signaler-le-commentaire">
+                                    </a>   
+                                    <?php else: ?>
+                                    <a id="stop-comment" class="text-right img-report-opacityMax" data-toggle="tooltip" title="Commentaire Signalé">
+                                        <!-- <p>Ce commentaire a été non nuisible par le modérateur</p> -->
+                                    </a> 
+                                    <?php endif; ?>
+                                    <?php if ($comment['flag'] == 2): ?>
+                                        <p class="text-right text-success" data-toggle="tooltip" title="Commentaire approuvé par le modérateur"><img src="./public/images/emblemdefault.svg" alt="Icone validé"></p>
+                                    <?php endif; ?>
+                                    
+
+                                    
+                                </div>
+                                <!-- <form action="index.php?action=stopComment&amp;postId=<?= $post['id'] ?>&amp;idComment=<?= $comment['id'] ?>" method="post">
                                         <input id="push-stp-comment" type="hidden" name="stopComment" value="0">
                                         <button id="stop-comment" type="submit" class="text-right" data-toggle="tooltip" data-placement="bottom" title="dénoncer le commentaire"></button>
                                     </form> -->
-                                </div>
+
+
                                 <!-- <p class="text-right text-danger"><?= $comment['comment_statement'] >= 1 ? "Ce commentaire a été dénoncé" : "" ?></p> -->
                                 <p class="text-right">Le <?= $comment['comment_date_fr'] ?> </p>
                             </div>

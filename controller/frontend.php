@@ -53,6 +53,18 @@ function  postBlog() {
     require('view/frontend/listPostsView.php');
 }
 
+function incrementReporting($flag, $postId, $id) {
+    $commentManager = new CommentManager();
+    $comments = $commentManager->editComment($flag, $postId, $id);
+
+    if (!$comments) {
+        throw new Exception(' le commentaire n\'existe pas  !');
+    } else {
+        header('Location: index.php?action=post&id=' . $postId . '#comment');
+    }
+    
+}
+
 // function addStatement($declared, $id, $postId) {
 //     $commentManager = new CommentManager();
 //     $comments = $commentManager->declaredComment($declared, $id);

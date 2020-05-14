@@ -53,7 +53,6 @@ try {
         } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);
-                
             } else {
                 throw new Exception('Aucun identifiant d\'article envoyé');
             }
@@ -147,6 +146,12 @@ try {
                 incrementReporting($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
             } else {
                 throw new Exception("Aucun utilisateur n'a été supprimé");
+            }
+        }  elseif ($_GET['action'] == 'reportCancel') {
+            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 1) {
+                incrementReportingAdmin($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
+            } else {
+                throw new Exception("Aucun commentaire n'a été sélectionné");
             }
         }
         // elseif ($_GET['action'] == 'postAdmin') {
