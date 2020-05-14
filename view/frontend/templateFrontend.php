@@ -49,7 +49,7 @@
                         <a class="dropdown-item"  href='index.php?action=postsAdmin' class="link">Espace modérateur</a>
                         <a class="dropdown-item"  href="index.php?action=logout" class="link">Déconnexion</a>
                     </div>
-                  <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == ''): ?>
+                  <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 0): ?>
                     <a href="index.php?action=logout" class="link text-warning">Déconnexion</a>
                   <?php else: ?>
                     <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Connexion</a>
