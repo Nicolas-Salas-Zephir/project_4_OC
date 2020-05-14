@@ -43,7 +43,9 @@ try {
         } elseif ($_GET["action"] == "addPost") {
             if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
                 addPost($_POST['title'], $_POST['content'], $_POST['author']); 
-            } 
+            }  else {
+                throw new Exception('Aucun article n\'a été envoyé');
+            }
         } elseif ($_GET['action'] == "blog") {
             postBlog();
         } elseif ($_GET['action'] == "postsAdmin") {
@@ -51,6 +53,7 @@ try {
         } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);
+                
             } else {
                 throw new Exception('Aucun identifiant d\'article envoyé');
             }
@@ -129,7 +132,7 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 removeComment($_GET['id'], $_GET['postId']);
             } else {
-                throw new Exception("Aucun commentaire n'a été effacé");
+                throw new Exception("Aucun commentaire n'a été supprimé");
             }
         } elseif ($_GET['action'] == 'authorDescript') {
             authorDescript();
@@ -139,7 +142,16 @@ try {
             } else {
                 throw new Exception("Aucun utilisateur n'a été supprimé");
             }
-        } 
+        } elseif ($_GET['action'] == 'reporting') {
+            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 0) {
+                incrementReporting($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
+            } else {
+                throw new Exception("Aucun utilisateur n'a été supprimé");
+            }
+        }
+        // elseif ($_GET['action'] == 'postAdmin') {
+
+        // }
         // elseif ($_GET['action'] == 'stopComment') {
         //     if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
         //         addStatement($_POST['stopComment'], $_GET['idComment'], $_GET['postId']);

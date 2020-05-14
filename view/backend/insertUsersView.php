@@ -86,7 +86,7 @@ $count = 0;
                             <input type="password" class="form-control" id="inputPassword4" name="password1">
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row mt-3">
                         <div class="form-group col-md-6">
                             <button type="submit" class="btn btn-primary btn-block">Ajouter</button>
                         </div>
