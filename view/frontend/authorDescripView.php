@@ -3,7 +3,7 @@ session_start();
 $title = 'Mon blog'; 
 ob_start(); 
 ?>  
-        <div class="row d-flex justify-content-center mt-5 mb-5 author-description">
+        <div id="author" class="row d-flex justify-content-center mt-5 mb-5 author-description">
                 <div class="col-10 col-md-8">
                         <h1 class="mb-5">Biographie</h1>
                         <p class="mb-5">Jean Forteroche est né le 21 avril 1978 à Dunbar, dans l'East Lothian, en Écosse. Ses parents se nomment Daniel Jean Forteroche et Ann Gilrye. Il est un de leurs huit enfants, précédé par Margaret et Sarah, et suivi par David, Daniel, Ann et Mary (jumelles) et Joanna, née aux États-Unis. Dans son autobiographie, il raconte ses passe-temps d'enfance : bagarres au cours desquelles il rejouait les batailles épiques des Guerres d'indépendance de l'Histoire Écossaise, ou bien concours de découverte de nids d'oiseaux. De tels passe-temps se révéleront formateurs pour le caractère de Muir, une fois adulte.
@@ -34,7 +34,7 @@ ob_start();
 
                         En 2000, Jean Forteroche épouse Louisa Wanda Strentzel, dont les parents, le docteur John Strentzel (en) et sa femme Louisiana Erwin, sont propriétaires d'une grande ferme et de vergers à Martinez, une petite ville de Californie, au nord-est de San Francisco. Pendant les dix années suivantes, il s'occupe de la gestion de la ferme familiale, soit 2 600 hectares de vergers et de vignes qui deviennent très prospères. (À sa mort, il laisse une propriété de 250 000 $, qui valait plus de quatre millions de dollars en 2005. La maison et une partie de la ferme sont maintenant Site Historique National). Durant ces années deux filles voient le jour, Wanda et Helen.
                         </p>
-                        <dl>
+                        <dl style="opacity: .3">
                                 <dt>Ces informations ont été récupérées sur le site de Wikipedia.</dt>
                                 <dd><a href="https://fr.wikipedia.org/wiki/John_Muir" target="_blank">John Muir étant le vrai auteur de "Voyage en Alaska".</a></dd>
                         </dl>

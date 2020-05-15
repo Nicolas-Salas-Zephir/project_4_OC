@@ -6,10 +6,8 @@ $navigation = "navBackend.php";
 <?php ob_start(); ?>
 
 <h1 id="list-posts-admin" class="text-center">Liste des articles publiés</h1>
-<?php
-while ($data = $posts->fetch())
-{
-?>
+
+<?php while ($data = $posts->fetch()): ?>
     <div class="row d-flex justify-content-center">
         <div class="col-sm-12 ">
             <div id="post-id" class="post post-backend mb-5 mt-5">
@@ -23,8 +21,11 @@ while ($data = $posts->fetch())
                                     echo $rest;
                                 ?></p>
                         </div>
-                        <div class="post-main__view ">
+                        <div class="post-main__view">
                             <a href="index.php?action=postAdmin&id=<?= $data['id']; ?>#postBakend"><i class="far fa-eye text-info"></i></a>
+                        <?php if ($data['id'] == 1): ?>
+                            <div class="afterFlag"></div>
+                        <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -32,7 +33,7 @@ while ($data = $posts->fetch())
         </div>
     </div>
 <?php
-}
+endwhile;
 $posts->closeCursor();
 ?>
 

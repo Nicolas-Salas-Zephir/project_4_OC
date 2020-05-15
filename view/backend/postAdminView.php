@@ -23,7 +23,7 @@ ob_start();
                         </div>
                         <?php while ($comment = $comments->fetch()): ?>
                         <div class="comment ml-3 mb-5 pb-5 border-bottom">
-                            <p class="author"><?= htmlspecialchars($comment['author']) ?></p>
+                            <p id="comment<?= $comment['id'] ?>" class="author"><?= htmlspecialchars($comment['author']) ?></p>
                             <p class="mb-5"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                             <p>Le <?= $comment['comment_date_fr'] ?> </p>
                             <?php if ($comment['flag'] == 0): ?>

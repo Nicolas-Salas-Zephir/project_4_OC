@@ -1,7 +1,6 @@
 <?php 
 ob_start(); 
 ?>
-
         <div class="mt-5 mb-5">
             <h1 id="editPost">Modifier l'article</h1>
         </div>

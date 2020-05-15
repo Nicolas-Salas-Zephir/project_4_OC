@@ -60,7 +60,7 @@ function incrementReporting($flag, $postId, $id) {
     if (!$comments) {
         throw new Exception(' le commentaire n\'existe pas  !');
     } else {
-        header('Location: index.php?action=post&id=' . $postId . '#comment');
+        header('Location: index.php?action=post&id=' . $postId . '#stop-comment' . $id);
     }
     
 }

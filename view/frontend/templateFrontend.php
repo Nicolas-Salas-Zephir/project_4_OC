@@ -28,8 +28,8 @@
             <nav>
               <ul class="nav flex-column">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="index.php?action=blog" class="link">blog</a></li>
-                <li><a href="index.php?action=authorDescript" class="link">qui suis-je ?</a></li>
+                <li><a href="index.php?action=blog#blog" class="link">blog</a></li>
+                <li><a href="index.php?action=authorDescript#author" class="link">qui suis-je ?</a></li>
                 <li class="nav-item dropdown">
                   <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                     <a class="link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Espace administrateur</a>

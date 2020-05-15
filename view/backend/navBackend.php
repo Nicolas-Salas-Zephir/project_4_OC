@@ -27,12 +27,6 @@
                 <li class="nav-item">
                     <a class="nav-link mr-lg-3 text-center" href="index.php">Accéder au site</a>
                 </li>
-            <!-- <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'modo'): ?>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link text-danger modo" href="index.php?action=logout">Commentaire signalé</a>
-                    </li>
-            <?php endif; ?> -->
                 <li class="nav-item">
                     <a class="nav-link text-warning mr-lg-3" href="index.php?action=logout">Déconnexion</a>
                 </li>
