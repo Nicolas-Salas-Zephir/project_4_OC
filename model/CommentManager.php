@@ -47,12 +47,21 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
-    public function checkFlag() {
+    public function checkFlag($flag) {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT COUNT(flag) as report_flag FROM comments');
+        $req = $db->prepare('SELECT COUNT(flag) as report_flag, post_id FROM comments WHERE flag = ?');
+        $req->execute(array($flag));
         $result = $req->fetch();
 
         return $result;
+    }
+
+    function getCommentsFlag($flag) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM comments WHERE flag = ?');
+        $req->execute(array($flag));
+
+        return $req;
     }
 
     public function editComment($flag, $postId, $id) {

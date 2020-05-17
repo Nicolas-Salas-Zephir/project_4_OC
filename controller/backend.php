@@ -17,23 +17,47 @@ function adminView() {
     require('view/backend/insertPostView.php');
 }
 
-function addPost($title, $content, $author) {
-    $postManager = new PostManager();
-    $post = $postManager->insertPost($title, $content, $author);
+// function addPost($title, $content, $author) {
+//     $postManager = new PostManager();
+//     $post = $postManager->insertPost($title, $content, $author);
+//     // $getPost = $postManager->getPost($postId);
 
-    if(!$post) {
-        throw new Exception('Impossible d\'ajouter un poste');
-    } else {
-        header('Location: index.php?action=postsAdmin#list-posts-admin');
-    }
-}
+//     $path = './public/images/miniatures/' . $id . '.jpg';
+//     echo "<pre>";
+//     var_dump($_FILES);
+//     var_dump($path);
+//     echo "</pre>";
+//     // lastInsertId
+//     if (isset($_FILES['miniature'])) {
+//         if (exif_imagetype($_FILES['miniature']['tmp_name']) == 2) {
+//             move_uploaded_file($_FILES['miniature']['tmp_name'], $path);
+//         } else {
+//             throw new Exception(' Votre image doit être au format jpg');  
+//         }
+//     }
+//     if(!$post) {
+//         throw new Exception('Impossible d\'ajouter un poste');
+//     } else {
+//         header('Location: index.php?action=postsAdmin#list-posts-admin');
+//     }
+// }
 
 function listPostsAdmin() {
     $postManager = new PostManager();
+    $commentManager = new CommentManager();
+
     $posts = $postManager->getPostsBlog();
-
+    $title = 'Tableau de bord'; 
+    $navigation = "navBackend.php";
+    $count = 0;
+    
     session_start();
-
+    
+    if (isset($_SESSION['role']) && $_SESSION['role'] === "modo" || $_SESSION['role'] === "admin") {
+        $comment = $commentManager->checkFlag(1);
+        $comments = $commentManager->getCommentsFlag(1);
+    } 
+    
     require('view/backend/listPostsAdminView.php');
 }
 
@@ -42,13 +66,14 @@ function postBackend($id) {
     $commentManager = new CommentManager();
     
     $post = $postManager->getPost($id);
-    $comments = $commentManager->getComments($_GET['id']);
+    $comments = $commentManager->getComments($id);
+    
 
     $title = 'Article ' . $id; 
     $navigation = "navBackend.php";
 
     if (!$post) {
-        throw new Exception(' l\'article n\'existe pas  !');
+        throw new Exception('l\'article n\'existe pas  !');
     }
     else {
         session_start();
@@ -110,6 +135,7 @@ function checkUser($pseudo, $email, $pass_hache, $role = 0) {
     $registerManager = new RegistrationManager();
     $checkPseudo = $registerManager->checkPseudo($pseudo);
     $checkEmail = $registerManager->checkEmail($email);
+
     foreach($checkPseudo as $totalPseudo);
     foreach($checkEmail as $totalEmail);
 
@@ -122,9 +148,6 @@ function checkUser($pseudo, $email, $pass_hache, $role = 0) {
             var_dump($pseudo);
             var_dump($email );
         echo "</pre>";
-
-        
-        
         throw new Exception("Ce pseudo ou adresse email sont déja utilisés");
     } 
 }
@@ -155,7 +178,7 @@ function addSuperUsers() {
     $registerManager = new RegistrationManager();
     $users = $registerManager->getUsers();
 
-    $title = 'Nouveau utilisateur'; 
+    $title = 'Nouvel utilisateur'; 
     $navigation = "navBackend.php";
     if(!$users) {
         throw new Exception("Impossible de voir les utilisateurs !");
@@ -184,7 +207,7 @@ function removeComment($id, $postId) {
     if(!$affectedLines) {
         throw new Exception("Impossible d'effacer le commentaire !");
     } else {
-        header('Location: index.php?action=postAdmin&id=' . $postId . '#comments');
+        header('Location: index.php?action=postAdmin&id=' . $postId . '#comment' . $id);
     }
 }
 
@@ -198,6 +221,64 @@ function removeMember($id) {
         header('Location: index.php?action=addSuperUsers#superUser');
     }
 }
+
+function checkCommentsFlag() {
+    $commentManager = new CommentManager();
+    $checkFlags = $commentManager->checkFlag();
+
+    // foreach($checkFlags as $checkFlag);
+
+    // if ($checkFlag < 1) {
+    //     var_dump($checkFlag);
+    //     var_dump("Total flaaaag : " . $checkFlag['report_flag']);
+    // } elseif ($checkFlag > 1) {
+    //     echo "<pre>";
+    //         var_dump("Total flag : " . $checkFlag['report_flag']);
+    //     echo "</pre>";
+    //     // throw new Exception("Ce signalement n'existe pas");
+    // } 
+}
+
+function incrementReportingAdmin($flag, $postId, $id) {
+    $commentManager = new CommentManager();
+    $comments = $commentManager->editComment($flag, $postId, $id);
+
+    if (!$comments) {
+        throw new Exception(' le commentaire n\'existe pas  !');
+    } else {
+        header('Location: index.php?action=postAdmin&id=' . $postId . '#comment' . $id);
+    }
+    
+}
+
+function flagPostsAdmin() {
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+    
+    $post = $postManager->getPost($_GET['id']);
+    $comments = $commentManager->getComments($_GET['id']);
+
+    if (!$post) {
+        throw new Exception(' le commentaire n\'existe pas !');
+    }
+    else {
+        require('view/frontend/postView.php');
+    }
+}
+
+// function checkFlag($commentId) {
+//     $commentManager = new CommentManager();
+//     $checkFlags = $commentManager->getComment($commentId);
+
+//     if(!$checkFlags) {
+//         throw new Exception("Impossible de trouver le signalement");
+//     } else {
+//         var_dump($commentId);
+//         // header('Location: index.php?action=postAdmin&id=56#postBakend');
+//     }
+// }
+
+
 
 function sessionDestroy() {
     session_start();
