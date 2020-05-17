@@ -13,8 +13,8 @@
     <?php endif; ?>
 <?php endif; ?>
 
-<?php if(isset($_SESSION['role']) && $_SESSION['role'] === "modo" || $_SESSION['role'] === "admin"): ?>
-    <?php if($comment['report_flag'] > 1): ?>
+<?php if(isset($_SESSION['role']) && $_SESSION['role'] === "modo" || isset($_SESSION['role']) && $_SESSION['role'] === "admin"): ?>
+    <?php if($comment['report_flag'] >= 1): ?>
         <div class="row mb-5">
             <div class="col-sm-12">
                 <div class="table-responsive-sm">
