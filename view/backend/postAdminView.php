@@ -32,9 +32,8 @@ ob_start();
                                         <a href="index.php?action=deleteComment&amp;postId=<?= $post['id'] ?>&amp;id=<?= $comment['id'] ?>" class="text-secondary">Effacer le commentaire</a>
                                     <?php endif; ?>
                                     <?php if ($comment['flag'] == 1): ?>
-                                        <p class="text-left text-danger">Commentaire signalé</p>
-                                        <p class="text-right text-success"><a href="index.php?action=reportCancel&amp;id=<?= $post['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;flag=<?= $comment['flag'] ?>" >Retirer le signalement</p>
-                                        <a href="index.php?action=deleteComment&amp;postId=<?= $post['id'] ?>&amp;id=<?= $comment['id'] ?>" class="text-danger">Effacer le commentaire</a>
+                                        <p class="text-left text-success"><a href="index.php?action=reportCancel&amp;id=<?= $post['id'] ?>&amp;commentId=<?= $comment['id'] ?>&amp;flag=<?= $comment['flag'] ?>" class="mr-5" >Retirer le signalement
+                                        <a href="index.php?action=deleteComment&amp;postId=<?= $post['id'] ?>&amp;id=<?= $comment['id'] ?>" class="text-danger">Effacer le commentaire</a></p>
                                     <?php endif; ?>
                                     <?php if ($comment['flag'] == 2): ?>
                                         <p class="text-right text-success">Commentaire approuvé</p>

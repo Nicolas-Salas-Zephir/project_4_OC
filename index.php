@@ -154,16 +154,6 @@ try {
                 throw new Exception("Aucun commentaire n'a été sélectionné");
             }
         }
-        // elseif ($_GET['action'] == 'postAdmin') {
-
-        // }
-        // elseif ($_GET['action'] == 'stopComment') {
-        //     if (isset($_GET['idComment']) && $_GET['idComment'] > 0) {
-        //         addStatement($_POST['stopComment'], $_GET['idComment'], $_GET['postId']);
-        //     } else {
-        //         throw new Exception("Aucun commentaire n'a été signalé");
-        //     }
-        // } 
     } else {
         listPosts();
     }

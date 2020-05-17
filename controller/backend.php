@@ -17,30 +17,30 @@ function adminView() {
     require('view/backend/insertPostView.php');
 }
 
-// function addPost($title, $content, $author) {
-//     $postManager = new PostManager();
-//     $post = $postManager->insertPost($title, $content, $author);
-//     // $getPost = $postManager->getPost($postId);
+function addPost($title, $content, $author) {
+    $postManager = new PostManager();
+    $post = $postManager->insertPost($title, $content, $author);
+    // $lastId = $postManager->lastInsertId();
 
-//     $path = './public/images/miniatures/' . $id . '.jpg';
-//     echo "<pre>";
-//     var_dump($_FILES);
-//     var_dump($path);
-//     echo "</pre>";
-//     // lastInsertId
-//     if (isset($_FILES['miniature'])) {
-//         if (exif_imagetype($_FILES['miniature']['tmp_name']) == 2) {
-//             move_uploaded_file($_FILES['miniature']['tmp_name'], $path);
-//         } else {
-//             throw new Exception(' Votre image doit être au format jpg');  
-//         }
-//     }
-//     if(!$post) {
-//         throw new Exception('Impossible d\'ajouter un poste');
-//     } else {
-//         header('Location: index.php?action=postsAdmin#list-posts-admin');
-//     }
-// }
+    // $path = './public/images/miniatures/' . $lastId . '.jpg';
+    // echo "<pre>";
+    // var_dump($_FILES);
+    // var_dump($path);
+    // echo "</pre>";
+    
+    // if (isset($_FILES['miniature'])) {
+    //     if (exif_imagetype($_FILES['miniature']['tmp_name']) == 2) {
+    //         move_uploaded_file($_FILES['miniature']['tmp_name'], $path);
+    //     } else {
+    //         throw new Exception(' Votre image doit être au format jpg');  
+    //     }
+    // }
+    if(!$post) {
+        throw new Exception('Impossible d\'ajouter un poste');
+    } else {
+        header('Location: index.php?action=postsAdmin#list-posts-admin');
+    }
+}
 
 function listPostsAdmin() {
     $postManager = new PostManager();
@@ -142,12 +142,6 @@ function checkUser($pseudo, $email, $pass_hache, $role = 0) {
     if ($totalPseudo < 1 && $totalEmail < 1) {
         addUser($pseudo, $email, $pass_hache, $role);
     } elseif ($totalPseudo > 1 || $totalEmail > 1) {
-        echo "<pre>";
-            var_dump("Total pseudo : " . $totalPseudo);
-            var_dump("Total email : " . $totalEmail );
-            var_dump($pseudo);
-            var_dump($email );
-        echo "</pre>";
         throw new Exception("Ce pseudo ou adresse email sont déja utilisés");
     } 
 }
@@ -248,20 +242,6 @@ function flagPostsAdmin() {
         require('view/frontend/postView.php');
     }
 }
-
-// function checkFlag($commentId) {
-//     $commentManager = new CommentManager();
-//     $checkFlags = $commentManager->getComment($commentId);
-
-//     if(!$checkFlags) {
-//         throw new Exception("Impossible de trouver le signalement");
-//     } else {
-//         var_dump($commentId);
-//         // header('Location: index.php?action=postAdmin&id=56#postBakend');
-//     }
-// }
-
-
 
 function sessionDestroy() {
     session_start();

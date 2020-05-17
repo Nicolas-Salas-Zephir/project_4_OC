@@ -14,15 +14,13 @@ ob_start();
     <div class="row">
         <div class="col-12">            
             <form enctype="multipart/form-data" action="index.php?action=addPost" method="post">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="flic">Envoi d'une image :</label><br/>
-                    <input type="hidden" name="MAX_FILE_SIZE" value="250000" />
-                    <input type="file" name="fic" size=50 />
-                </div>
+                    <input type="file" name="miniature" size=50 />
+                </div> -->
                 <div class="form-group">
                     <label for="title">Titre :</label><br />
                     <input type="text" class="form-control"  id="title" name="title" aria-describedby="emailHelp" placeholder="Titre de l'article"/>
-                    <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                 </div>
                 <div class="form-group">
                     <label for="author">Auteur :</label><br />

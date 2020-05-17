@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
     <?php if (isset($_GET['action'])): ?>
-        <div class="row blog-posts-content d-flex justify-content-center"> 
+        <div id="blog" class="row blog-posts-content d-flex justify-content-center"> 
     <?php else: ?>
         <div class="row blog-posts-content"> 
     <?php endif ?>
@@ -30,7 +30,7 @@
                 <?php if (isset($_GET['action'])): ?>   
                 <div class="d-flex align-items-baseline post-footer border-top">
                     <div>
-                        <p>le <?= $data['create_date_fr']; ?></p>
+                        <p>Le <?= $data['create_date_fr']; ?></p>
                     </div>
                     <div class="post-link">
                         <a href="index.php?action=post&id=<?= $data['id']; ?>#comments">Voir les commentaires</a>

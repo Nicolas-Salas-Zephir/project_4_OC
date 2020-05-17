@@ -19,7 +19,7 @@ function listPosts() {
 function post() {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-    
+
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
@@ -62,24 +62,7 @@ function incrementReporting($flag, $postId, $id) {
     } else {
         header('Location: index.php?action=post&id=' . $postId . '#stop-comment' . $id);
     }
-    
 }
-
-// function addStatement($declared, $id, $postId) {
-//     $commentManager = new CommentManager();
-//     $comments = $commentManager->declaredComment($declared, $id);
-
-//     $count = 0;
-
-
-//     if (!$comments) {
-//         throw new Exception('Impossible de déclarer le commentaire !');
-//     }
-//     else {
-//         header('Location: index.php?action=post&id=' . $postId . '#comments');
-//     }
-//     require('view/frontend/listPostsView.php');
-// }
 
 function authorDescript() {
     require('view/frontend/authorDescripView.php');
