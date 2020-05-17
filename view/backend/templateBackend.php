@@ -26,6 +26,10 @@
       <?php endif ?>
   </head>
   <body>
+      <div id="backToTheTop">
+          <a class="arrow-up" href="#"></a>
+      </div>
+
       <?php if(isset($_GET['action']) && $_GET['action'] !=="identification"
         && isset($_GET['action']) && $_GET['action'] !=="userRegistration"
         ): ?>
@@ -50,6 +54,7 @@
         <?= $content ?>
       </div>
 
+      <script src="./public/js/script.js"></script>
       <script src="https://kit.fontawesome.com/d441c3b81b.js"
         crossorigin="anonymous"></script>
       <script
