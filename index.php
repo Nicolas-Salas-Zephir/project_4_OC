@@ -49,7 +49,7 @@ try {
         } elseif ($_GET['action'] == "blog") {
             postBlog();
         } elseif ($_GET['action'] == "postsAdmin") {
-            listPostsAdmin();
+                listPostsAdmin();
         } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);

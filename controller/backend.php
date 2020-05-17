@@ -222,23 +222,6 @@ function removeMember($id) {
     }
 }
 
-function checkCommentsFlag() {
-    $commentManager = new CommentManager();
-    $checkFlags = $commentManager->checkFlag();
-
-    // foreach($checkFlags as $checkFlag);
-
-    // if ($checkFlag < 1) {
-    //     var_dump($checkFlag);
-    //     var_dump("Total flaaaag : " . $checkFlag['report_flag']);
-    // } elseif ($checkFlag > 1) {
-    //     echo "<pre>";
-    //         var_dump("Total flag : " . $checkFlag['report_flag']);
-    //     echo "</pre>";
-    //     // throw new Exception("Ce signalement n'existe pas");
-    // } 
-}
-
 function incrementReportingAdmin($flag, $postId, $id) {
     $commentManager = new CommentManager();
     $comments = $commentManager->editComment($flag, $postId, $id);
