@@ -46,6 +46,14 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
+    
+    public function deleteComments($id) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM comments WHERE post_id = ?');
+        $affectedLines = $req->execute(array($id));
+
+        return $affectedLines;
+    }
 
     public function checkFlag($flag) {
         $db = $this->dbConnect();
