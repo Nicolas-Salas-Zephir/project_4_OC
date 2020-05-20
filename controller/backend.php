@@ -12,7 +12,7 @@ require_once('model/RegistrationManager.php');
 function adminView() {
     $navigation = "navBackend.php";
     $title = 'Ajouter un article';
-    session_start();
+    // session_start();
 
     require('view/backend/insertPostView.php');
 }
@@ -51,12 +51,11 @@ function listPostsAdmin() {
     $navigation = "navBackend.php";
     $count = 0;
     
-    session_start();
+    // session_start();
     
-    if (isset($_SESSION['role']) && $_SESSION['role'] === "modo" || $_SESSION['role'] === "admin") {
         $comment = $commentManager->checkFlag(1);
         $comments = $commentManager->getCommentsFlag(1);
-    } 
+    
     
     require('view/backend/listPostsAdminView.php');
 }
@@ -105,7 +104,9 @@ function updatePost($content, $author, $title, $id) {
 
 function removePost($id) {
     $postManager = new PostManager();
+    $commentManager = new CommentManager();
     $affectedLines = $postManager->deletePost($id);
+    $deleteComments = $commentManager->deleteComments($id); 
 
     if(!$affectedLines) {
         throw new Exception("Impossible d'effacer le commentaire !");

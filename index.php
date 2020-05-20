@@ -39,7 +39,14 @@ try {
                 throw new Exception('Aucun identifiant de article envoyé');
             }
         } elseif ($_GET["action"] == "admin") {
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor") {
                 adminView();
+            } elseif (isset($_SESSION['role']) && $_SESSION['role'] == "modo" ) {
+                header('Location: index.php?action=postsAdmin');
+            } else {
+                header('Location: index.php'); 
+            }
         } elseif ($_GET["action"] == "addPost") {
             if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
                 addPost($_POST['title'], $_POST['content'], $_POST['author']); 
@@ -49,7 +56,12 @@ try {
         } elseif ($_GET['action'] == "blog") {
             postBlog();
         } elseif ($_GET['action'] == "postsAdmin") {
-                listPostsAdmin();
+                session_start();
+                if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor" || $_SESSION['role'] == "modo") {
+                    listPostsAdmin();
+                } else {
+                    header('Location: index.php'); 
+                }                
         } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);

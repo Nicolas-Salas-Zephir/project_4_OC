@@ -24,7 +24,7 @@ function post() {
     $comments = $commentManager->getComments($_GET['id']);
 
     if (!$post) {
-        throw new Exception(' le commentaire n\'existe pas  !');
+        throw new Exception(' l\'article n\'existe pas  !');
     }
     else {
         require('view/frontend/postView.php');
