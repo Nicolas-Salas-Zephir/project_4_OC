@@ -62,9 +62,13 @@ try {
         } elseif ($_GET['action'] == "postsAdmin") {
             session_start();
             if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor" || $_SESSION['role'] == "modo") {
-                if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
-                postsBlogAdmin($_GET['page']);
-            }
+                if (isset($_GET['page'])) {
+                    if(!empty($_GET['page']) && $_GET['page'] > 0) {
+                        postsBlogAdmin($_GET['page']);
+                    }
+                } else {
+                    throw new Exception("La page n'existe pas !!!");
+                }
             } else {
                 throw new Exception('La page n\'existe pas'); 
             }                
@@ -165,14 +169,14 @@ try {
             } else {
                 throw new Exception("Aucun utilisateur n'a été supprimé");
             }
-        }  elseif ($_GET['action'] == 'reportCancel') {
+        } elseif ($_GET['action'] == 'reportCancel') {
             if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 1) {
                 incrementReportingAdmin($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
             } else {
                 throw new Exception("Aucun commentaire n'a été sélectionné");
             }
-        }   elseif ($_GET['action'] == is_null(NULL)) {
-                throw new Exception("La page n'existe pas !!!");
+        } elseif ($_GET['action'] == is_null(NULL)) {
+            throw new Exception("La page n'existe pas !!!");
         }
     } else {
         listPosts();
