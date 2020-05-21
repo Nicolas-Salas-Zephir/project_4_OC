@@ -56,6 +56,8 @@ try {
         } elseif ($_GET['action'] == "blog") {
             if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
                 postsBlog($_GET['page']);
+            } else {
+                header('Location: index.php');
             }
         } elseif ($_GET['action'] == "postsAdmin") {
             session_start();
@@ -64,7 +66,7 @@ try {
                 postsBlogAdmin($_GET['page']);
             }
             } else {
-                header('Location: index.php'); 
+                throw new Exception('La page n\'existe pas'); 
             }                
         } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -169,6 +171,8 @@ try {
             } else {
                 throw new Exception("Aucun commentaire n'a été sélectionné");
             }
+        }   elseif ($_GET['action'] == is_null(NULL)) {
+                throw new Exception("La page n'existe pas !!!");
         }
     } else {
         listPosts();
