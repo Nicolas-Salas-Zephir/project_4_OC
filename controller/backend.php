@@ -42,20 +42,30 @@ function addPost($title, $content, $author) {
     }
 }
 
-function listPostsAdmin() {
+function  postsBlogAdmin($pages) {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
-    $posts = $postManager->getPostsBlog();
+    $totalPosts = $postManager->countPosts();
+
     $title = 'Tableau de bord'; 
     $navigation = "navBackend.php";
     $count = 0;
     
-    // session_start();
-    
-        $comment = $commentManager->checkFlag(1);
-        $comments = $commentManager->getCommentsFlag(1);
-    
+    $title = 'Tableau de bord';
+    $postsPerPage = 3;
+    $totalPage = ceil($totalPosts / $postsPerPage); 
+
+    if ($pages <= $totalPage) {
+        $page = intval($pages);
+    } else {
+        $page = 1;
+    }
+    $depart = ($page - 1) * $postsPerPage;
+
+    $posts = $postManager->getPosts($depart, $postsPerPage);
+    $comment = $commentManager->checkFlag(1);
+    $comments = $commentManager->getCommentsFlag(1);
     
     require('view/backend/listPostsAdminView.php');
 }

@@ -60,7 +60,9 @@ try {
         } elseif ($_GET['action'] == "postsAdmin") {
             session_start();
             if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor" || $_SESSION['role'] == "modo") {
-                listPostsAdmin();
+                if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
+                postsBlogAdmin($_GET['page']);
+            }
             } else {
                 header('Location: index.php'); 
             }                
