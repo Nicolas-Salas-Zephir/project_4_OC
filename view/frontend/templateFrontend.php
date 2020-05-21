@@ -77,7 +77,7 @@
                 <div class="cross d-flex justify-content-end showw mr-5 mt-4">X</div>
                 <ul class="d-flex flex-column justify-content-center align-items-center">
                       <li><a href="index.php" class="active text-center">Accueil</a></li>
-                      <li><a href="index.php?action=blog" class="link text-center">blog</a></li>
+                      <li><a href="index.php?action=blog&amp;page=1#blog" class="link text-center">blog</a></li>
                       <li><a href="index.php?action=authorDescript" class="link text-center">qui je suis ?</a></li>
                     <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
                       <li><a href='index.php?action=postsAdmin' class="link text-center">Espace administrateur</a></li>
