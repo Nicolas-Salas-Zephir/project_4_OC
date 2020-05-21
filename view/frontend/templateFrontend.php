@@ -28,7 +28,7 @@
             <nav>
               <ul class="nav flex-column">
                 <li><a href="index.php" class="active">Accueil</a></li>
-                <li><a href="index.php?action=blog#blog" class="link">blog</a></li>
+                <li><a href="index.php?action=blog&amp;page=1#blog" class="link">blog</a></li>
                 <li><a href="index.php?action=authorDescript#author" class="link">qui suis-je ?</a></li>
                 <li class="nav-item dropdown">
                   <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>

@@ -38,21 +38,22 @@
             </div>
         </div>
     <?php endwhile; ?>
-    
 </div>
-<div class="d-flex justify-content-center mb-5">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <?php for($i = 1; $i <= $totalPage; $i++): ?>
-                <?php if($i == $page): ?>
-                        <li class="page-item active" aria-current="page"><a href="index.php?action=blog&amp;page=<?= $i ?>" class="page-link" href="#"><?= $i ?></a></li>
-                    <?php else: ?>
-                        <li class="page-item"><a href="index.php?action=blog&amp;page=<?= $i ?>" class="page-link" href="#"><?= $i ?></a></li>
-                <?php endif; ?>
-            <?php endfor; ?>    
-        </ul>
-    </nav>
-</div>
+<?php if (isset($_GET['page']) && $_GET['page']): ?>
+    <div class="d-flex justify-content-center mb-5">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <?php for($i = 1; $i <= $totalPage; $i++): ?>
+                    <?php if($i == $page): ?>
+                            <li class="page-item active" aria-current="page"><a href="index.php?action=blog&amp;page=<?= $i ?>" class="page-link" href="#"><?= $i ?></a></li>
+                        <?php else: ?>
+                            <li class="page-item"><a href="index.php?action=blog&amp;page=<?= $i ?>" class="page-link" href="#"><?= $i ?></a></li>
+                    <?php endif; ?>
+                <?php endfor; ?>    
+            </ul>
+        </nav>
+    </div>
+<?php endif; ?>
 <?php
 $posts->closeCursor();
 ?>

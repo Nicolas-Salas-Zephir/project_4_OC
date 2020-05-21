@@ -3,15 +3,7 @@ namespace nicolassalaszephir\Blog\Model;
 
 require_once("model/Manager.php");
 
-class PostManager extends Manager
-{
-    public function getPosts()
-    {
-        $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY id DESC LIMIT 0, 3');
-        
-        return $req;
-    }
+class PostManager extends Manager {
 
     public function getPost($postId) {
         $db = $this->dbConnect();
@@ -32,11 +24,19 @@ class PostManager extends Manager
         return $affectedLines;
     }
 
-    public function getPostsBlog() {
+    public function getPosts($depart, $postsPerPage) {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY id DESC LIMIT 0, 20');
-
+        $req = $db->query('SELECT id, title, content, author, DATE_FORMAT(create_date, \'%d/%m/%Y\') AS create_date_fr FROM posts ORDER BY id DESC LIMIT ' . $depart .' , '. $postsPerPage);
+        
         return $req;
+    }
+
+    public function countPosts() {
+        $db = $this->dbConnect();
+        $totalPostsReq = $db->query('SELECT id FROM posts');
+        $totalePosts = $totalPostsReq->rowCount();
+
+        return $totalePosts;
     }
 
     public function editPost($content, $author, $title, $id) {

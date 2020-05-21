@@ -10,7 +10,11 @@ require_once('model/CommentManager.php');
 function listPosts() {
     $postManager = new PostManager();
 
-    $posts = $postManager->getPosts();
+    $depart = 0;
+    $postsPerPage = 3;
+
+    $posts = $postManager->getPosts($depart, $postsPerPage);
+    
     
     session_start();
     require('view/frontend/listPostsView.php');
@@ -61,7 +65,7 @@ function  postsBlog($pages) {
     }
     $depart = ($page - 1) * $postsPerPage;
 
-    $posts = $postManager->getPostsBlog($depart, $postsPerPage);
+    $posts = $postManager->getPosts($depart, $postsPerPage);
     session_start();
     require('view/frontend/listPostsView.php');
 }
