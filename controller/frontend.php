@@ -45,11 +45,24 @@ function addComment($postId, $author, $comment) {
     }
 }
 
-function  postBlog() {
+function  postsBlog($pages) {
     $postManager = new PostManager();
-    $posts = $postManager->getPostsBlog();
-    session_start();
+    
+    $totalPosts = $postManager->countPosts();
 
+    $title = 'Blog';
+    $postsPerPage = 1;
+    $totalPage = ceil($totalPosts / $postsPerPage); 
+
+    if ($pages <= $totalPage) {
+        $page = intval($pages);
+    } else {
+        $page = 1;
+    }
+    $depart = ($page - 1) * $postsPerPage;
+
+    $posts = $postManager->getPostsBlog($depart, $postsPerPage);
+    session_start();
     require('view/frontend/listPostsView.php');
 }
 

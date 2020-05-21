@@ -54,14 +54,16 @@ try {
                 throw new Exception('Aucun article n\'a été envoyé');
             }
         } elseif ($_GET['action'] == "blog") {
-            postBlog();
+            if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
+                postsBlog($_GET['page']);
+            }
         } elseif ($_GET['action'] == "postsAdmin") {
-                session_start();
-                if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor" || $_SESSION['role'] == "modo") {
-                    listPostsAdmin();
-                } else {
-                    header('Location: index.php'); 
-                }                
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor" || $_SESSION['role'] == "modo") {
+                listPostsAdmin();
+            } else {
+                header('Location: index.php'); 
+            }                
         } elseif ($_GET['action'] == "postAdmin" ) {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 postBackend($_GET['id']);
