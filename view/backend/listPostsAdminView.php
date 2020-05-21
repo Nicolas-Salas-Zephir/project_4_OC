@@ -1,9 +1,7 @@
 <?php ob_start(); ?>
 
-<?php if(isset($_SESSION['role']) && $_SESSION['role'] !== "modo"): ?>
-<h1 id="list-posts-admin" class="text-center mb-5">Liste des articles publiés</h1>
-<?php endif; ?>
-<?php if(isset($_SESSION['role']) && $_SESSION['role'] === "modo"): ?>
+
+<?php if(isset($_SESSION['role']) && $_SESSION['role'] === "modo" || $_SESSION['role'] === "admin"): ?>
     <?php if($comment['report_flag'] == 1): ?>
     <h1 class="text-danger text-center mb-5"><?= $comment['report_flag'] ?> commentaire signalé</h1>
     <?php elseif($comment['report_flag'] > 1): ?>
@@ -48,6 +46,7 @@
 <?php endif; ?>
 
 <?php if(isset($_SESSION['role']) && $_SESSION['role'] !== "modo"): ?>
+    <h1 id="list-posts-admin" class="text-center mb-5">Liste des articles publiés</h1>
     <?php while ($data = $posts->fetch()): ?>
         <div class="row d-flex justify-content-center">
             <div class="col-sm-12 ">
