@@ -80,13 +80,13 @@
                       <li><a href="index.php?action=blog&amp;page=1#blog" class="link text-center">blog</a></li>
                       <li><a href="index.php?action=authorDescript" class="link text-center">qui je suis ?</a></li>
                     <?php if(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
-                      <li><a href='index.php?action=postsAdmin' class="link text-center">Espace administrateur</a></li>
+                      <li><a href='index.php?action=postsAdmin&amp;page=1' class="link text-center">Espace administrateur</a></li>
                       <li><a href="index.php?action=logout" class="link text-center mb-5">Déconnexion</a></li>
                     <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'editor'): ?>
-                      <li><a href='index.php?action=postsAdmin' class="link text-center">Espace éditeur</a></li>
+                      <li><a href='index.php?action=postsAdmin&amp;page=1' class="link text-center">Espace éditeur</a></li>
                       <li><a href="index.php?action=logout" class="link text-center mb-5">Déconnexion</a></li>
                     <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 'modo'): ?>
-                      <li><a href='index.php?action=postsAdmin' class="link text-center">Espace modérateur</a></li>
+                      <li><a href='index.php?action=postsAdmin&amp;page=1' class="link text-center">Espace modérateur</a></li>
                       <li><a href="index.php?action=logout" class="link text-center mb-5">Déconnexion</a></li>
                     <?php elseif(isset($_SESSION['pseudo']) && isset($_SESSION['id']) && isset($_SESSION['role']) && $_SESSION['role'] == 0): ?>
                       <li><a href="index.php?action=logout" class="link text-center mb-5">Déconnexion</a></li>

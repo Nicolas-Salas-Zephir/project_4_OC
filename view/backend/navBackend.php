@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto d-flex justify-content-between align-items-center">
                 <li class="nav-item">
-                    <a class="navbar-brand navbar__title ml-3" href="index.php?action=postsAdmin">
+                    <a class="navbar-brand navbar__title ml-3" href="index.php?action=postsAdmin&amp;page=1">
                         Tableau de bord
                     </a>
                 </li>

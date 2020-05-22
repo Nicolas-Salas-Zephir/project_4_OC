@@ -40,12 +40,12 @@
     <?php endwhile; ?>
 </div>
 <?php if (isset($_GET['page']) && $_GET['page']): ?>
-    <div class="d-flex justify-content-center mb-5">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination">
+    <div class="mb-5">
+        <nav id="paginationNav" aria-label="Page navigation example">
+            <ul class="pagination pagination-sm d-flex justify-content-center ">
                 <?php if($page > 1): ?>
                 <li class="page-item">
-                    <a class="page-link" href="index.php?action=blog&amp;page=<?= $_GET['page'] - 1 ?>" aria-disabled="true">Retour</a>
+                    <a class="page-link" href="index.php?action=blog&amp;page=<?= $_GET['page'] - 1 ?>#paginationNav" aria-disabled="true">Retour</a>
                 </li>
                 <?php elseif($_GET['page'] == 1): ?>
                 <li class="page-item disabled">
@@ -54,14 +54,14 @@
                 <?php endif; ?>
                 <?php for($i = 1; $i <= $totalPage; $i++): ?>
                     <?php if($i == $_GET['page']): ?>
-                            <li class="page-item active" aria-current="page"><a href="index.php?action=blog&amp;page=<?= $i ?>" class="page-link" href="#"><?= $i ?></a></li>
+                            <li class="page-item active" aria-current="page"><a href="index.php?action=blog&amp;page=<?= $i ?>#paginationNav" class="page-link" href="#"><?= $i ?></a></li>
                         <?php else: ?>
                             <li class="page-item"><a href="index.php?action=blog&amp;page=<?= $i ?>" class="page-link" href="#"><?= $i ?></a></li>
                     <?php endif; ?>
                 <?php endfor; ?>    
                 <?php if($_GET['page'] >= 1 && $_GET['page'] < $totalPage): ?>
                 <li class="page-item">
-                    <a class="page-link" href="index.php?action=blog&amp;page=<?= $_GET['page'] + 1 ?>" tabindex="1" aria-disabled="true">Suivant</a>
+                    <a class="page-link" href="index.php?action=blog&amp;page=<?= $_GET['page'] + 1 ?>#paginationNav" tabindex="1" aria-disabled="true">Suivant</a>
                 </li>
                 <?php elseif($_GET['page'] == $totalPage): ?>
                 <li class="page-item disabled">

@@ -12,7 +12,6 @@ require_once('model/RegistrationManager.php');
 function adminView() {
     $navigation = "navBackend.php";
     $title = 'Ajouter un article';
-    // session_start();
 
     require('view/backend/insertPostView.php');
 }
@@ -20,25 +19,11 @@ function adminView() {
 function addPost($title, $content, $author) {
     $postManager = new PostManager();
     $post = $postManager->insertPost($title, $content, $author);
-    // $lastId = $postManager->lastInsertId();
-
-    // $path = './public/images/miniatures/' . $lastId . '.jpg';
-    // echo "<pre>";
-    // var_dump($_FILES);
-    // var_dump($path);
-    // echo "</pre>";
     
-    // if (isset($_FILES['miniature'])) {
-    //     if (exif_imagetype($_FILES['miniature']['tmp_name']) == 2) {
-    //         move_uploaded_file($_FILES['miniature']['tmp_name'], $path);
-    //     } else {
-    //         throw new Exception(' Votre image doit être au format jpg');  
-    //     }
-    // }
     if(!$post) {
         throw new Exception('Impossible d\'ajouter un poste');
     } else {
-        header('Location: index.php?action=postsAdmin#list-posts-admin');
+        header('Location: index.php?action=postsAdmin&page=1#list-posts-admin');
     }
 }
 
@@ -61,6 +46,7 @@ function  postsBlogAdmin($pages) {
     } else {
         $page = 1;
     }
+
     $depart = ($page - 1) * $postsPerPage;
 
     $posts = $postManager->getPosts($depart, $postsPerPage);
@@ -121,7 +107,7 @@ function removePost($id) {
     if(!$affectedLines) {
         throw new Exception("Impossible d'effacer le commentaire !");
     } else {
-        header('Location: index.php?action=postsAdmin');
+        header('Location: index.php?action=postsAdmin&page=1');
     }
 }
 

@@ -18,8 +18,6 @@ class PostManager extends Manager {
         $db = $this->dbConnect();
         $req = $db->prepare('INSERT INTO posts (title, content, author, create_date) VALUES (?, ?, ?, NOW())');
         $affectedLines = $req->execute(array($title, $content, $author));
-        
-        $id = $db->lastInsertId();
 
         return $affectedLines;
     }
