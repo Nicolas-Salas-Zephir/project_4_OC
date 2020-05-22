@@ -9,11 +9,7 @@
               <div class="col-lg-12 d-flex justify-content-center">
                 <p><a href="index.php" class="text-center">Retour à la page d'accueil</a></p>
               </div>
-              <div class="col-lg-12 d-flex justify-content-center">
-                <p class="mt-1 text-center"><strong><a href="index.php?action=userRegistration">Première inscription</a></strong></p>
-              </div>
             </div>
-
             <div class="row d-flex justify-content-center">
               <div class="col-md-4">
                 <form action="index.php?action=identificationValidation" method="post">
@@ -27,19 +23,14 @@
                       id="password" name="password" placeholder="Mot de passe"
                       required/>
                   </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="auto-connection" name="auto-connection">
-                      <label class="form-check-label" for="auto-connection">
-                        Connexion automatique
-                      </label>
-                    </div>
-                  </div>
                   <div class="d-flex justify-content-center mt-5">
                     <button type="submit" class="btn btn-primary btn-lg
                       btn-block">Valider</button>
                   </div>
                 </form>
+                <div class="col-lg-12 d-flex justify-content-center mt-3">
+                  <p class="mt-1 text-center"><strong><a href="index.php?action=userRegistration">Première inscription</a></strong></p>
+                </div>
               </div>
             </div>
           </div>

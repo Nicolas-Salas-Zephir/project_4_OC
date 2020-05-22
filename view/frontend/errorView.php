@@ -1,6 +1,7 @@
-<?php $title = 'Page d\'erreur'; ?>
-
-<?php ob_start(); ?>
+<?php 
+$title = 'Page d\'erreur'; 
+ob_start();
+?>
 
     <div class="row">
         <div class="col-12 text-center">

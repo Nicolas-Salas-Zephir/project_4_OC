@@ -36,11 +36,11 @@ ob_start();
                                 <div class="d-flex justify-content-between">
                                     <p class="mb-3"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                                     <?php if ($comment['flag'] == 0): ?>
-                                    <a href="index.php?action=reporting&id=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>&flag=<?= $comment['flag'] ?>" id="stop-comment" class="text-right img-report-opacityMin" data-toggle="tooltip" title="Signalé le commentaire">
+                                    <a href="index.php?action=reporting&id=<?= $post['id'] ?>&commentId=<?= $comment['id'] ?>&flag=<?= $comment['flag'] ?>" id="stop-comment" class="text-right img-report-opacityMin" data-toggle="tooltip" title="Signaler le commentaire">
                                         <img src="./public/images/stop.svg" alt="icone-signaler-le-commentaire">
                                     </a>
                                     <?php elseif ($comment['flag'] == 1): ?>
-                                    <a id="stop-comment<?= $comment['id'] ?>" class="text-right img-report-opacityMax" data-toggle="tooltip" title="Commentaire Signalé">
+                                    <a id="stop-comment<?= $comment['id'] ?>" class="text-right img-report-opacityMax" data-toggle="tooltip" title="Commentaire signalé">
                                         <img src="./public/images/stop.svg" alt="icone-signaler-le-commentaire">
                                     </a>   
                                     <?php elseif ($comment['flag'] == 2): ?>

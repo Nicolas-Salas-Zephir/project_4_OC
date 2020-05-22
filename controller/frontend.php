@@ -10,6 +10,7 @@ require_once('model/CommentManager.php');
 function listPosts() {
     $postManager = new PostManager();
 
+    $title = 'Page principale';
     $depart = 0;
     $postsPerPage = 3;
 

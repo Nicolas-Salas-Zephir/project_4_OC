@@ -36,7 +36,7 @@ ob_start();
                                         <a href="index.php?action=deleteComment&amp;postId=<?= $post['id'] ?>&amp;id=<?= $comment['id'] ?>" class="text-danger">Effacer le commentaire</a></p>
                                     <?php endif; ?>
                                     <?php if ($comment['flag'] == 2): ?>
-                                        <p class="text-right text-success">Commentaire approuvé</p>
+                                        <p class="text-right text-success" data-toggle="tooltip" title="Commentaire approuvé"><img src="./public/images/emblemdefault.svg" alt="Icone validé"></p>
                                     <?php endif; ?>
                                 </div>
                             <?php endwhile; ?>
