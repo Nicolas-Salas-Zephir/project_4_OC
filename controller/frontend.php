@@ -62,9 +62,12 @@ function  postsBlog($pages) {
 
     if ($pages <= $totalPage) {
         $page = intval($pages);
+    } elseif ($pages > $totalPage) {
+        header('Location: index.php?action=blog&page=1#blog');
     } else {
         $page = 1;
     }
+
     $depart = ($page - 1) * $postsPerPage;
 
     $posts = $postManager->getPosts($depart, $postsPerPage);

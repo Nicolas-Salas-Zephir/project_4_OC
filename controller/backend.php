@@ -43,6 +43,8 @@ function  postsBlogAdmin($pages) {
 
     if ($pages <= $totalPage) {
         $page = intval($pages);
+    } elseif ($pages > $totalPage) {
+        header('Location: index.php?action=postsAdmin&page=1#paginationNav');
     } else {
         $page = 1;
     }

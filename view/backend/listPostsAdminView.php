@@ -6,8 +6,6 @@
     <h1 class="text-danger text-center mb-5"><?= $comment['report_flag'] ?> commentaire signalé</h1>
     <?php elseif($comment['report_flag'] > 1): ?>
     <h1 class="text-danger text-center mb-5"><?= $comment['report_flag'] ?> commentaires signalés</h1>
-    <?php elseif($comment['report_flag'] == 0): ?>
-    <h1 class="text-danger text-center mb-5">Il n'y a aucun commentaires signalés</h1>
     <?php endif; ?>
 <?php endif; ?>
 
