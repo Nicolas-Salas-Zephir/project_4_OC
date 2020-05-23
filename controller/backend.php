@@ -19,7 +19,7 @@ function adminView() {
 function addPost($title, $content, $author) {
     $postManager = new PostManager();
     $post = $postManager->insertPost($title, $content, $author);
-    
+
     if(!$post) {
         throw new Exception('Impossible d\'ajouter un poste');
     } else {
@@ -71,7 +71,6 @@ function postBackend($id) {
         throw new Exception('l\'article n\'existe pas  !');
     }
     else {
-        session_start();
         require('view/backend/postAdminView.php');
     }
 }
@@ -83,7 +82,6 @@ function printPost($postId) {
     $title = 'Mon blog'; 
     $navigation = "navBackend.php";
     
-    session_start();
     require('view/backend/editpostView.php');
 }
 
@@ -113,6 +111,7 @@ function removePost($id) {
 
 function userRegistration() {
     $title = 'Identification';
+    var_dump($_SESSION);
     require('view/backend/registrationView.php');
 }
 
@@ -155,12 +154,11 @@ function verifyUser($pseudo) {
         $_SESSION['role'] = $user['role'];
         header('Location: index.php');
     } else {
-        echo 'Mauvais identifiant ou mot de passe !';
+        throw new Exception('Mauvais identifiant ou mot de passe !');
     }
 }
 
 function identifyView() {
-    session_start();
     $title = 'Identification';
     require('view/backend/identificationView.php');
 }
@@ -171,11 +169,7 @@ function addSuperUsers() {
 
     $title = 'Nouvel utilisateur'; 
     $navigation = "navBackend.php";
-    if(!$users) {
-        throw new Exception("Impossible de voir les utilisateurs !");
-    } else {
-        session_start();
-    }
+    
     require('view/backend/insertUsersView.php');
 }
 
@@ -244,4 +238,10 @@ function sessionDestroy() {
     session_start();
     session_destroy();
     header('Location: index.php');
+}
+
+function redirect() {
+    if (isset($_SESSION['role']) && $_SESSION['role'] == 0 || !isset($_SESSION['role'])) {
+        header('Location: index.php');
+    }
 }

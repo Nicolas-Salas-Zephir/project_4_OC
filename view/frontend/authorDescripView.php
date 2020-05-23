@@ -1,6 +1,4 @@
 <?php 
-session_start();
-$title = 'Mon blog'; 
 ob_start(); 
 ?>  
         <div id="author" class="row d-flex justify-content-center mt-5 mb-5 author-description">

@@ -27,9 +27,10 @@ function post() {
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
+    $title = 'Mon Article'; 
 
     if (!$post) {
-        throw new Exception(' l\'article n\'existe pas  !');
+        header('Location: index.php');
     }
     else {
         require('view/frontend/postView.php');
@@ -83,5 +84,7 @@ function incrementReporting($flag, $postId, $id) {
 }
 
 function authorDescript() {
+    $title = 'Ma biographie'; 
+
     require('view/frontend/authorDescripView.php');
 }

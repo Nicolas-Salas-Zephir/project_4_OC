@@ -1,6 +1,4 @@
 <?php 
-session_start();
-$title = 'Mon blog'; 
 ob_start(); 
 ?>  
         <div id="content-article" class="blog-posts-content d-flex flex-column justify-content-center mt-5 mb-5"> 

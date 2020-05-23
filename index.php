@@ -7,38 +7,33 @@ try {
         if ($_GET['action'] == 'listPosts') {
             listPosts();
         } elseif ($_GET['action'] == 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || isset($_SESSION['role']) && $_SESSION['role'] == "editor" || isset($_SESSION['role']) && $_SESSION['role'] == "modo") {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    post();
+                } else {
+                    throw new Exception('Aucun identifiant d\'article envoyé');
+                }
+            } elseif (isset($_SESSION['role']) && $_SESSION['role'] == 0 || !isset($_SESSION['role'])) {
                 post();
             } else {
-                throw new Exception('Aucun identifiant d\'article envoyé');
+                throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || isset($_SESSION['role']) && $_SESSION['role'] == "editor" || isset($_SESSION['role']) && $_SESSION['role'] == "modo" || isset($_SESSION['role']) && $_SESSION['role'] == 0) {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    if (!empty($_POST['author']) && !empty($_POST['comment'])) {
+                        addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                    } else {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
                 } else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                    throw new Exception('Aucun identifiant d\'article envoyé');
                 }
-            } else {
-                throw new Exception('Aucun identifiant d\'article envoyé');
-            }
-        } elseif ($_GET["action"] == "viewComment") {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postId']) && $_GET['postId'] > 0) {   
-                printComment($_GET['postId'], $_GET['id']);
-            } else {
-                throw new Exception('Aucun identifiant de article envoyé');
-            }
-        } elseif ($_GET["action"] == "editComment") {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['postId']) && $_GET['postId'] > 0) {  
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    updateComment($_GET['postId'], $_GET['id'], $_POST['comment'], $_POST['author']);
-                } else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
-            } else {
-                redirect();
-                throw new Exception('Aucun identifiant d\'article a été envoyé');
-            }
+            } elseif (!isset($_SESSION['role'])) {
+                header('Location: index.php');
+            } 
         } elseif ($_GET["action"] == "admin") {
             session_start();
             if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor") {
