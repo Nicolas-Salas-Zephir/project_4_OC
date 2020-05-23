@@ -36,22 +36,25 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             } else {
-                throw new Exception('Aucun identifiant de article envoyé');
+                redirect();
+                throw new Exception('Aucun identifiant d\'article a été envoyé');
             }
         } elseif ($_GET["action"] == "admin") {
             session_start();
             if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor") {
                 adminView();
             } elseif (isset($_SESSION['role']) && $_SESSION['role'] == "modo" ) {
-                header('Location: index.php?action=postsAdmin');
+                header('Location: index.php?action=postsAdmin&page=1');
             } else {
-                header('Location: index.php'); 
+                redirect();
             }
         } elseif ($_GET["action"] == "addPost") {
             if (!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['author'])) {
                 addPost($_POST['title'], $_POST['content'], $_POST['author']); 
-            }  else {
-                throw new Exception('Aucun article n\'a été envoyé');
+            } elseif(isset($_SESSION['role']) && $_SESSION['role'] == 0) {
+                header('Location: index.php');
+            } else {
+                redirect();
             }
         } elseif ($_GET['action'] == "blog") {
             if(isset($_GET['page']) && !empty($_GET['page']) && $_GET['page'] > 0) {
@@ -70,110 +73,196 @@ try {
                     throw new Exception("La page n'existe pas !!!");
                 }
             } else {
-                throw new Exception('La page n\'existe pas'); 
+                redirect();
             }                
         } elseif ($_GET['action'] == "postAdmin" ) {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                postBackend($_GET['id']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor" || $_SESSION['role'] == "modo") {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    postBackend($_GET['id']);
+                } else {
+                    throw new Exception('Aucun identifiant d\'article envoyé'); 
+                }
             } else {
-                throw new Exception('Aucun identifiant d\'article envoyé');
+                redirect();
             }
         } elseif ($_GET["action"] == "viewAdminPost") {
-            if (isset($_GET['postId']) && $_GET['postId'] > 0) {   
-                printPost($_GET['postId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor") {
+                if (isset($_GET['postId']) && $_GET['postId'] > 0) {   
+                    printPost($_GET['postId']);
+                } else {
+                    throw new Exception('Aucun identifiant de article envoyé');
+                }
+            } elseif ($_SESSION['role'] == "modo") {
+                throw new Exception('Vous n\'avez pas les droits suffisants');
             } else {
-                throw new Exception('Aucun identifiant de article envoyé');
+                redirect();
             }
+             
         } elseif ($_GET["action"] == "editPost") {
-            if (isset($_GET['postId']) && $_GET['postId'] > 0) {  
-                updatePost($_POST['content'], $_POST['author'], $_POST['title'], $_GET['postId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor") {
+                if (isset($_GET['postId']) && $_GET['postId'] > 0) {  
+                    updatePost($_POST['content'], $_POST['author'], $_POST['title'], $_GET['postId']);
+                } else {
+                    throw new Exception('Aucun identifiant d\'article envoyé');
+                }
+            } elseif (isset($_SESSION['role']) && $_SESSION['role'] == "modo") {
+                throw new Exception('Vous n\'avez pas les droits suffisants');
             } else {
-                throw new Exception('Aucun identifiant de article envoyé');
+                redirect();
             }
         } elseif ($_GET['action'] == 'deletePost') {
-            if (isset($_GET['postId']) && $_GET['postId'] > 0) {
-                removePost($_GET['postId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "editor") {
+                if (isset($_GET['postId']) && $_GET['postId'] > 0) {
+                    removePost($_GET['postId']);
+                } else {
+                    throw new Exception("Aucun identifiant d'article envoyé");
+                }
+            } elseif (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                throw new Exception('Vous n\'avez pas les droits suffisants');
             } else {
-                throw new Exception("Aucun article n'a été effacé");
+                redirect();
             }
         } elseif ($_GET['action'] == "userRegistration") {
-            userRegistration();
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || !isset($_SESSION['role'])) {
+                userRegistration();
+            } else {
+                header('Location: index.php');   
+            }
         } elseif ($_GET['action'] == 'registration') {
-            if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && !isset($_POST['role'])) {
-                if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
-                    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                        if ($_POST['password'] === $_POST['password1']) {
-                            checkUser($_POST['username'], $_POST['email'], $_POST['password']);
+            session_start();
+            if (!isset($_SESSION['role'])) {
+                if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']) && !isset($_POST['role'])) {
+                    if (!empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['email'])) {
+                        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                            if ($_POST['password'] === $_POST['password1']) {
+                                checkUser($_POST['username'], $_POST['email'], $_POST['password']);
+                            } else {
+                                throw new Exception('Les mots de passe de sont pas identiques !');
+                            }
                         } else {
-                            throw new Exception('Les mots de passe de sont pas identiques !');
+                            throw new Exception('Ce n\'est pas une adresse mail valide !');
                         }
-                    } else {
-                        throw new Exception('Ce n\'est pas une adresse mail valide !');
+                    }  else {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
                     }
-                }  else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                } else {
+                    header('Location: index.php?action=userRegistration');
                 }
             } else {
-                throw new Exception("Aucun utisateur n'a été ajouté");
+                header('Location: index.php');
             }
         } elseif($_GET['action'] == 'identification') {
-            identifyView();
-            // echo $_SERVER['REQUEST_METHOD'];
+            session_start();
+            if (!isset($_SESSION['role'])) {
+                identifyView();
+            } else {
+                header('Location: index.php');
+            }
         } elseif($_GET['action'] == "identificationValidation") {
-            if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-                if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
-                    verifyUser($_POST['pseudo']);
+            session_start();
+            if (!isset($_SESSION['role'])) {
+                if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                    if (!empty($_POST['pseudo']) && !empty($_POST['password'])) {
+                        verifyUser($_POST['pseudo']);
+                    }
+                } else {
+                    header('Location: index.php?action=identification');
                 }
             } else {
-                throw new Exception('Mauvais identifiant ou mot de passe !');
+                header('Location: index.php');
             }
         } elseif($_GET['action'] == 'logout') {
-            sessionDestroy();
+            session_start();
+            if (isset($_SESSION['role'])) {
+                sessionDestroy();
+            } else {
+                header('Location: index.php');
+            }
         } elseif($_GET['action'] == 'addSuperUsers') {
-            addSuperUsers();
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                addSuperUsers();
+            } else {
+                throw new Exception("La page n'existe pas !!!");
+            }
         } elseif ($_GET['action'] == 'validRole') {
-            if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['role'])) {
-                if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['email']) && !empty($_POST['role'])) {
-                    if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-                        if ($_POST['password'] === $_POST['password1']) {
-                            addRoleToTheUser($_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                if (isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['email']) && isset($_POST['role'])) {
+                    if (!empty($_POST['pseudo']) && !empty($_POST['password']) && !empty($_POST['email']) && !empty($_POST['role'])) {
+                        if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+                            if ($_POST['password'] === $_POST['password1']) {
+                                addRoleToTheUser($_POST['pseudo'], $_POST['email'], $_POST['password'], $_POST['role']);
+                            } else {
+                                throw new Exception('Les mots de passe de sont pas identiques !');
+                            }
                         } else {
-                            throw new Exception('Les mots de passe de sont pas identiques !');
+                            throw new Exception('Ce n\'est pas une adresse mail valide !');
                         }
-                    } else {
-                        throw new Exception('Ce n\'est pas une adresse mail valide !');
+                    }  else {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
                     }
-                }  else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                } else {
+                    throw new Exception("Aucun utisateur n'a été ajouté");
                 }
             } else {
-                throw new Exception("Aucun utisateur n'a été ajouté");
+                throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == 'deleteComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                removeComment($_GET['id'], $_GET['postId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" || $_SESSION['role'] == "modo") {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    removeComment($_GET['id'], $_GET['postId']);
+                } else {
+                    throw new Exception("Aucun commentaire n'a été supprimé");
+                }
             } else {
-                throw new Exception("Aucun commentaire n'a été supprimé");
+                throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == 'authorDescript') {
-            authorDescript();
-        } elseif ($_GET['action'] == 'deleteUser') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                removeMember($_GET['id'], $_GET['postId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" ||isset($_SESSION['role']) && $_SESSION['role'] == "modo" || isset($_SESSION['role']) && $_SESSION['role'] == "editor" || isset($_SESSION['role']) && $_SESSION['role'] == 0) {
+                authorDescript();
             } else {
-                throw new Exception("Aucun utilisateur n'a été supprimé");
+                throw new Exception("La page n'existe pas !!!");
+            }
+        } elseif ($_GET['action'] == 'deleteUser') {
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    removeMember($_GET['id'], $_GET['postId']);
+                } else {
+                    throw new Exception("Aucun utilisateur n'a été supprimé");
+                }
+            } else {
+                throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == 'reporting') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 0) {
-                incrementReporting($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" ||isset($_SESSION['role']) && $_SESSION['role'] == "modo" || isset($_SESSION['role']) && $_SESSION['role'] == "editor" || isset($_SESSION['role']) && $_SESSION['role'] == 0) {
+                if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 0) {
+                    incrementReporting($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
+                } else {
+                    header('Location: index.php');
+                }
             } else {
-                throw new Exception("Aucun utilisateur n'a été supprimé");
+                throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == 'reportCancel') {
-            if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 1) {
-                incrementReportingAdmin($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
+            session_start();
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" ||isset($_SESSION['role']) && $_SESSION['role'] == "modo") {
+                if (isset($_GET['id']) && $_GET['id'] > 0 && isset($_GET['commentId']) && $_GET['commentId'] > 0 && isset($_GET['flag']) && $_GET['flag'] == 1) {
+                    incrementReportingAdmin($_GET['flag'] + 1, $_GET['id'], $_GET['commentId']);
+                } else {
+                    throw new Exception("Aucun signalement a été retiré ");
+                }
             } else {
-                throw new Exception("Aucun commentaire n'a été sélectionné");
+                throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == is_null(NULL)) {
             throw new Exception("La page n'existe pas !!!");
