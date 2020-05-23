@@ -46,6 +46,4 @@ class RegistrationManager extends Manager {
 
         return $req;
     }
-
-    
 }

@@ -102,10 +102,11 @@
             </ul>
         </nav>
     </div>
+    <?php endif; ?>
 <?php endif; ?>
-<?php endif; ?>
-<?php $posts->closeCursor(); ?>
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('templateBackend.php'); ?>
+<?php 
+$posts->closeCursor(); 
+$content = ob_get_clean(); 
+require('templateBackend.php'); 
+?>

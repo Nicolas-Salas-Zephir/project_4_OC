@@ -4,7 +4,6 @@ use \nicolassalaszephir\Blog\Model\CommentManager;
 use \nicolassalaszephir\Blog\Model\RegistrationManager;
 
 
-
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/RegistrationManager.php');
@@ -18,7 +17,7 @@ function adminView() {
 
 function addPost($title, $content, $author) {
     $postManager = new PostManager();
-    $post = $postManager->insertPost($title, $content, $author);
+    $post = $postManager->insertPost(htmlspecialchars($title), $content, htmlspecialchars($author));
 
     if(!$post) {
         throw new Exception('Impossible d\'ajouter un poste');
@@ -39,11 +38,11 @@ function  postsBlogAdmin($pages) {
     
     $title = 'Tableau de bord';
     $postsPerPage = 3;
-    $totalPage = ceil($totalPosts / $postsPerPage); 
+    $totalPage = ceil((int) ($totalPosts / $postsPerPage)); 
 
-    if ($pages <= $totalPage) {
+    if ((int) ($pages <= $totalPage)) {
         $page = intval($pages);
-    } elseif ($pages > $totalPage) {
+    } elseif ((int) ($pages > $totalPage)) {
         header('Location: index.php?action=postsAdmin&page=1#paginationNav');
     } else {
         $page = 1;
@@ -51,7 +50,7 @@ function  postsBlogAdmin($pages) {
 
     $depart = ($page - 1) * $postsPerPage;
 
-    $posts = $postManager->getPosts($depart, $postsPerPage);
+    $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
     $comment = $commentManager->checkFlag(1);
     $comments = $commentManager->getCommentsFlag(1);
     
@@ -63,8 +62,7 @@ function postBackend($id) {
     $commentManager = new CommentManager();
     
     $post = $postManager->getPost($id);
-    $comments = $commentManager->getComments($id);
-    
+    $comments = $commentManager->getComments((int) $id);
 
     $title = 'Article ' . $id; 
     $navigation = "navBackend.php";
@@ -79,7 +77,7 @@ function postBackend($id) {
 
 function printPost($postId) {
     $postManager = new PostManager();
-    $post = $postManager->getPost($postId);
+    $post = $postManager->getPost((int) $postId);
 
     $title = 'Mon blog'; 
     $navigation = "navBackend.php";
@@ -89,7 +87,7 @@ function printPost($postId) {
 
 function updatePost($content, $author, $title, $id) {
     $postManager = new PostManager();
-    $affectedLines = $postManager->editPost($content, $author, $title, $id);
+    $affectedLines = $postManager->editPost((string) $content, (string) $author, (string) $title, (int) $id);
 
     if(!$affectedLines) {
         throw new Exception('Impossible de modifier l\'article !');
@@ -101,8 +99,8 @@ function updatePost($content, $author, $title, $id) {
 function removePost($id) {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-    $affectedLines = $postManager->deletePost($id);
-    $deleteComments = $commentManager->deleteComments($id); 
+    $affectedLines = $postManager->deletePost((int) $id);
+    $deleteComments = $commentManager->deleteComments((int) $id); 
 
     if(!$affectedLines) {
         throw new Exception("Impossible d'effacer le commentaire !");
@@ -120,8 +118,8 @@ function userRegistration() {
 function addUser($pseudo, $email, $pass_hache, $role = 0) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), $role);
-    
+    $affectedLines = $registerManager->insertUser((string) htmlspecialchars($pseudo), (string) htmlspecialchars($email), htmlspecialchars($pass_hache), $role);
+
     if(!$affectedLines) {
         throw new Exception("Impossible d'ajouter un utilisateur !");
     } else {
@@ -131,8 +129,8 @@ function addUser($pseudo, $email, $pass_hache, $role = 0) {
 
 function checkUser($pseudo, $email, $pass_hache, $role = 0) {
     $registerManager = new RegistrationManager();
-    $checkPseudo = $registerManager->checkPseudo($pseudo);
-    $checkEmail = $registerManager->checkEmail($email);
+    $checkPseudo = $registerManager->checkPseudo((string) $pseudo);
+    $checkEmail = $registerManager->checkEmail((string) $email);
 
     foreach($checkPseudo as $totalPseudo);
     foreach($checkEmail as $totalEmail);
@@ -178,7 +176,7 @@ function addSuperUsers() {
 function addRoleToTheUser($pseudo, $email, $pass_hache, $role) {
     $registerManager = new RegistrationManager();
     $pass_hache = password_hash($_POST['password'], PASSWORD_DEFAULT);
-    $affectedLines = $registerManager->insertUser(htmlspecialchars($pseudo), htmlspecialchars($email), htmlspecialchars($pass_hache), htmlspecialchars($role));
+    $affectedLines = $registerManager->insertUser((string) htmlspecialchars($pseudo), (string) htmlspecialchars($email), htmlspecialchars($pass_hache), (string) htmlspecialchars($role));
     
     if(!$affectedLines) {
         throw new Exception("Impossible d'ajouter un rôle à l'utilisateur !");
@@ -189,7 +187,7 @@ function addRoleToTheUser($pseudo, $email, $pass_hache, $role) {
 
 function removeComment($id, $postId) {
     $commentManager = new CommentManager();
-    $affectedLines = $commentManager->deleteComment($id);
+    $affectedLines = $commentManager->deleteComment((int) $id);
 
     if(!$affectedLines) {
         throw new Exception("Impossible d'effacer le commentaire !");
@@ -200,7 +198,7 @@ function removeComment($id, $postId) {
 
 function removeMember($id) {
     $postManager = new PostManager();
-    $affectedLines = $postManager->deleteUser($id);
+    $affectedLines = $postManager->deleteUser((int) $id);
 
     if(!$affectedLines) {
         throw new Exception("Impossible d'effacer l'utilisateur !");
@@ -211,7 +209,7 @@ function removeMember($id) {
 
 function incrementReportingAdmin($flag, $postId, $id) {
     $commentManager = new CommentManager();
-    $comments = $commentManager->editComment($flag, $postId, $id);
+    $comments = $commentManager->editComment((int) $flag, (int) $postId, (int) $id);
 
     if (!$comments) {
         throw new Exception(' le commentaire n\'existe pas  !');
@@ -225,8 +223,8 @@ function flagPostsAdmin() {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postManager->getPost((int) $_GET['id']);
+    $comments = $commentManager->getComments((int) $_GET['id']);
 
     if (!$post) {
         throw new Exception(' le commentaire n\'existe pas !');

@@ -70,9 +70,9 @@ ob_start();
                     </div>
                 </div>
                 <?php endif ?>
-            
         </div>
 
-<?php $content = ob_get_clean(); ?>
-
-<?php require('templateFrontend.php'); ?>
+<?php 
+$content = ob_get_clean();
+require('templateFrontend.php'); 
+?>

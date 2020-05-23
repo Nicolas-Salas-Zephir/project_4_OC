@@ -72,10 +72,9 @@
         </nav>
     </div>
 <?php endif; ?>
+
 <?php
 $posts->closeCursor();
+$content = ob_get_clean(); 
+require('templateFrontend.php'); 
 ?>
-
-<?php $content = ob_get_clean(); ?>
-
-<?php require('templateFrontend.php'); ?>

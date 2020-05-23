@@ -3,7 +3,6 @@ use \nicolassalaszephir\Blog\Model\PostManager;
 use \nicolassalaszephir\Blog\Model\CommentManager;
 
 
-
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
@@ -14,8 +13,7 @@ function listPosts() {
     $depart = 0;
     $postsPerPage = 3;
 
-    $posts = $postManager->getPosts($depart, $postsPerPage);
-    
+    $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
     
     session_start();
     require('view/frontend/listPostsView.php');
@@ -25,8 +23,8 @@ function post() {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
 
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $post = $postManager->getPost((int) $_GET['id']);
+    $comments = $commentManager->getComments((int) $_GET['id']);
     $title = 'Mon Article'; 
 
     if (!$post) {
@@ -40,7 +38,7 @@ function post() {
 function addComment($postId, $author, $comment) {
     $commentManager = new CommentManager();
 
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentManager->postComment((int) $postId, $author, htmlspecialchars($comment));
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -58,26 +56,26 @@ function  postsBlog($pages) {
 
     $title = 'Blog';
     $postsPerPage = 1;
-    $totalPage = ceil($totalPosts / $postsPerPage); 
+    $totalPage = ceil((int) ($totalPosts / $postsPerPage)); 
 
-    if ($pages <= $totalPage) {
+    if ((int) ($pages <= $totalPage)) {
         $page = intval($pages);
-    } elseif ($pages > $totalPage) {
+    } elseif ((int) ($pages > $totalPage)) {
         header('Location: index.php?action=blog&page=1#blog');
     } else {
         $page = 1;
     }
 
-    $depart = ($page - 1) * $postsPerPage;
+    $depart = (int) (($page - 1) * $postsPerPage);
 
-    $posts = $postManager->getPosts($depart, $postsPerPage);
+    $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
     session_start();
     require('view/frontend/listPostsView.php');
 }
 
 function incrementReporting($flag, $postId, $id) {
     $commentManager = new CommentManager();
-    $comments = $commentManager->editComment($flag, $postId, $id);
+    $comments = $commentManager->editComment((int) $flag, (int) $postId, (int) $id);
 
     if (!$comments) {
         throw new Exception(' le commentaire n\'existe pas  !');
