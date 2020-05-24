@@ -17,23 +17,22 @@ const menuToggle = () => {
   });
 };
 
-const scrollFunction = () => {
-  const mybutton = document.getElementById("backToTheTop");
-  if (
-    document.body.scrollTop > 500 ||
-    document.documentElement.scrollTop > 500
-  ) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-};
+window.addEventListener("scroll", () => {
+  const scroll = document.querySelector(".backToTheTop");
+  scroll.classList.toggle("activeScroll", window.scrollY > 500)
+});
 
-window.onscroll = () => {
-  scrollFunction();
-};
+const scrollToTop = () => {
+  const scroll = document.querySelector(".backToTheTop");
+  scroll.addEventListener("click", () => {
+    window.scrollTo( {
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+}
 
 if(toggleHamburger) {
   menuToggle();
 }
-
+scrollToTop();

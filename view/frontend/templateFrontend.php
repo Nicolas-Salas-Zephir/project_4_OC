@@ -15,10 +15,7 @@
         />
   </head>
   <body>
-    <div id="backToTheTop">
-        <a class="arrow-up" href="#"></a>
-    </div>
-
+    <div class="backToTheTop"></div>
     <div id="wrapper">
         <div id="sidebar">
           <div class="sidebar__container">
