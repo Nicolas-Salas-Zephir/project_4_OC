@@ -405,6 +405,18 @@ a {
   font-weight: 400;
 }
 
+.totalComments {
+  display: inline-block;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid;
+  font-size: 20px;
+}
+
 .comment button {
   position: relative;
   width: 20px;

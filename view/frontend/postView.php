@@ -26,7 +26,11 @@ ob_start();
                 <div class="row d-flex justify-content-center">
                     <div class="col-10 col-md-8 col-lg-6 col-xl-6">
                         <div id="comments" class="title-comments mb-4">
-                            <h2>Commentaires</h2>
+                            <?php if ($totalComments['total_comment'] == 1): ?>
+                            <h2 class="d-flex align-items-center"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaire</h2>
+                            <?php elseif ($totalComments['total_comment'] > 1): ?>
+                                <h2 class="d-flex align-items-center"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaires</h2>
+                            <?php endif ?>
                         </div>
                         <?php while ($comment = $comments->fetch()): ?>
                             <div class="comment ml-3 ml-3 mb-5 pb-5 border-bottom">

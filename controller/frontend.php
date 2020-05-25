@@ -14,7 +14,7 @@ function listPosts() {
     $postsPerPage = 3;
 
     $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
-    
+
     session_start();
     require('view/frontend/listPostsView.php');
 }
@@ -25,6 +25,8 @@ function post() {
 
     $post = $postManager->getPost((int) $_GET['id']);
     $comments = $commentManager->getComments((int) $_GET['id']);
+    $totalComments = $commentManager->checkComments((int) $_GET['id']);
+
     $title = 'Mon Article'; 
 
     if (!$post) {
@@ -51,7 +53,8 @@ function addComment($postId, $author, $comment) {
 
 function  postsBlog($pages) {
     $postManager = new PostManager();
-    
+    $commentManager = new CommentManager();
+
     $totalPosts = $postManager->countPosts();
 
     $title = 'Blog';
@@ -69,6 +72,7 @@ function  postsBlog($pages) {
     $depart = (int) (($page - 1) * $postsPerPage);
 
     $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
+
     session_start();
     require('view/frontend/listPostsView.php');
 }

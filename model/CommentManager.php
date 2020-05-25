@@ -70,4 +70,13 @@ class CommentManager extends Manager
 
         return $affectedLines;
     }
+
+    function checkComments($postId) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT COUNT(post_id) as total_comment FROM comments WHERE post_id = ?');
+        $req->execute(array($postId));
+        $result = $req->fetch();
+
+        return $result;
+    }
 }
