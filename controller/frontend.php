@@ -27,7 +27,7 @@ function post() {
     $comments = $commentManager->getComments((int) $_GET['id']);
     $totalComments = $commentManager->checkComments((int) $_GET['id']);
 
-    $title = 'Mon Article'; 
+    $title = $post['title'];
 
     if (!$post) {
         header('Location: index.php');
