@@ -220,12 +220,7 @@ try {
                 throw new Exception("La page n'existe pas !!!");
             }
         } elseif ($_GET['action'] == 'authorDescript') {
-            session_start();
-            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin" ||isset($_SESSION['role']) && $_SESSION['role'] == "modo" || isset($_SESSION['role']) && $_SESSION['role'] == "editor" || isset($_SESSION['role']) && $_SESSION['role'] == 0) {
-                authorDescript();
-            } else {
-                throw new Exception("La page n'existe pas !!!");
-            }
+            authorDescript();
         } elseif ($_GET['action'] == 'deleteUser') {
             session_start();
             if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
