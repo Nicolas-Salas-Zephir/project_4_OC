@@ -58,8 +58,8 @@ function  postsBlog($pages) {
     $totalPosts = $postManager->countPosts();
 
     $title = 'Blog';
-    $postsPerPage = 1;
-    $totalPage = ceil((int) ($totalPosts / $postsPerPage)); 
+    $postsPerPage = 4;
+    $totalPage = ceil($totalPosts / $postsPerPage); 
 
     if ((int) ($pages <= $totalPage)) {
         $page = intval($pages);

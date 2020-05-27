@@ -37,8 +37,9 @@ function  postsBlogAdmin($pages) {
     $count = 0;
     
     $title = 'Tableau de bord';
+    $depart = 0;
     $postsPerPage = 3;
-    $totalPage = ceil((int) ($totalPosts / $postsPerPage)); 
+    $totalPage = ceil($totalPosts / $postsPerPage); 
 
     if ((int) ($pages <= $totalPage)) {
         $page = intval($pages);
