@@ -111,7 +111,7 @@ function removePost($id) {
 
 function userRegistration() {
     $title = 'Identification';
-    var_dump($_SESSION);
+
     require('view/backend/registrationView.php');
 }
 
@@ -146,6 +146,7 @@ function verifyUser($pseudo) {
     $registerManager = new RegistrationManager();
     $user = $registerManager->getUser($pseudo);
     $isPasswordCorrect = password_verify($_POST['password'], $user['password']);
+    $title = 'Identification';
 
     if ($isPasswordCorrect) {
         session_start();
@@ -154,8 +155,10 @@ function verifyUser($pseudo) {
         $_SESSION['role'] = $user['role'];
         header('Location: index.php');
     } else {
-        throw new Exception('Mauvais identifiant ou mot de passe !');
+        $errorMessage = "Mauvais identifiant ou mot de passe";
+        require('view/backend/identificationView.php');  
     }
+     
 }
 
 function identifyView() {

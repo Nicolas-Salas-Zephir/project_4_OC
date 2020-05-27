@@ -30,10 +30,10 @@
           <a class="arrow-up" href="#"></a>
       </div>
 
-      <?php if(isset($_GET['action']) && $_GET['action'] !=="identification"
-        && isset($_GET['action']) && $_GET['action'] !=="userRegistration"
-        ): ?>
-      <?php include $navigation; ?>
+      
+      <?php if (isset($navigation)): ?>
+        <?php include $navigation; ?>
+      <?php endif; ?>
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
             <?php if(isset($_SESSION['role']) && $_SESSION['role'] == "admin"): ?>
@@ -49,7 +49,6 @@
         <div class='header-img-blog mb-5 d-flex align-items-end justify-content-end'>
           <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
         </div>
-      <?php endif ?>
       <div class="container">
         <?= $content ?>
       </div>

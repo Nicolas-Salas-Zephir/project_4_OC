@@ -20,7 +20,7 @@ $title = 'Erreur';
     <body>
         <div <?php 
             if ($ErrorMessage !== "La page n'existe pas !!!") {
-                echo "style='width: 100%; background-color: #214C55;'";
+                echo "style='width: 100%;'";
             }
             ?>>
             <div class="main-error d-flex justify-content-center align-items-center">
@@ -33,8 +33,7 @@ $title = 'Erreur';
                             </div>
                         <?php else: ?>
                             <div class="col-12 text-center">
-                                <img src="./public/images/messageError.jpg"  style="width: 70%;" alt="Image erreur">
-                                <h1 class="p-3 mt-3" style="color: white;">Une erreur est survenue : <?= $ErrorMessage ?></h1>
+                                <h1 class="p-3 mt-3">Une erreur est survenue : <?= $ErrorMessage ?></h1>
                             </div>
                         <?php endif; ?>
                         <div class="col-12 text-center">
