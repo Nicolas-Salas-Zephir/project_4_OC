@@ -83,7 +83,7 @@ function printPost($postId) {
     $title = 'Mon blog'; 
     $navigation = "navBackend.php";
     
-    require('view/backend/editpostView.php');
+    require('view/backend/editPostView.php');
 }
 
 function updatePost($content, $author, $title, $id) {
@@ -138,8 +138,9 @@ function checkUser($pseudo, $email, $pass_hache, $role = 0) {
 
     if ($totalPseudo < 1 && $totalEmail < 1) {
         addUser($pseudo, $email, $pass_hache, $role);
-    } elseif ($totalPseudo > 1 || $totalEmail > 1) {
-        throw new Exception("Ce pseudo ou adresse email sont déja utilisés");
+    } else {
+        $errorMessage = "Le pseudo ou l'adresse email est déja utilisé";
+        require('view/backend/registrationView.php');  
     } 
 }
 

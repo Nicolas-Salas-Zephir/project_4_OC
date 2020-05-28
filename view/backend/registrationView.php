@@ -21,13 +21,15 @@
       <div class="identification d-flex flex-column justify-content-center">
         <div class="row mb-5">
           <div class="col-lg-12 d-flex justify-content-center">
-            <h1>Se connecter</h1>
+            <h1>S'inscrire</h1>
           </div>
           <div class="col-lg-12 d-flex justify-content-center">
             <p><a href="index.php">Retour à la page d'accueil</a></p>
           </div>
         </div>
-
+      <?php if(isset($errorMessage)): ?>
+        <p class="text-center text-danger"><?= $errorMessage ?></p>
+      <?php endif ?>
         <div class="row d-flex justify-content-center">
           <div class="col-md-4">
             <form action="index.php?action=registration" method="post">

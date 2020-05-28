@@ -13,9 +13,7 @@
         crossorigin="anonymous"
         />
       <?php if(isset($_GET['action']) && $_GET['action'] == "admin" || isset($_GET['action']) && $_GET['action'] == 'viewAdminPost'): ?>
-        <script
-          src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
-          referrerpolicy="origin"></script>
+        <script src="https://cdn.tiny.cloud/1/wfzahiopz5oatrodub9d4woydvz1ywku0wspusi7zdcunqvc/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
         <script>
         tinymce.init({
