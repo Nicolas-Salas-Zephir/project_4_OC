@@ -20,9 +20,11 @@ ob_start();
                             <a href="index.php?action=deletePost&amp;postId=<?= $post['id'] ?>">Effacer</a>
                         <?php endif; ?>
                         <?php if($_SESSION['role'] === 'modo' || $_SESSION['role'] === 'admin'): ?>
-                            <div id="comments" class="title-comments mt-5 mb-4">
-                                <h2>Commentaires</h2>
-                            </div>
+                            <?php if ($totalComments['total_comment'] == 1): ?>
+                                <h2 class="d-flex align-items-center mt-5 mb-5"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaire</h2>
+                            <?php elseif ($totalComments['total_comment'] > 1): ?>
+                                <h2 class="d-flex align-items-center mt-5 mb-5"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaires</h2>
+                            <?php endif ?>
                             <?php while ($comment = $comments->fetch()): ?>
                                 <div class="comment ml-3 mb-5 pb-5 border-bottom">
                                     <p id="comment<?= $comment['id'] ?>" class="author"><?= htmlspecialchars($comment['author']) ?></p>

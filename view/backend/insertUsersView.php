@@ -37,7 +37,11 @@ $count = 0;
                                         <?= "Éditeur" ?>
                                     <?php endif; ?>
                                     </td>
-                                    <td><a href="index.php?action=deleteUser&amp;id=<?= $user['id'] ?>"><img src="./public/images/cross.svg" class="cross-role text-right" alt="icône-effacer"></a></td>
+                                    <td>
+                                    <?php if($user['role'] !== "admin"): ?>
+                                        <a href="index.php?action=deleteUser&amp;id=<?= $user['id'] ?>"><img src="./public/images/cross.svg" class="cross-role text-right" alt="icône-effacer"></a>
+                                    <?php endif; ?>
+                                    </td>
                                 </tr>
                                 <?php endif; ?>
                             <?php endwhile; ?>

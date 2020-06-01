@@ -60,7 +60,7 @@
                   id="email" name="email" placeholder="Email"
                   required/>
               </div>
-              <div class="d-flex justify-content-center mt-5">
+              <div class="d-flex justify-content-center mt-5 mb-5">
                 <button type="submit" class="btn btn-primary btn-lg
                   btn-block">Valider</button>
               </div>

@@ -20,7 +20,7 @@ ob_start();
                 </div>
                 <div class="form-group">
                     <label for="author">Auteur :</label><br />
-                    <input type="text" class="form-control" id="author" name="author" placeholder="Nom et Prénom"/>
+                    <input type="text" class="form-control" id="author" name="author" placeholder="Nom et Prénom" value="<?= $_SESSION['pseudo'] ?>"/>
                 </div class="form-group">
                     <label for="mytextarea">Contenu :</label>
                     <textarea name="content" id="mytextarea" placeholder="Contenu de l'article"></textarea>

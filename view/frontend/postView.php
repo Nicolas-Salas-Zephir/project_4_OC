@@ -27,7 +27,7 @@ ob_start();
                     <div class="col-10 col-md-8 col-lg-6 col-xl-6">
                         <div id="comments" class="title-comments mb-4">
                             <?php if ($totalComments['total_comment'] == 1): ?>
-                            <h2 class="d-flex align-items-center"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaire</h2>
+                                <h2 class="d-flex align-items-center"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaire</h2>
                             <?php elseif ($totalComments['total_comment'] > 1): ?>
                                 <h2 class="d-flex align-items-center"><span class="totalComments mr-3 mt-1"><?= $totalComments['total_comment']; ?></span> Commentaires</h2>
                             <?php endif ?>

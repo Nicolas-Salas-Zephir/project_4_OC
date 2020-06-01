@@ -24,11 +24,7 @@
       <?php endif ?>
   </head>
   <body>
-      <div id="backToTheTop">
-          <a class="arrow-up" href="#"></a>
-      </div>
-
-      
+      <div class="backToTheTop"></div>
       <?php if (isset($navigation)): ?>
         <?php include $navigation; ?>
       <?php endif; ?>
