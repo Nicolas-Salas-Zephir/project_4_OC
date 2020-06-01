@@ -1,4 +1,6 @@
 <?php
+namespace nicolassalaszephir\Blog\controller;
+
 use \nicolassalaszephir\Blog\Model\PostManager;
 use \nicolassalaszephir\Blog\Model\CommentManager;
 
@@ -6,90 +8,96 @@ use \nicolassalaszephir\Blog\Model\CommentManager;
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-function listPosts() {
-    $postManager = new PostManager();
+class Frontend {
 
-    $title = 'Page principale';
-    $depart = 0;
-    $postsPerPage = 3;
+    private $post;
+    private $comment;
 
-    $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
-
-    session_start();
-    require('view/frontend/listPostsView.php');
-}
-
-function post() {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-
-    $post = $postManager->getPost((int) $_GET['id']);
-    $comments = $commentManager->getComments((int) $_GET['id']);
-    $totalComments = $commentManager->checkComments((int) $_GET['id']);
-
-    $title = $post['title'];
-
-    if (!$post) {
-        header('Location: index.php');
+    public function __construct() {
+        $this->post = new PostManager();
+        $this->comment = new CommentManager();
     }
-    else {
-        require('view/frontend/postView.php');
-    }
-}
 
-function addComment($postId, $author, $comment) {
-    $commentManager = new CommentManager();
+    public function listPosts() {
 
-    $affectedLines = $commentManager->postComment((int) $postId, $author, htmlspecialchars($comment));
-
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
-    }
-    else {
+        $title = 'Page principale';
+        $depart = 0;
+        $postsPerPage = 3;
+    
+        $posts = $this->post->getPosts((int) $depart, (int) $postsPerPage);
+        
         session_start();
-        header('Location: index.php?action=post&id=' . $postId);
+        require('view/frontend/listPostsView.php');
     }
-}
-
-function  postsBlog($pages) {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-
-    $totalPosts = $postManager->countPosts();
-
-    $title = 'Blog';
-    $postsPerPage = 4;
-    $totalPage = ceil($totalPosts / $postsPerPage); 
-
-    if ((int) ($pages <= $totalPage)) {
-        $page = intval($pages);
-    } elseif ((int) ($pages > $totalPage)) {
-        header('Location: index.php?action=blog&page=1#blog');
-    } else {
-        $page = 1;
+    
+    public function post() {
+    
+        $post = $this->post->getPost((int) $_GET['id']);
+        $comments = $this->comment->getComments((int) $_GET['id']);
+        $totalComments = $this->comment->checkComments((int) $_GET['id']);
+    
+        $title = $post['title'];
+    
+        if (!$post) {
+            header('Location: index.php');
+        }
+        else {
+            require('view/frontend/postView.php');
+        }
     }
-
-    $depart = (int) (($page - 1) * $postsPerPage);
-
-    $posts = $postManager->getPosts((int) $depart, (int) $postsPerPage);
-
-    session_start();
-    require('view/frontend/listPostsView.php');
-}
-
-function incrementReporting($flag, $postId, $id) {
-    $commentManager = new CommentManager();
-    $comments = $commentManager->editComment((int) $flag, (int) $postId, (int) $id);
-
-    if (!$comments) {
-        throw new Exception(' le commentaire n\'existe pas  !');
-    } else {
-        header('Location: index.php?action=post&id=' . $postId . '#stop-comment' . $id);
+    
+    public function addComment($postId, $author, $comment, $id_members) {
+    
+        $affectedLines = $this->comment->postComment((int) $postId, $author, htmlspecialchars($comment), $id_members);
+    
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        }
+        else {
+            session_start();
+            header('Location: index.php?action=post&id=' . $postId);
+        }
     }
-}
+    
+    public function  postsBlog($pages) {
+        
+        $totalPosts = $this->post->countPosts();
 
-function authorDescript() {
-    $title = 'Ma biographie'; 
-
-    require('view/frontend/authorDescripView.php');
+        $title = 'Blog';
+        $postsPerPage = 4;
+        $totalPage = ceil($totalPosts / $postsPerPage); 
+    
+        if ($pages <= $totalPage) {
+            $page = intval($pages);
+        } elseif ($pages > $totalPage) {
+            header('Location: index.php?action=blog&page=1#blog');
+        } else {
+            $page = 1;
+        }
+    
+        $depart = ($page - 1) * $postsPerPage;
+    
+        $posts = $this->post->getPosts($depart, $postsPerPage);
+    
+        session_start();
+        require('view/frontend/listPostsView.php');
+    }
+    
+    public function incrementReporting($flag, $postId, $id) {
+        
+        $comments = $this->comment->editComment((int) $flag, (int) $postId, (int) $id);
+    
+        if (!$comments) {
+            throw new Exception(' le commentaire n\'existe pas  !');
+        } else {
+            header('Location: index.php?action=post&id=' . $postId . '#stop-comment' . $id);
+        }
+    }
+    
+    public function authorDescript() {
+        $title = 'Ma biographie'; 
+    
+        require('view/frontend/authorDescripView.php');
+    }
+    
 }
