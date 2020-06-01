@@ -14,10 +14,10 @@ class PostManager extends Manager {
         return $post;
     }
 
-    public function insertPost($title, $content, $author) {
+    public function insertPost($title, $content, $author, $id_members) {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO posts (title, content, author, create_date) VALUES (?, ?, ?, NOW())');
-        $affectedLines = $req->execute(array($title, $content, $author));
+        $req = $db->prepare('INSERT INTO posts (title, content, author, create_date, id_members) VALUES (?, ?, ?, NOW(), ?)');
+        $affectedLines = $req->execute(array($title, $content, $author, $id_members));
 
         return $affectedLines;
     }
