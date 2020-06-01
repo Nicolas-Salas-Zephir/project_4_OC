@@ -20,7 +20,7 @@
         <div id="sidebar">
           <div class="sidebar__container">
             <div class="sidebar__logo">
-                <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
+                <h1><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature"></a></h1>
             </div>
             <nav>
               <ul class="nav flex-column">
@@ -67,7 +67,7 @@
     <?php endif; ?>
             <div class="menu-hamburger">
                 <a href="#hamburger-toggle" id="hamburger-toggle">
-                  <img src="./public/images/Menu_icon_2_icon-icons.com.svg" />
+                  <img src="./public/images/Menu_icon_2_icon-icons.com.svg" alt="icone menu hamburger" />
                 </a>
             </div>
             <nav class="showw nav-hamburger pb-5">
@@ -95,18 +95,15 @@
             </nav>
             <?php if (isset($_GET['action'])): ?>
               <div class='header-img-blog d-flex align-items-end justify-content-end'>
-                <h1 class="hidden"><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h1>
+                <h1 class="hidden"><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature"></a></h1>
               </div>
             <?php else: ?>
                 <div class='header-img'>
                   <div class="container">
                     <div class="row d-flex flex-column justify-content-center align-items-center">
                       <h1 class="title-main text-white">Voyages en Alaska</h1>
-                      <h2 class="title-main text-white"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></h2>
+                      <h2 class="title-main text-white"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature"></h2>
                     </div>
-                    <!-- <div class="row d-flex justify-content-center">
-                      <h2 class="hidden"><a href="index.php"><img src="https://fontmeme.com/permalink/200503/c43085b2a66bfe90f1e505be73ec8971.png" alt="polices-de-signature" border="0"></a></h2>
-                    </div> -->
                   </div>
                 </div>
             <?php endif; ?>
